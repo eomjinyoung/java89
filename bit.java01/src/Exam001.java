@@ -11,7 +11,7 @@
  이 클래는 주석에 대한 설명을 위해
  작성 되었습니다.
  주석의 끝을 만날 때까지 계속 주석으로 간주한다.*/
-class Test01 {
+class Exam001 {
   public static void main(String[] args) {
     // 한 줄 주석: 줄 끝까지 주석으로 간주한다.
     // 단순한 출력
@@ -26,10 +26,25 @@ class Test01 {
    컴파일러는  OS가 기본으로 사용하는 문자코드표일거라고 생각한다.
    windows OS => MS949
    mac OS => utf8(UTF-8)
-=> javac -encoding utf8 Test01.java
+=> javac -encoding utf8 Exam001.java
 
 2) 컴파일한 결과를 별도의 폴더에 저장하기
 => 소스 파일과 클래스 파일을 같은 폴더에 두면 소스 파일을 관리하기 불편한다.
 => 보통 bin(binary or 저장소, 통 이라는 의미) 이라는 폴더에 둔다.
-=> javac -encoding utf8 -d ../bin Test01.java
+=> javac -encoding utf8 -d ../bin Exam001.java
+
+3) 다른 폴더에 있는 클래스 파일 실행하기
+=> JVM에게 클래스가 있는 폴더의 위치를 알려준다.
+=> java -classpath ../bin Exam001
+=> java -cp ../bin Exam001
+
+
+
+
+
+
+
+
+
+
 */
