@@ -18,3 +18,18 @@ class Test01 {
     System.out.println("Hello");
   }
 }
+
+/*
+1) 컴파일 할 때 소스 코드의 인코딩 지정하기
+=> 문자코드표 = character set(문자집합) = 인코딩(encoding)
+=> 소스 코드가 어떤 문자 코드표를 사용하는지 컴파일러에게 알려주지 않으면,
+   컴파일러는  OS가 기본으로 사용하는 문자코드표일거라고 생각한다.
+   windows OS => MS949
+   mac OS => utf8(UTF-8)
+=> javac -encoding utf8 Test01.java
+
+2) 컴파일한 결과를 별도의 폴더에 저장하기
+=> 소스 파일과 클래스 파일을 같은 폴더에 두면 소스 파일을 관리하기 불편한다.
+=> 보통 bin(binary or 저장소, 통 이라는 의미) 이라는 폴더에 둔다.
+=> javac -encoding utf8 -d ../bin Test01.java
+*/
