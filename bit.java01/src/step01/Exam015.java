@@ -13,7 +13,7 @@ public class Exam015 {
   }
 
   // 다른 클래스가 사용할 수 있도록 메서드를 정의한다.
-  static void greeting() {
+  public static void greeting() {
     System.out.print("안녕하쥬~~~\n");
   }
 }
