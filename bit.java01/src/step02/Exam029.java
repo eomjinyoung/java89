@@ -5,10 +5,23 @@
 package step02;
 
 public class Exam029 {
-  public static void main(String[] args) {
-    System.out.println(8.8434567474732345f); // 가수부 크기를 넘어가는 수는 짤린다.
-    System.out.println(88567545839284758.34567f); // 가수부 크기를 넘어가는 수는 짤린다.
+  public static final String name = "hello";
+  public static final float ok = 12.375f;
 
+  public static void main(String[] args) {
+    // 가수부 크기를 넘어가는 수는 짤린다.
+    System.out.println(987.654321234567f); // 7자리까지 정확하게 저장됨
+    System.out.println(987.654321234567);  // 15자리까지 정확하게 저장됨
+
+    /*
+    32비트(4바이트) 부동소수점은 유효자릿수가 7자리이다.
+    => 단정도
+    64비트(8바이트) 부동소수점은 유효자릿수가 15자리이다.
+    => 단정도 보다 두 배 정밀한 값을 저장한다고 해서 "배정도" 라고 부른다.
+    결론!
+    => 부동소수점 값을 저장할 때는 소수점의 위치가 중요한 것이 아니라
+       소수점을 떼고 난 이후의 숫자가 몇 자리인지가 중요한다.
+    */
   }
 }
 
