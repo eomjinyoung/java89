@@ -1,4 +1,4 @@
-// 주제: Literal - 문자
+// 주제: Literal - 문자(2byte; 0 ~ 65535)
 package step02;
 
 public class Exam021 {
