@@ -24,6 +24,13 @@ public class Exam033_1 {
     int k2 = 90,
         e2 = 90,
         m2 = 90;
+
+    //4) 다른 변수의 값을 저장할 수 있다.
+    int value1 = 100;
+    int value2;
+    value2 = value1; // r-value에는 값 뿐만아니라 변수도 올 수 있다.
+                     // 변수가 올 경우 그 변수의 복사한 값이 놓인다.
+
   }
 }
 
