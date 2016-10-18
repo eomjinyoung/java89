@@ -1,9 +1,16 @@
-// 주제: 변수 선언 - 기본 타입을 묶어 새로운 타입을 정의하기 (II)
+// 주제: 변수 선언 - 다른 종류의 메모리를 여러 개 묶어서 준비하기
 package step03;
 
 public class Exam035 {
-  // 인스턴스 변수로 데이터 타입 정의하기
-  static class Score { // 4 종류의 메모리를 묶어 새 데이터 타입을 만든다.
+  // class 문법으로 메모리의 종류를 정의한다.
+  // => 여러 종류의 메모리를 묶어 새 데이터 타입을 만든다.
+  // => 배열은 오직 같은 종류의 메모리만 여러 개 준비할 수 있다.
+  // => 클래스 문법을 사용하면 다른 종류의 메모리를 여러 개 준비할 수 있다.
+  // => Score는 String(1), int(4), float(1)로 구성되는 메모리임을 정의하는 것이지
+  //    메모리를 즉시 준비하는 것은 아니다.
+  //    즉 Score는 메모리를 준비할 때 참고할 설계도이다.
+  static class Score {
+    String name;
     int kor;
     int eng;
     int math;
@@ -12,25 +19,28 @@ public class Exam035 {
   }
 
   public static void main(String[] args) {
-    //인스턴스 변수로 구성된 새 데이터 타입의 메모리를 만드는 방법
-    Score s1 = new Score(); // 메모리 준비. 이 메모리의 이름은 s1
-    Score s2 = new Score(); // 메모리 준비. 이 메모리의 이름은 s2
+    // 1) 인스턴스 준비 (클래스 설계도에 따라 메모리를 준비하는 것)
+    // => 클래스에 정의된 대로 복합 메모리 준비하기
+    // => 이렇게 준비한 복합 메모리를 "인스턴스(instance)"라 부른다.
+    Score s1 = new Score();
 
-    // 메모리에 값 넣기
+    // 2) 복합 메모리에 값 넣기
+    // 인스턴스이름.내부메모리의이름
+    s1.name = "홍길동";
     s1.kor = 100;
     s1.eng = 100;
     s1.math = 100;
     s1.sum = s1.kor + s1.eng + s1.math;
     s1.aver = s1.sum / 3;
 
-    s2.kor = 90;
-    s2.eng = 90;
-    s2.math = 90;
-    s2.sum = s2.kor + s2.eng + s2.math;
-    s2.aver = s2.sum / 3;
-
+    // 3) 복합 메모리의 값 꺼내기
+    System.out.println(s1.name);
+    System.out.println(s1.kor);
+    System.out.println(s1.eng);
+    System.out.println(s1.math);
+    System.out.println(s1.sum);
     System.out.println(s1.aver);
-    System.out.println(s2.aver);
+
 
   }
 }
