@@ -9,6 +9,8 @@ public class Exam035 {
   // => Score는 String(1), int(4), float(1)로 구성되는 메모리임을 정의하는 것이지
   //    메모리를 즉시 준비하는 것은 아니다.
   //    즉 Score는 메모리를 준비할 때 참고할 설계도이다.
+  // => 지금 당장 이런 메모리를 준비하라는 뜻이 아니다.
+  //    나중에 new 라는 명령이 들어오면 그 때 이런 메모리들을 준비하라는 것이다.
   static class Score {
     String name;
     int kor;
