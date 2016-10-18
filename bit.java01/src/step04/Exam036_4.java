@@ -11,8 +11,11 @@ public class Exam036_4 {
 
     byte b1 = 10, b2 = 20;
     //byte b3 = b1 + b2; // b1과 b2의 값은 암시적으로 int로 형변환된다. 컴파일 오류!
-    int result2 = b1 + b2; // OK!
+    //System.out.println(b3);
 
+    int result2 = b1 + b2; // OK!
+    System.out.println(result2);
+    
     // 예외: 상수 값끼리의 연산 결과는
     // 메모리에 값을 넣을 수 있을 때 byte와 short 메모리에 저장하는 것을 허락한다.
     byte b4 = 10 + 20; // 상수의 결과 값은 컴파일러가 알 수 있기 때문에
