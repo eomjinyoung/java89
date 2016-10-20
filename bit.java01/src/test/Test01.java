@@ -7,9 +7,24 @@
 2(짝수)
 ...
 */
+package test;
 
 public class Test01 {
   public static void main(String[] args) {
-
+    int i = 0;
+    while (i < 10) {
+      System.out.printf("%d(%s)\n", i, (i % 2 == 0) ? "짝수" : "홀수");
+      i++;
+    }
   }
 }
+
+
+
+
+
+
+
+
+/*
+*/
