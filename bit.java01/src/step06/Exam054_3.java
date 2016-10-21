@@ -24,7 +24,7 @@ public class Exam054_3 {
 
   public static void main(String[] args) {
     score(new int[]{100,90,80}, "홍길동");
-    //score2(100, 90, 80, "임꺽정");
+    //score2(100, 90, 80, "임꺽정"); // 오류!
     score2("임꺽정", 100, 90, 80);
     score2("유관순", 100, 90, 80, 10, 40);
   }
