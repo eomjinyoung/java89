@@ -1,4 +1,4 @@
-package step09.ex2;
+package step09.ex3;
 
 import java.util.Scanner;
 
