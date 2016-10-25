@@ -13,6 +13,7 @@ public class Student2 {
 
   // 조심! 메서드는 인스턴스 생성과 관련이 없다.
   // 메서드는 Method Area 영역에 놓인다.
+  // => 클래스 이름으로 호출하는 메서드를 "클래스 메서드", "스태틱 메서드"라고 한다.
   static void init(Student2 student, String name, String email, String tel, int age, boolean working) {
     student.name = name;
     student.email = email;

@@ -14,6 +14,9 @@ public class Exam060_0 {
     arr[1] = new Student("임꺽정", "leem@test.com", "111-1112", 30, false);
     arr[2] = new Student("유관순", "yoo@test.com", "111-1113", 40, true);
 
+    //생성자는 다음과 같이 나중에 따로 호출할 수 없다.
+    //arr[0].Student("홍길동", "hong@test.com", "111-1111", 20, true); // 컴파일 오류!
+
     for (Student student : arr) {
       student.printStudent();
     }
