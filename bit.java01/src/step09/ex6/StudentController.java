@@ -29,6 +29,48 @@ public class StudentController {
     }
   }
 
+  public void doUpdate() {
+    System.out.print("변경할 학생의 아이디는? ");
+    String userId = this.keyScan.nextLine().toLowerCase();
+    for (int i = 0; i < this.length; i++) {
+      if (this.students[i].userId.toLowerCase().equals(userId)) {
+        Student student = new Student();
+
+        student.userId = this.students[i].userId;
+
+        System.out.print("암호(예:1111)? ");
+        student.password = this.keyScan.nextLine();
+
+        System.out.print("이름(예:홍길동)? ");
+        student.name = this.keyScan.nextLine();
+
+        System.out.print("전화(예:010-1111-2222)? ");
+        student.tel = this.keyScan.nextLine();
+
+        System.out.print("이메일(예:hong@test.com)? ");
+        student.email = this.keyScan.nextLine();
+
+        System.out.print("재직중(y/n)? ");
+        student.working = (this.keyScan.nextLine().equals("y")) ? true : false;
+
+        System.out.print("태어난해(예:1980)? ");
+        student.birthYear = Integer.parseInt(this.keyScan.nextLine());
+
+        System.out.print("최종학교(예:비트고등학교)? ");
+        student.school = this.keyScan.nextLine();
+
+        System.out.print("저장하시겠습니까(y/n)? ");
+        if (keyScan.nextLine().toLowerCase().equals("y")) {
+          this.students[i] = student;
+          System.out.println("저장하였습니다.");
+        } else {
+          System.out.println("변경을 취소하였습니다.");
+        }
+        return;
+      }
+    }
+    System.out.printf("%s 이라는 학생이 없습니다.", userId);
+  }
   public void doAdd() {
     // 반복 해서 입력 받는다.
     while (length < this.students.length) {
