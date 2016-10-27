@@ -7,7 +7,7 @@ public class StudentSelector {
       "천지연", "김희경", "김우종", "하세훈", "오용석", "남경훈",
       "원요엘", "김건우", "김지연"
     };
-
+  
     int count = (int)(Math.random() * 27);
     int no = 0;
     while (count-- > 0) {
