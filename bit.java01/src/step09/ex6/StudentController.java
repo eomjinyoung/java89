@@ -71,6 +71,7 @@ public class StudentController {
     }
     System.out.printf("%s 이라는 학생이 없습니다.", userId);
   }
+  
   public void doAdd() {
     // 반복 해서 입력 받는다.
     while (length < this.students.length) {
