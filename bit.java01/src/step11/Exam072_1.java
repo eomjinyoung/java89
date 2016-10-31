@@ -1,44 +1,61 @@
-/* 주제: 상속 - 오버라이딩 하기 전의 메서드 호출하는 방법 */
+/* 주제: 상속과 다형성 - 다형적 변수(polymorphic variable) */
 package step11;
 
 public class Exam072_1 {
   static class A {
-    void m1() {System.out.printf("A.m1()\n");}
-    void m2() {System.out.printf("A.m2()\n");}
+    int v1;
+    void m1() {
+      System.out.println("A.m1()");
+    }
   }
   static class B extends A {
-    void m1() {System.out.printf("B.m1()\n");}
-    void m3() {System.out.printf("B.m3()\n");}
-    void test1() {
-      this.m1(); // 현재 클래스에서 먼저 메서드를 찾는다.
-      this.m2(); // 현재 클래스에서 찾아보고 없으면 수퍼 클래스를 뒤진다.
+    int v2;
+    void m2() {
+      this.v1 = 100;
+      this.v2 = 200;
+      System.out.println("B.m2()");
     }
-    void test2() {
-      super.m1(); // 오버라이딩 하기 전에 메서드 호출
-      //super.m3(); // 무조건 현재 클래스가 아닌 수퍼 클래스부터 m3() 찾는다.
-                    // 수퍼 클래스에 없으면 그 위의 수퍼클래스에서 찾는다. 계속...
-                    // 그래도 없으면 컴파일 오류!
-      this.m3(); // OK!
-      super.m2(); // 무조건 수퍼 클래스부터 찾는다...
+  }
+  static class C extends B {
+    int v3;
+    void m3() {
+      this.v1 = 100;
+      this.v2 = 200;
+      this.v3 = 300;
+      System.out.println("C.m3()");
     }
   }
 
   public static void main(String[] args) {
-    B obj = new B();
-    obj.test1();
-    System.out.println("---------------------");
-    obj.test2();
+    A a1 = new A(); // OK
+    A a2 = new B(); // OK
+    A a3 = new C(); // OK
 
+    //B b1 = new A(); // 컴파일 오류!
+    //b1.m2(); // B의 m2() 메서드에서 B의 v2 변수를 사용할 수 있기 때문에.
+    B b2 = new B(); // OK
+    B b3 = new C(); // OK
+
+    //C c1 = new A(); // 컴파일 오류!
+    //C c2 = new B(); // 컴파일 오류!
+    C c3 = new C(); // OK
   }
 }
 
 /*
-# super 키워드
-- 오버라이딩 전의 메서드를 호출할 때 사용하는 특수 명령어다.
-- 현재 클래스가 아닌 수퍼 클래스부터 위로 올라가면서 메서드를 찾는다.
+# 다형적 변수
+- 레퍼런스 변수는 오직 한 개의 클래스 인스턴스만 저장하는 것이 아니다.
+- 다양한 타입의 인스턴스를 저장할 수 있다.
+- 단 같은 클래스이거나 하위 클래스의 인스턴스를 가리킬 수 있다.
 
-
-
+# 참고
+- 클래스 이름, 변수 이름, 메서드 이름은 유니코드에서 특수 문자나,
+  자바에서 사용하지 말라고 지정한 문자를 제외하고
+  어떤 국가의 문자라도 사용할 수 있다.
+- 자바 소스 파일의 문자 인코딩이 UTF-8로 되어 있을 경우,
+  컴파일 할 때 옵션으로 -encoding utf8 을 지정해야만
+  한글 클래스명이 허락된다.
+  왜? windows 의 기본 문자 집합은 MS949이기 때문이다.
 
 
 
