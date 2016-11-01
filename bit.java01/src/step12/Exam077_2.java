@@ -19,10 +19,13 @@ public class Exam077_2 {
     obj.m1();
 
     //2) 클래스 정보를 이용하여 인스턴스를 생성하는 방법
+    //Class clazz1 = obj.getClass();
+    //Class clazz1 = Class.forName("step12.Exam077_2$A");
     Class clazz1 = A.class;
-    A obj2 = (A)clazz1.newInstance();
+    Object instance = clazz1.newInstance();
+    A obj2 = (A)instance;
     obj2.m1();
-    
+
   }
 }
 
