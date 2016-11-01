@@ -4,7 +4,7 @@
 => 만약에 재정의 한다면 그 이유는?
    클래스에 대해 간단한 설명을 리턴하기 위해.
 */
-package step11;
+package step12;
 
 public class Exam076_0 {
   static class A {}

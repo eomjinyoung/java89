@@ -5,7 +5,7 @@
   같은 값을 갖는 인스턴스에 대해 같은 식별 번호를 부여하여
   인스턴스를 비교하거나 저장하고 싶을 때.
 */
-package step11;
+package step12;
 
 public class Exam076_1 {
   static class A {

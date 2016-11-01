@@ -4,7 +4,7 @@
 => 만약에 재정의 한다면 그 이유는?
   같은 값을 갖는 인스턴스에 대해 같은 것으로 취급하기 위해.
 */
-package step11;
+package step12;
 
 public class Exam076_2 {
   static class A {
