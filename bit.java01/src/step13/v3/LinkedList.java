@@ -54,14 +54,14 @@ public class LinkedList {
 
     Object oldValue = null;
     if (index == 0) {
-      oldValue = head;
+      oldValue = head.value;
       head = head.next;
     } else {
       Box cursor = head;
       for (int i = 0; i < (index - 1); i++) {
         cursor = cursor.next;
       }
-      oldValue = cursor.next;
+      oldValue = cursor.next.value;
       cursor.next = cursor.next.next;
     }
     length--;
