@@ -24,6 +24,7 @@ public class BoxTest  {
       case "add": doAdd(); break;
       case "list": doList(); break;
       case "get": doGet(); break;
+      case "delete": doDelete(); break;
       case "quit": System.out.println("Good Bye~");
         break loop;
       default: System.out.println("명령어가 없습니다");
@@ -63,5 +64,28 @@ public class BoxTest  {
     for (int i = 0; i < index; i++)
       cursor = cursor.next;
     System.out.println(cursor.value);
+  }
+
+  static void doDelete() {
+    System.out.print("삭제할 값의 인덱스? ");
+    int index = Integer.parseInt(keyScan.nextLine());
+
+    if (index < 0 || index >= length) {
+      System.out.println("인덱스가 유효하지 않습니다.");
+      return;
+    }
+
+    if (index == 0) {
+      head = head.next;
+      length--;
+      return;
+    }
+
+    Box cursor = head;
+    for (int i = 0; i < (index - 1); i++)
+      cursor = cursor.next;
+
+    cursor.next = cursor.next.next;
+    length--;
   }
 }
