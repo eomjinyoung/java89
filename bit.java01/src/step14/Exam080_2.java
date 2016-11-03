@@ -33,7 +33,7 @@ public class Exam080_2 {
     }
     return a / b;
   }
-  public static void main(String[] args) throws Exception {
+  public static void main(String[] args) {
     Scanner keyScan = new Scanner(System.in);
     int v1 = keyScan.nextInt();
     int v2 = keyScan.nextInt();

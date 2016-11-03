@@ -13,7 +13,7 @@ public class Exam080_0 {
   static int m1(int a, int b) {
     return a / b;
   }
-  public static void main(String[] args) throws Exception {
+  public static void main(String[] args) {
     Scanner keyScan = new Scanner(System.in);
     int v1 = keyScan.nextInt();
     int v2 = keyScan.nextInt();
