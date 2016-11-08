@@ -7,7 +7,7 @@ import java.io.File;
 public class Exam094_5 {
   public static void main(String[] args) throws Exception {
     if (args.length == 0) {
-      System.out.println("사용법: java step18.Exam094_4 디렉토리명");
+      System.out.println("사용법: java step18.Exam094_5 디렉토리명");
       return;
     }
 
