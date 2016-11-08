@@ -30,20 +30,18 @@ public class Exam094_10 {
       return;
     }
 
-    // FileFileter 계약서를 준수하는 클래스를 만든다.
-    // => .java 파일만 목록으로 만든다.
-    class MyFileFilter implements FileFilter {
-      public boolean accept(File pathname) {
-        if (pathname.getName().endsWith(".java"))
-          return true;
-        return false;
-      }
-    }
+    printFileInfo(f1);
+    
+  }
 
-    // f1 의 디렉토리에 들어있는 파일(디렉토리 포함) 정보를 가져온다.
-    File[] files = f1.listFiles(new MyFileFilter());
-    for (File file : files) {
-      System.out.println(file.getName());
+  static void printFileInfo(File dir) {
+    File[] files = dir.listFiles();
+    for (File file : files) { 
+      if (file.isFile()) {
+        System.out.println(file.getPath());
+      } else { 
+        printFileInfo(file);
+      }
     }
   }
 }
