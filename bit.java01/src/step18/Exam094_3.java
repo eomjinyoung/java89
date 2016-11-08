@@ -11,7 +11,6 @@ public class Exam094_3 {
       return;
     }
 
-    // 파일명을 입력받아 빈 파일을 생성해보자!
     File f1 = new File(args[0]);
     if (!f1.exists()) {
       System.out.println("파일이 존재하지 않습니다.");
