@@ -8,10 +8,10 @@ public class StudentSelector {
       "천지연", "김희경", "김우종", "하세훈", "오용석", "남경훈"
     };
   
-    int count = (int)(Math.random() * 27);
+    int count = (int)(Math.random() * students.length);
     int no = 0;
     while (count-- > 0) {
-      no = (int)(Math.random() * 27);
+      no = (int)(Math.random() * students.length);
       System.out.print(".");
       Thread.currentThread().sleep(300);
     }
