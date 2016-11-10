@@ -17,7 +17,7 @@ public class Exam097_1 {
     int count = 0;
     byte[] buf = new byte[8192];
     while (in.read(buf) != -1) count++;
-
+    
     //2) 읽은 후 시각 측정
     long endMillis = System.currentTimeMillis();
 
