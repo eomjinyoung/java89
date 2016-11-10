@@ -20,7 +20,7 @@ public class Exam097_2 {
 
     @Override
     public int read() throws IOException {
-      if (length == 0) { // 버퍼에 읽을 데이터가 없다면, 파일에서 버퍼로 데이터를 읽어온다.
+      if (cursor == length) { // 버퍼에 읽을 데이터가 없다면, 파일에서 버퍼로 데이터를 읽어온다.
         length = super.read(buf); // 원래의 read()를 사용하여 버퍼로 데이터를 읽어온다.
         cursor = 0; // 데이터를 새로 읽어왔으면 커서는 다시 0으로 초기화시킨다.
         if (length == -1) // 만약 파일의 데이터를 다 읽었다면, 즉시 -1을 리턴하여, 
@@ -28,7 +28,6 @@ public class Exam097_2 {
       }
       
       // 파일에서 버퍼로 데이터를 퍼 왔으면, 버퍼에서 데이터를 하나 꺼내 리턴한다.
-      length--;
       return buf[cursor++] & 0x000000FF; // 맨 끝 1바이트 값만 유효하고 나머진 0으로 
     }
   }
