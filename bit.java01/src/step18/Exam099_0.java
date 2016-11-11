@@ -1,5 +1,8 @@
-/* 주제: 버퍼의 사용 - FileInputStream을 확장하여 버퍼 기능 추가하기 II
-=> 상속 문법을 이용하지 않고 기능 확장
+/* 주제: 데코레이터 패턴을 이용한 기능 확장 방법
+=> Decorator 역할을 하는 클래스는 단독적으로 생성되어 사용될 수 없다.
+   => 반드시 다른 객체에 의존하여 작업을 수행한다.
+=> 즉, 기본 생성자가 없거나 private으로 접근을 제한한다.
+   => 기본 생성자를 사용하여 인스턴스를 만들 수 없음을 의미한다. 
 */
 package step18;
 
@@ -40,6 +43,7 @@ public class Exam099_0 {
     }
   }
 
+  // 데코레이터 역할을 할 클래스
   static class DataInputStream extends InputStream {
     InputStream in;
 
