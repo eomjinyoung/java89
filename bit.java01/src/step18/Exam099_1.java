@@ -121,8 +121,8 @@ public class Exam099_1 {
 
     // FilterInputStream은 추상 클래스이기 때문에 인스턴스를 만들 수 없다.
     // 즉 직접 사용하지 못한다.
-    // FilterInputStream inx = new FilterInputStream(in0);
-    // System.out.println(inx.read());
+    //FilterInputStream inx = new FilterInputStream(in0);
+    //System.out.println(inx.read());
 
     String name = null;
     int kor = 0;
