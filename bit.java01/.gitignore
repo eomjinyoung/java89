@@ -4,5 +4,6 @@
 /gradle/
 /.classpath
 /.project
-/build/
+/build/ 
 /temp/
+/.DS_Store

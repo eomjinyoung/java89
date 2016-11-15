@@ -1,0 +1,27 @@
+// 자바 관련 빌드 명령을 사용하기 위해 Gradle plugin 추가
+apply plugin: 'java'
+
+// 이클립스 관련 설정 파일을 만들어주는 Gradle plugin 추가
+apply plugin: 'eclipse'
+
+/* Gradle의 기본 폴더 구조는 다음과 같다
+project폴더/src
+               /main
+                    /java
+                    /resources
+                    /webapp
+               /test
+                    /java
+                    /resources
+*/
+// 만약 소스 폴더의 구조를 변경하고 싶다면 다음 설정을 추가하라!
+sourceSets {
+    main {
+        java {
+            srcDir 'src'
+        }
+        resources {
+            srcDir 'src'
+        }
+    }
+}
