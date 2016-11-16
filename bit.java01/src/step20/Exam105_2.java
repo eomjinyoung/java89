@@ -9,7 +9,11 @@ import java.util.Scanner;
 public class Exam105_2 {
   public static void main(String[] args) throws Exception {
     Scanner keyScan = new Scanner(System.in);
-    Socket socket = new Socket("localhost", 8888); 
+    
+    System.out.print("서버 주소? ");
+    String serverAddr = keyScan.nextLine();
+    
+    Socket socket = new Socket(serverAddr, 8888); 
     Scanner in = new Scanner(socket.getInputStream());
     PrintStream out = new PrintStream(socket.getOutputStream());
     
