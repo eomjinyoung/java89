@@ -1,9 +1,10 @@
-/* ver 4: 클라이언트가 보낸 파일명과 파일 크기를 출력하라!
+/* ver 5: 클라이언트가 보낸 파일을 저장하라!
  - 실행 결과
- * 파일명: jls8.pdf
- * 파일크기: 3,980,659
+ * 전송받은 파일명: jls8.pdf
+ * 전송받은 파일크기: 3,980,659
+ * 파일을 저장하였습니다. <= java01/upload 폴더에 저장한다.
  */
-package step20.ex3.v4;
+package step20.ex3.v5;
 
 import java.io.DataInputStream;
 import java.io.PrintStream;

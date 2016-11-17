@@ -6,4 +6,5 @@
 /.project
 /build/ 
 /temp/
+/upload/
 /.DS_Store
