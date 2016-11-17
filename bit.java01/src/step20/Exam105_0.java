@@ -94,18 +94,27 @@ public class Exam105_0 {
       
       System.out.println("클라이언트와 연결되었음");
       
-      //4) 클라이언트가 보낸 데이터를 읽는다.
-      System.out.println(in.nextLine());
+      while (true) {
+        //4) 클라이언트가 보낸 데이터를 읽는다.
+        String recvMsg = in.nextLine();
+        System.out.println(recvMsg);
+        if (recvMsg.toLowerCase().equals("quit")) {
+          break;
+        }
+        
+        //5) 클라이언트로 데이터를 보내기 전에 사용자의 입력을 기다린다.
+        System.out.print("대답? ");
+        String message = keyScan.nextLine();
+        
+        //6) 사용자가 입력한 메시지를 클라이언트로 보낸다.
+        out.println(message);
+        if (message.toLowerCase().equals("quit")) {
+          break;
+        }
+      }
       
-      //5) 클라이언트로 데이터를 보내기 전에 사용자의 입력을 기다린다.
-      
-      System.out.print("대답? ");
-      String message = keyScan.nextLine();
-      
-      //6) 사용자가 입력한 메시지를 클라이언트로 보낸다.
-      out.println(message);
     } catch (Exception e) {
-      e.printStackTrace();
+      //e.printStackTrace();
     }
     
     //7) 서버 소켓을 닫는다. => 더 이상 클라이언트와 연결할 수 없다.

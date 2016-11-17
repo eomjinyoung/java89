@@ -25,18 +25,27 @@ public class Exam105_1 {
       
       System.out.println("서버와 연결되었음");
       
-      //3) 서버로 보낼 데이터를 사용자로부터 입력 받는다.
-      System.out.print("보낼 메시지? ");
-      String message = keyScan.nextLine();
-      
-      //4) 서버에 데이터를 보낸다.
-      out.println(message);
-      
-      //5) 서버가 보낸 데이터를 읽고 출력한다.
-      System.out.println(in.nextLine());
+      while (true) {
+        //3) 서버로 보낼 데이터를 사용자로부터 입력 받는다.
+        System.out.print("보낼 메시지? ");
+        String message = keyScan.nextLine();
+        
+        //4) 서버에 데이터를 보낸다.
+        out.println(message);
+        if (message.toLowerCase().equals("quit")) {
+          break;
+        }
+        
+        //5) 서버가 보낸 데이터를 읽고 출력한다.
+        String recvMsg = in.nextLine();
+        System.out.println(recvMsg);
+        if (recvMsg.toLowerCase().equals("quit")) {
+          break;
+        }
+      }
      
     } catch (Exception e) {
-      e.printStackTrace();
+      //e.printStackTrace();
     }
   }
 }
