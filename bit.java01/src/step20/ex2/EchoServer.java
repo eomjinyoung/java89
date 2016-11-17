@@ -1,13 +1,13 @@
 /* 주제: 네트워킹 프로그래밍 소개 - echo server 만들기 
  */
-package step20;
+package step20.ex2;
 
 import java.io.PrintStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Scanner;
 
-public class Exam105_3 {
+public class EchoServer {
   public static void main(String[] args) throws Exception {
     ServerSocket ss = new ServerSocket(8888); 
     System.out.println("에코 서버 시작!");

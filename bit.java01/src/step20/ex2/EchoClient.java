@@ -1,12 +1,12 @@
 /* 주제: 네트워킹 프로그래밍 소개 - echo client 만들기  
  */
-package step20;
+package step20.ex2;
 
 import java.io.PrintStream;
 import java.net.Socket;
 import java.util.Scanner;
 
-public class Exam105_2 {
+public class EchoClient {
   public static void main(String[] args) throws Exception {
     Scanner keyScan = new Scanner(System.in);
     
