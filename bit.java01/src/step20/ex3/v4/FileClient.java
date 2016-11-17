@@ -9,8 +9,10 @@
 package step20.ex3.v4;
 
 import java.io.BufferedInputStream;
+import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.net.Socket;
 import java.util.Scanner;
 
 public class FileClient {
@@ -34,6 +36,25 @@ public class FileClient {
     in.close();
     keyScan.close();
     
+    Socket socket = new Socket("localhost", 8888);
+    Scanner socketIn = new Scanner(socket.getInputStream());
+    DataOutputStream socketOut = new DataOutputStream(socket.getOutputStream());
     
+    socketOut.writeUTF(file.getName());
+    socketOut.writeLong(file.length());
+    System.out.println(socketIn.nextLine());
+    
+    System.out.println("파일명 및 파일 크기를 전송하였습니다.");
+    
+    socketIn.close();
+    socketOut.close();
+    socket.close();
   }
 }
+
+
+
+
+
+
+
