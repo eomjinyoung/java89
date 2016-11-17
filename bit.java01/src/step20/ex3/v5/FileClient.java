@@ -21,33 +21,29 @@ public class FileClient {
     String filename = keyScan.nextLine();
     
     File file = new File(filename);
-    System.out.printf("파일명: %s\n", file.getName());
-    System.out.printf("파일크기: %s\n", file.length());
+    System.out.printf("전송할 파일명: %s\n", file.getName());
+    System.out.printf("전송할 파일크기: %s\n", file.length());
     
-    BufferedInputStream in = new BufferedInputStream(
-                                new FileInputStream(file));
-    while (true) {
-      int b = in.read();
-      if (b == -1) 
-        break;
-    }
-    System.out.println("파일을 모두 읽었습니다.");
-    in.close();
-    keyScan.close();
-    
+    BufferedInputStream in = new BufferedInputStream(new FileInputStream(file));
     Socket socket = new Socket("localhost", 8888);
     Scanner socketIn = new Scanner(socket.getInputStream());
     DataOutputStream socketOut = new DataOutputStream(socket.getOutputStream());
     
     socketOut.writeUTF(file.getName());
     socketOut.writeLong(file.length());
+    int b = 0;
+    while ((b = in.read()) != -1) {
+      socketOut.write(b);
+    }
     System.out.println(socketIn.nextLine());
     
-    System.out.println("파일명 및 파일 크기를 전송하였습니다.");
+    System.out.println("파일을 전송하였습니다.");
     
     socketIn.close();
     socketOut.close();
     socket.close();
+    in.close();
+    keyScan.close();
   }
 }
 
