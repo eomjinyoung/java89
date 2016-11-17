@@ -1,53 +1,55 @@
-/* 주제: 네트워킹 프로그래밍 소개 - 미니 웹브라우저 만들기 
+/* 주제: 네트워킹 프로그래밍 - 서버 소켓 
+ * => 용어 정리
+ * 서버:        클라이언트의 요청을 받아서 작업을 처리하고 응답하는 역할.
+ * 클라이언트:  서버에 작업을 의뢰하는 역할.
+ *              대부분 서버에 먼저 데이터를 보낸다.
+ * 포트번호:    연결을 구분하기 위한 번호로서 서버, 클라이언트 모두 필요하다.
+ *              서버는 스스로 포트 번호를 지정한다.
+ *              클라이언트는 OS로부터 자동으로 배정 받는다.
+ *              포트번호는 중복되어서는 안된다.
+ * IP 주소:     각 컴퓨터에 부여된 인터넷 주소이다.
+ *              IPv4에서는 0~255.0~255.0~255.0~255 이렇게 표시한다.
+ *              4바이트 값을 이용하여 IP 주소를 표현한다.
+ *              현재 IP 주소 고갈로 인해 IPv6로 전환하고 있다.
+ * 도메인명:    IP 주소에 대해 별명을 부여한 것.
+ *              IP 주소는 숫자로 이루어져서 기억하기가 쉽지 않다.
+ *              기억을 쉽게 하도록 알파벳과 숫자로 이루어진 이름을 사용한다.
+ *              "컴퓨터명.도메인명.그룹명" 형식으로 이름을 부여한다.
+ *              예) www.naver.com
+ *              www       - host name
+ *              naver.com - domain name
+ *              "컴퓨터명.파트명.도메인명.그룹명" 4개의 이름으로 구성할 수 있다.
+ *              도메인의 그룹명은 두 개 이상의 이름으로 구성될 수 있다.
+ *              예) .com, .co.kr, pe.kr, .org 등
+ *              com - 회사
+ *              org - 비영리 조직
+ *              net - 커뮤니티
+ *              co.kr - 한국 회사 일반 도메인
+ *              go.kr - 한국 정부에서 관리하는 그룹. 일반인이 소속될 수 없다.
+ *              주의!
+ *              네트워크 통신할 때는 IP 주소를 알아야만 한다.
+ *              도메인 이름은 IP 주소를 알아낼 때 key로 사용한다.
+ *              "도메인이름(key)<--->IP주소(value)" 는 DNS 서버(네임서버)에 등록되어 있다.
+ * DNS 서버:    도메인 이름에 대한 IP 주소를 관리하는 서버
+ *              
+ * 도메인 등록: 도메인을 관리하는 국제 공인 기관(ICANN)에서 위탁받아 운영하는 회사를 통해 등록할 수 있다.
+ *              예) gabia.com, godday.com, whois.co.kr 등
+ * 
+ * DNS의 사용 예)
+ * 1) 웹브라우저에 "www.daum.net"을 입력한다.
+ * 2) 웹브라우저는 OS에 설정되어 있는 DNS 서버에 연결하여 해당 이름에 대한 IP 주소를 알아낸다.
+ *    만약 DNS 서버에 연결되지 않는다면, 두 번째 DNS 서버에 연결한다.
+ *    OS에 등록된 모든 DNS 서버와 연결되지 않는다면, IP 주소를 알 수 없기 때문에
+ *    웹 서버에 연결할 수 없다.
+ * 127.0.0.1:   모든 컴퓨터의 기본 로컬 IP이다.
+ * localhost:   모든 컴퓨터의 기본으로 등록된 도메인 이름이다.   
+ * => 클라이언트의 연결을 기다리는 역할을 수행 
  */
 package step20;
 
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.PrintStream;
-import java.net.Socket;
-import java.util.Scanner;
-
 public class Exam105_0 {
   public static void main(String[] args) throws Exception {
-    // Data Sink Stream 객체 준비 => 랜카드를 통해 데이터를 입출력
-    // 1) 랜카드 접속 객체 준비
-    Socket socket = new Socket("www.daum.net", 80); 
     
-    // 2) 입출력 객체 준비
-    InputStream in = socket.getInputStream();
-    OutputStream out = socket.getOutputStream();
-    
-    // 3) 문자열 입출력을 쉽게할 수 있도록 데코레이터(Data Processing Stream)를 준비
-    Scanner in2 = new Scanner(in);
-    PrintStream out2 = new PrintStream(out);
-    
-    // 4) 서버에게 HTTP 규칙에 따라 요청 정보를 보낸다.
-    // HTTP 요청 규칙?
-    // 요청방식 요청할자원의주소 프로토콜/버전 CRLF
-    // Host: 요청을 받을 서버 이름 CRLF
-    // 빈 줄
-    out2.println("GET / HTTP/1.1");
-    out2.println("Host: www.daum.net");
-    out2.println();
-    
-    // 5) 서버에서 응답한 내용을 읽기
-    String line = null;
-    while (true) {
-      try {
-        line = in2.nextLine();
-        System.out.println(line);
-      } catch (Exception e) {
-        break;
-      }
-    }
-    
-    // 6) 다쓴 자원은 닫는다.
-    out2.close();
-    in2.close();
-    out.close();
-    in.close();
-    socket.close();
   }
 }
 
