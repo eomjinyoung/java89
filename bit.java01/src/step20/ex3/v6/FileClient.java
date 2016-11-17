@@ -1,11 +1,12 @@
-/* ver 5: 서버에 파일 데이터를 전송하라!
+/* ver 6: 서버 주소를 입력 받는다.
  - 실행 결과
  * 파일? jls8.pdf (입력)
  * 전송할 파일명: jls8.pdf
  * 전송할 파일크기: 3,980,659
+ * 서버주소? 192.168.1.56 (입력)
  * 파일을 전송하였습니다.
  */
-package step20.ex3.v5;
+package step20.ex3.v6;
 
 import java.io.BufferedInputStream;
 import java.io.DataOutputStream;
@@ -24,8 +25,11 @@ public class FileClient {
     System.out.printf("전송할 파일명: %s\n", file.getName());
     System.out.printf("전송할 파일크기: %s\n", file.length());
     
+    System.out.print("서버주소? ");
+    String serverAddress = keyScan.nextLine();
+    
     BufferedInputStream in = new BufferedInputStream(new FileInputStream(file));
-    Socket socket = new Socket("localhost", 8888);
+    Socket socket = new Socket(serverAddress, 8888);
     Scanner socketIn = new Scanner(socket.getInputStream());
     DataOutputStream socketOut = new DataOutputStream(socket.getOutputStream());
     
