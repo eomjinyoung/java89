@@ -1,3 +1,10 @@
+/* 주제: 여러 클라이언트 요청을 순차적으로 처리하기
+ * - 반복문을 적용하여 클라이언트 요청을 처리한다.  
+ * - 문제점?
+ *   => 대기열에서 기다리고 있는 클라이언트를 순차적으로 처리하기 때문에
+ *      사용자가 불편하다.
+ *   => 해결책? ex6 패키지를 보라!  
+ */
 package step20.ex5;
 
 import java.io.BufferedInputStream;
@@ -50,41 +57,36 @@ public class GameServer {
     ServerSocket ss = new ServerSocket(8888);
     System.out.println("서버 실행 중입니다.");
     
-    Socket socket = ss.accept();
-    Scanner socketIn = new Scanner(
-      new BufferedInputStream(socket.getInputStream()));
-    PrintStream socketOut = new PrintStream(
-      new BufferedOutputStream(socket.getOutputStream()), /* OutputStream */ 
-      true, /* autoflush */
-      "UTF-8"); /* charset */
-    
-    // 클라이언트로부터 이름을 읽고 환영인사를 보낸다.
-    String name = socketIn.nextLine();
-    socketOut.println(name + "님 환영합니다. 즐겁게 게임하세요.");
-    
-    int questionIndex = 0;
     while (true) {
-      String[] values = questions[questionIndex].split(",");
-      socketOut.println(values[0]);
-      if (questionIndex >= 25) {
-        socketOut.println("stop");
-        break;
-      } else {
-        socketOut.println("continue");
-      }
+      try (
+        Socket socket = ss.accept();
+        Scanner socketIn = new Scanner(
+          new BufferedInputStream(socket.getInputStream()));
+        PrintStream socketOut = new PrintStream(
+          new BufferedOutputStream(socket.getOutputStream()), /* OutputStream */ 
+          true, /* autoflush */
+          "UTF-8"); /* charset */) {
       
-      String response = socketIn.nextLine();
-      if (response.toLowerCase().equals("y")) {
-        questionIndex = Integer.parseInt(values[1]);
-      } else {
-        questionIndex = Integer.parseInt(values[2]);
-      }
-    }
-    
-    socketIn.close();
-    socketOut.close();
-    socket.close();
-    ss.close();
+        // 클라이언트로부터 이름을 읽고 환영인사를 보낸다.
+        String name = socketIn.nextLine();
+        socketOut.println(name + "님 환영합니다. 즐겁게 게임하세요.");
+        
+        int questionIndex = 0;
+        while (true) {
+          String[] values = questions[questionIndex].split(",");
+          socketOut.println(values[0]);
+          
+          if (questionIndex >= 25) {socketOut.println("stop"); break;} 
+          else { socketOut.println("continue");}
+          
+          String response = socketIn.nextLine();
+          
+          if (response.toLowerCase().equals("y")) {questionIndex = Integer.parseInt(values[1]);} 
+          else {questionIndex = Integer.parseInt(values[2]);}
+        }
+      } catch (Exception e) {}
+    } //while
+    //ss.close();
   }
 
 }
