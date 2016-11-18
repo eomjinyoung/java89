@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 public class Exam105_4 {
   public static void main(String[] args) throws Exception {
-    ServerSocket ss = new ServerSocket(8888, 3); 
+    ServerSocket ss = new ServerSocket(8888, 1); 
     System.out.println("서버 실행중...");
     
     // 대기열에 있는 클라이언트 연결을 꺼내기 
