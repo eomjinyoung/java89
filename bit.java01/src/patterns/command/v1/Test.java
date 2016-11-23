@@ -2,7 +2,7 @@ package patterns.command.v1;
 
 import java.util.Scanner;
 
-public class Test1 {
+public class Test {
 
   public static void main(String[] args) {
     Scanner keyScan = new Scanner(System.in);
@@ -23,6 +23,14 @@ public class Test1 {
       break;
     case "-":
       result = calc.minus(a, b);
+      System.out.printf("%d %s %d = %d\n", a, op, b, result);
+      break;
+    case "*":
+      result = calc.multiple(a, b);
+      System.out.printf("%d %s %d = %d\n", a, op, b, result);
+      break;
+    case "/":
+      result = calc.divide(a, b);
       System.out.printf("%d %s %d = %d\n", a, op, b, result);
       break;
     default:

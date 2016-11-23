@@ -8,11 +8,12 @@
  * => 단점
  *    클래스가 잘게 쪼개져서 파일 개수가 많아진다.
  */
-package patterns.command.v2;
+package patterns.command.v3;
 
+import java.util.HashMap;
 import java.util.Scanner;
 
-public class Test2 {
+public class Test {
 
   public static void main(String[] args) {
     Scanner keyScan = new Scanner(System.in);
@@ -24,24 +25,20 @@ public class Test2 {
     int b = Integer.parseInt(values[2]);
     String op = values[1];
     
+    HashMap<String,Operator> opMap = new HashMap<>();
+    opMap.put("+", new PlusOp());
+    opMap.put("-", new MinusOp());
+    opMap.put("*", new MultipleOp());
+    opMap.put("/", new DivideOp());
     
-    PlusOp plus = new PlusOp();
-    MinusOp minus = new MinusOp();
-    
-    int result = 0;
-    switch (op) {
-    case "+": 
-      result = plus.execute(a, b);
-      System.out.printf("%d %s %d = %d\n", a, op, b, result);
-      break;
-    case "-":
-      result = minus.execute(a, b);
-      System.out.printf("%d %s %d = %d\n", a, op, b, result);
-      break;
-    default:
+    Operator operator = opMap.get(op);
+    if (operator == null) {
       System.out.println("지원하지 않는 연산자입니다.");
-    }
-    
+      
+    } else {
+      int result = operator.execute(a, b);
+      System.out.printf("%d %s %d = %d\n", a, op, b, result);
+    }    
     keyScan.close();
   }
 }
