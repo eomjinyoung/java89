@@ -1,5 +1,5 @@
 // 인터페이스 작성 규칙
-package step21;
+package step21.ex1;
 
 public interface MyInterface {
   // 인터페이스는 인스턴스를 직접 생성할 수 없기 때문에
