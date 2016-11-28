@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>이벤트 처리와 IoC(제어의 역행)</h1>
+<button id="btn1" type="button">버튼1</button>
+<textarea id="ta" cols="80" rows="10"></textarea>
+<script>
+var obj = window.document.getElementById("btn1");
+obj.onclick = function() {
+	var obj2 = window.document.getElementById("ta");
+	obj2.value = "오호라....그렇구나...";
+};
+
+window.alert('okok');
+
+window.alert('nono');
+
+window.alert('haha')
+
+</script>
+</body>
+</html>
