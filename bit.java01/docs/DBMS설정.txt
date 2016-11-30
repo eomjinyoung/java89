@@ -106,6 +106,18 @@ password: 암호입력
 > delete from 테이블명
   where 조건...;
 > delete from ex_contacts;
+> delete from ex_contacts
+  where email='ccc@test.com';
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 
 
 
