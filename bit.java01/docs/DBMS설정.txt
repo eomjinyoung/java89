@@ -54,11 +54,28 @@ password: 암호입력
     email varchar(50) not null
   );
   
+  create table ex_students (
+    uid varchar(20) not null,
+    pwd varchar(20) not null,
+    name varchar(20) not null,
+    tel varchar(20),
+    email varchar(50) not null,
+    work char(1) not null,
+    byear int,
+    schl varchar(30)    
+  );
+  
 [테이블의 데이터를 구분하는 식별자(Primary Key; PK)로 사용할 컬럼 지정]
 > alter table 테이블명 
   add primary key (컬럼명, 컬럼명, ...);
 > alter table ex_contacts
   add primary key (email);
+  alter table ex_students
+  add primary key (uid);
+
+=> PK는 아니지만 중복되어서는 안되는 컬럼인 경우 다음과 같이 유니크 컬럼으로 지정한다.
+  alter table ex_students
+  add unique index (email);  
   
 [테이블 삭제]
 > drop table 테이블명;
@@ -84,7 +101,20 @@ password: 암호입력
  insert into ex_contacts(email, name, tel, posi)
   values('eee@test.com', 'eee', '111-1111', '차장');
 
+ insert into ex_students(uid, pwd, name, email, work)
+ values('aaa', '1111', '홍길동', 'hong@test.com', 'Y');
+ insert into ex_students(uid, pwd, name, email, work)
+ values('bbb', '1111', '홍길동2', 'hong2@test.com', 'N');
+ insert into ex_students(uid, pwd, name, email, work)
+ values('ccc', '1111', '홍길동3', 'hong3@test.com', 'Y');
+ insert into ex_students(uid, pwd, name, email, work)
+ values('ddd', '1111', '홍길동4', 'hong4@test.com', 'N');
+ insert into ex_students(uid, pwd, name, email, work)
+ values('eee', '1111', '홍길동5', 'hong5@test.com', 'Y');
+
 => 만약 이메일 컬럼의 값이 중복된다면 insert를 허락하지 않는다.
+ insert into ex_students(uid, pwd, name, email, work)
+ values('xxx', '1111', '홍길동5', 'hong5@test.com', 'Y');
 
 [테이블의 데이터 조회]
 > select 컬럼명, 컬러명, ...
