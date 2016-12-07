@@ -1,0 +1,25 @@
+apply plugin: 'java'
+// 이클립스 웹 프로젝트 관련 설정 파일 생성하는 플러그인
+apply plugin: 'eclipse-wtp' // 기존의 eclipse 플러그인을 포함한다.
+apply plugin: 'war'         // 웹 애플리케이션 배포 관련 플러그인.
+
+// Maven 기본 프로젝트 폴더 구조를 따르기 때문에 다음과 같이
+// 소스 폴더의 구조를 따로 명시할 필요가 없다.
+//sourceSets {}
+
+repositories {
+  mavenCentral()  
+}
+
+dependencies {
+  // 로컬에서 의존 라이브러리 가져오기
+  compile fileTree(dir:'libs', include: '*.jar')
+  compile group: 'javax.servlet', name: 'javax.servlet-api', version: '3.1.0'
+  
+}
+
+
+
+
+
+
