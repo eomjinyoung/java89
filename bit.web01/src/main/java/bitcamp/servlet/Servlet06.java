@@ -54,12 +54,14 @@ public class Servlet06 extends GenericServlet {
   public void service(ServletRequest request, ServletResponse response) 
       throws ServletException, IOException {
     // 출력 스트림을 얻기 전에 출력할 데이터의 종류와 문자집합을 지정해야 한다.
-    //response.setContentType("text/plain;charset=UTF-8");
+    response.setContentType("text/plain;charset=UTF-8");
     
     PrintWriter out = response.getWriter();
     out.println("Hello, world!");
     
-    response.setContentType("text/plain;charset=UTF-8");
+    // 출력 스트림을 얻은 후에는 영향 받지 않는다. 따라서 다음 코드는 의미 없다.
+    //response.setContentType("text/plain;charset=UTF-8");
+    
     out.println("안녕하세요");
     out.println("你好");
     out.println("Hallo!");
