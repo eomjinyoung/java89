@@ -49,12 +49,14 @@ public class Servlet15_view extends GenericServlet {
       out.println("</head>");
       out.println("<body>");
       out.println("<h1>학생 정보</h1>");
-      out.println("<form>");
+      out.println("<form action='update'>");
       out.println("<table border='1'>");
       
       if (rs.next()) { // 서버에서 레코드 한 개를 가져왔다면,
+        out.printf("<input name='userId' type='hidden' value='%s'>\n",
+            rs.getString("uid"));
         out.printf("<tr><th>아이디</th><td>"
-            + "<input name='userId' type='text' value='%s' disabled></td></tr>\n",
+            + "<input type='text' value='%s' disabled></td></tr>\n",
                   rs.getString("uid"));
         out.printf("<tr><th>암호</th><td>"
             + "<input name='password' type='password'></td></tr>\n");
@@ -69,13 +71,13 @@ public class Servlet15_view extends GenericServlet {
                   rs.getString("tel"));
         
         out.printf("<tr><th>재직여부</th><td>"
-            + "<input type='radio' name='working' %s>재직중"
-            + " <input type='radio' name='working' %s>실업/미취업</td></tr>\n",
+            + "<input type='radio' name='working' value='Y' %s>재직중"
+            + " <input type='radio' name='working' value='N' %s>실업/미취업</td></tr>\n",
             (rs.getString("work").equals("Y") ? "checked" : ""),
             (rs.getString("work").equals("Y") ? "" : "checked"));
         out.printf("<tr><th>태어난해</th><td>"
             + "<input name='birthYear' type='number' value='%d'></td></tr>\n", 
-                  rs.getString("byear"));
+                  rs.getInt("byear"));
         out.printf("<tr><th>최종학교</th><td>"
             + "<input name='school' type='text' value='%s'></td></tr>\n", 
                   rs.getString("schl"));

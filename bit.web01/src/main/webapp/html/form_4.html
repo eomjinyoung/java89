@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>form_4</title>
+</head>
+<body>
+<h1>폼 만들기</h1>
+checkbox는 체크하지 않으면 값을 서버에 보내지 않는다.<br>
+checkbox에 value가 없으면 기본 값 "on"이 넘어간다.<br>
+<br>
+<form>
+체크1: <input name="data1" type="checkbox"><br>
+체크2: <input name="data2" type="checkbox" value="okok"><br>
+<hr>
+radio 버튼도 선택하지 않으면 값을 서버에 보내지 않는다.<br>
+radio 버튼에 value가 없으면 기본 값 "on"이 넘어간다.<br>
+<br>
+라디어버튼: <input name="g1" type="radio" value="black">검은색
+            <input name="g1" type="radio" value="blue">파란색
+            <input name="g1" type="radio" value="red">빨간색<br>
+<hr>
+option에 value를 설정하지 않으면 태그의 내용을 서버에 보낸다.<br>
+선택상자(콤보상자): 
+<select name="product">
+  <option>아이맥</option>
+  <option>아이폰</option>
+  <option>맥북프로</option>
+  <option>아이워치</option>
+</select><br>
+<br>
+option에 value를 지정하면 그 값을 서버에 보낸다.<br>
+선택상자2: 
+<select name="product2">
+  <option value="p001">아이맥</option>
+  <option value="p002">아이폰</option>
+  <option value="p003">맥북프로</option>
+  <option value="p004">아이워치</option>
+</select><br>
+<br>
+<button>제출</button> <button type="reset">초기화</button>
+</form>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
