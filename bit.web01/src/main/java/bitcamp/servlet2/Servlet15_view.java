@@ -43,26 +43,49 @@ public class Servlet15_view extends GenericServlet {
       out.println("<html>");
       out.println("<head>");
       out.println("<meta charset='UTF-8'>");
+      out.println("<meta name='viewport' content='width=device-width,"
+          + " user-scalable=no, maximum-scale=1.0'>");
       out.println("<title>학생관리-상세정보</title>");
       out.println("</head>");
       out.println("<body>");
       out.println("<h1>학생 정보</h1>");
+      out.println("<form>");
       out.println("<table border='1'>");
       
       if (rs.next()) { // 서버에서 레코드 한 개를 가져왔다면,
-        out.printf("<tr><th>아이디</th><td>%s</td></tr>\n", rs.getString("uid"));
-        out.printf("<tr><th>암호</th><td>%s</td></tr>\n", rs.getString("pwd"));
-        out.printf("<tr><th>이름</th><td>%s</td></tr>\n", rs.getString("name"));
-        out.printf("<tr><th>이메일</th><td>%s</td></tr>\n", rs.getString("email"));
-        out.printf("<tr><th>전화</th><td>%s</td></tr>\n", rs.getString("tel"));
-        out.printf("<tr><th>재직여부</th><td>%s</td></tr>\n", rs.getString("work"));
-        out.printf("<tr><th>태어난해</th><td>%d</td></tr>\n", rs.getString("byear"));
-        out.printf("<tr><th>최종학교</th><td>%s</td></tr>\n", rs.getString("schl"));
+        out.printf("<tr><th>아이디</th><td>"
+            + "<input name='userId' type='text' value='%s' disabled></td></tr>\n",
+                  rs.getString("uid"));
+        out.printf("<tr><th>암호</th><td>"
+            + "<input name='password' type='password'></td></tr>\n");
+        out.printf("<tr><th>이름</th><td>"
+            + "<input name='name' type='text' value='%s'></td></tr>\n", 
+                  rs.getString("name"));
+        out.printf("<tr><th>이메일</th><td>"
+            + "<input name='email' type='text' value='%s'></td></tr>\n", 
+                  rs.getString("email"));
+        out.printf("<tr><th>전화</th><td>"
+            + "<input name='tel' type='text' value='%s'></td></tr>\n", 
+                  rs.getString("tel"));
+        
+        out.printf("<tr><th>재직여부</th><td>"
+            + "<input type='radio' name='working' %s>재직중"
+            + " <input type='radio' name='working' %s>실업/미취업</td></tr>\n",
+            (rs.getString("work").equals("Y") ? "checked" : ""),
+            (rs.getString("work").equals("Y") ? "" : "checked"));
+        out.printf("<tr><th>태어난해</th><td>"
+            + "<input name='birthYear' type='number' value='%d'></td></tr>\n", 
+                  rs.getString("byear"));
+        out.printf("<tr><th>최종학교</th><td>"
+            + "<input name='school' type='text' value='%s'></td></tr>\n", 
+                  rs.getString("schl"));
       } else {
         out.println("<tr><td>해당 사용자가 없습니다.</td></tr>");
       }
-      
+
       out.println("</table>");
+      out.println("<button type='submit'>변경</button>");
+      out.println("</form>");
       out.println("</body>");
       out.println("</html>");
       

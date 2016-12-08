@@ -50,7 +50,7 @@ public class Servlet15_list extends GenericServlet {
       
       while (rs.next()) { // 서버에서 레코드 한 개를 가져왔다면,
         out.println("<tr> ");
-        out.printf("  <td>%s</td><td>%s</td><td>%s</td><td>%s</td>\n",
+        out.printf("  <td><a href='view?userId=%s'>%1$s</a></td><td>%s</td><td>%s</td><td>%s</td>\n",
           rs.getString("uid"),
           rs.getString("pwd"),
           rs.getString("name"),
