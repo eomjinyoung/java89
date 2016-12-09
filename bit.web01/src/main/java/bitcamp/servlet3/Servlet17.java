@@ -1,5 +1,7 @@
 /* 주제: HTTP GET 요청과 HTTP POST 요청
- * => /servlet17/test.html 을 사용하여 테스트하라!
+ * => /servlet/servlet17_get.html 과 servlet17_post.html 을 사용하여 테스트하라!
+ * => 이 예제는 자바 코드 쪽에 특별한 사항은 없다.
+ *    언제 get 요청이 발생하고, 언제 post 요청이 발생하는 지 확인하는 예제이다.
  */
 package bitcamp.servlet3;
 
@@ -12,7 +14,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebServlet;
 
-@WebServlet("/servlet17")
+@WebServlet("/servlet/servlet17")
 public class Servlet17 extends GenericServlet {
   private static final long serialVersionUID = 1L;
 

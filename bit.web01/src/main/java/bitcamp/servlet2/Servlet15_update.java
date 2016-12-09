@@ -14,7 +14,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebServlet;
 
-@WebServlet("/servlet15/update")
+@WebServlet("/servlet/servlet15/update")
 public class Servlet15_update extends GenericServlet {
   private static final long serialVersionUID = 1L;
 

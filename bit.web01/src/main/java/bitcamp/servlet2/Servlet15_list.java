@@ -15,7 +15,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebServlet;
 
-@WebServlet("/servlet15/list")
+@WebServlet("/servlet/servlet15/list")
 public class Servlet15_list extends GenericServlet {
   private static final long serialVersionUID = 1L;
 
@@ -43,7 +43,7 @@ public class Servlet15_list extends GenericServlet {
       out.println("</head>");
       out.println("<body>");
       out.println("<h1>학생 정보</h1>");
-      out.println("<a href='form.html'>추가</a><br>");
+      out.println("<a href='../servlet15_form.html'>추가</a><br>");
       out.println("<table border='1'>");
       out.println("<tr>");
       out.println("  <th>아이디</th><th>암호</th><th>이름</th><th>이메일</th>");

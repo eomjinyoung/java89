@@ -14,7 +14,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebServlet;
 
-@WebServlet("/servlet15/delete")
+@WebServlet("/servlet/servlet15/delete")
 public class Servlet15_delete extends GenericServlet {
   private static final long serialVersionUID = 1L;
 
