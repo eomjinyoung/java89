@@ -87,6 +87,8 @@ public class Servlet15_view extends GenericServlet {
 
       out.println("</table>");
       out.println("<button type='submit'>변경</button>");
+      out.printf(" <a href='delete?userId=%s'>삭제</a>", rs.getString("uid"));
+      out.println(" <a href='list'>목록</a>");
       out.println("</form>");
       out.println("</body>");
       out.println("</html>");
