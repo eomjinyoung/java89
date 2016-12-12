@@ -36,7 +36,7 @@ public abstract class AbstractHttpServlet extends GenericServlet {
     }
   }
 
-  private void doGet(HttpServletRequest request, HttpServletResponse response) 
+  protected void doGet(HttpServletRequest request, HttpServletResponse response) 
       throws ServletException, IOException {
     response.setContentType("text/plain;charset=UTF-8");
     PrintWriter out = response.getWriter();
@@ -44,7 +44,7 @@ public abstract class AbstractHttpServlet extends GenericServlet {
     
   }
   
-  private void doPost(HttpServletRequest request, HttpServletResponse response) 
+  protected void doPost(HttpServletRequest request, HttpServletResponse response) 
       throws ServletException, IOException {
     response.setContentType("text/plain;charset=UTF-8");
     PrintWriter out = response.getWriter();
