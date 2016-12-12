@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>학생관리-입력폼</title>
+</head>
+<body>
+<h1>학생 등록폼</h1>
+<form action='servlet22/add'>
+<table border='1'>
+<tr><th>아이디</th><td><input name="userId" type='text' placeholder='예)bbb'></td></tr>
+<tr><th>암호</th><td><input name='password' type='password'></td></tr>
+<tr><th>이름</th><td><input name='name' type='text' placeholder='예)홍길동'></td></tr>
+<tr><th>이메일</th><td><input name='email' type='text' placeholder='예)hong@test.com'></td></tr>
+<tr><th>전화</th><td><input name='tel' type='text' placeholder='예)010-1111-2222'></td></tr>
+<tr><th>재직여부</th><td><input type='radio' name='working' value='Y' >재직중 
+                         <input type='radio' name='working' value='N' checked>실업/미취업</td></tr>
+<tr><th>태어난해</th><td><input name='birthYear' type='number' placeholder='예)2000'></td></tr>
+<tr><th>최종학교</th><td><input name='school' type='text' placeholder='예)비트대학'></td></tr>
+</table>
+<button type='submit'>등록</button>
+ <a href='list'>목록</a>
+</form>
+</body>
+</html>
