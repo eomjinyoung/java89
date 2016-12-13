@@ -96,7 +96,7 @@ public class StudentMysqlDao {
       stmt.setString(3, student.getName());
       stmt.setString(4, student.getTel());
       stmt.setString(5, student.getEmail());
-      stmt.setString(6, student.isWorking() ? "Y" : "NO");
+      stmt.setString(6, student.isWorking() ? "Y" : "N");
       stmt.setInt(7, student.getBirthYear());
       stmt.setString(8, student.getSchool());
       
