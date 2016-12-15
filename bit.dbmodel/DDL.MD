@@ -19,6 +19,41 @@ create table test_table1(
 );
 ~~~~
 
+### 컬럼의 타입
+- SQL 표준 데이터 타입이 있고, DBMS 전용 데이터 타입이 있다. 
+- DBMS를 고려해서 타입을 지정해야 한다.
+
+### PK가 없는 테이블
+Primary Key가 없으면 중복 데이터가 입력될 수 있다.
+~~~~
+create table test_table1 (
+  uid varchar(10),
+  pwd varchar(10)
+);
+~~~~
+
+데이터 입력
+~~~~
+insert into test_table1 values('user01', '1111');
+insert into test_table1 values('user01', '1111'); 
+~~~~
+- PK가 없으면 아이디가 중복 입력될 수 있다.
+- uid 컬럼이 PK가 아니기 때문에 DBMS는 중복 검사를 하지 않는다.
+
+데이터 입력 확인
+~~~~
+select * from test_table1;
+~~~~
+
+## 테이블 삭제
+~~~~
+> drop table 테이블명;
+
+예)
+> drop table test_table1;
+
+~~~~
+
 ## 테이블 정보 조회
 ~~~~ 
 > describe 테이블명;
@@ -29,6 +64,12 @@ create table test_table1(
 
 ~~~~
 
+## 테이블 목록 조회
+MySQL 전용 명령
+~~~~
+> show tables;
+
+~~~~
 
 
 
