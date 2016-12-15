@@ -232,21 +232,21 @@ alter table 테이블명
 
 예:
 ~~~~
-인덱스(유니크 또는 일반 인덱스) 이름을 모른다면 
-다음 SQL 문을 이용하여 해당 테이블의 인덱스 이름을 알아내라.
+-- 인덱스(유니크 또는 일반 인덱스) 이름을 모른다면 
+-- 다음 SQL 문을 이용하여 해당 테이블의 인덱스 이름을 알아내라.
 
 select table_name, index_name, column_name from information_schema.statistics 
 where table_name='test_table9';
 
-또는
+-- 또는
 
 show index from test_table9;
 
-'email' 인덱스 삭제
+-- 'email' 인덱스 삭제
 alter table test_table9
   drop index email;
 
-'uid' 인덱스 삭제
+-- 'uid' 인덱스 삭제
 alter table test_table9
   drop index uid;  
 ~~~~
@@ -283,6 +283,72 @@ alter table test_table11
   
 ~~~~
  
+### auto_increment 컬럼의 활용
+- PK 컬럼에 auto_increment를 지정하면 입력할 때마다 자동으로 증가된 값이 들어간다.
+- 데이터를 삭제하더라도 중간에 빠진 숫자를 보충하진 않는다.
+- 그냥 버리고 계속 앞으로 증가한다. 
+~~~~
+create table test_table12 (
+  uno int primary key auto_increment,
+  name varchar(20) not null
+);
+
+insert into test_table12(name) values('홍길동');
+insert into test_table12(name) values('홍길동2');
+insert into test_table12(name) values('홍길동3');
+insert into test_table12(name) values('홍길동4');
+
+-- varchar(20)의 크기? 한글 또는 영어 구분없이 20개의 글자를 입력할 수 있다.
+
+insert into test_table12(name) values('ABCDEFGHIJABCDEFGHIJ');
+insert into test_table12(name) values('가나다라마바사아자차가나다라마바사아자차'); 
+insert into test_table12(name) values('ABCDEFGHIJ가나다라마바사아자차');
+insert into test_table12(name) values('ABCDEFGHIJABCDEFGHIJX');
+insert into test_table12(name) values('가나다라마바사아자차가나다라마바사아자차크'); 
+insert into test_table12(name) values('ABCDEFGHIJ가나다라마바사아자차A');
+~~~~
+
+### 외부키 컬럼 지정하기
+문법:
+~~~~
+alter table 테이블명
+  add foreign key (컬럼명) references 외부테이블명(외부테이블의PK컬럼명, ...); 
+~~~~
+
+예:
+~~~~
+create table test_parent (
+  uid int primary key auto_increment,
+  name varchar(20) not null,
+  tel varchar(20)
+);
+
+create table test_child (
+  bno int primary key auto_increment,
+  uid int not null,
+  title varchar(100) not null,
+  content text
+);
+
+-- 외부키 컬럼 설정
+alter table test_child
+  add foreign key (uid) references test_parent(uid);
+
+-- 부모 테이블 데이터 입력 
+insert into test_parent(name) values('홍길동');
+insert into test_parent(name) values('홍길동2');
+insert into test_parent(name) values('홍길동3');
+
+-- 자식 테이블의 데이터 입력
+insert into test_child(uid, title) values('1', 'aaaaa');
+insert into test_child(uid, title) values('2', 'bbbbbb');
+insert into test_child(uid, title) values('2', 'ccccc');
+insert into test_child(uid, title) values('3', 'ddddd');
+
+-- 부모 테이블에 존재하지 않는 uid의 값으로 자식 테이블의 데이터를 입력할 때?
+insert into test_child(uid, title) values('100', 'xxx'); -- 실행 오류!
+
+~~~~
 
 
 
@@ -304,6 +370,7 @@ alter table test_table11
 > desc 테이블명;
 
 ~~~~
+
 
 ## 테이블 목록 조회
 MySQL 전용 명령
