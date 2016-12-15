@@ -45,6 +45,60 @@ insert into test_table1 values('user01', '1111');
 select * from test_table1;
 ~~~~
 
+### PK가 있는 테이블
+- Primary Key로 설정된 컬럼은 데이터를 중복하여 입력할 수 없다.
+- 자동으로 not null로 설정된다.
+~~~~
+create table test_table2 (
+  uid varchar(10) primary key,
+  pwd varchar(10)
+);
+~~~~
+
+데이터 입력
+~~~~
+insert into test_table2 values('user01', '1111');
+insert into test_table2 values('user01', '1111'); 
+~~~~
+- uid 컬럼값이 중복되면 입력이 되지 않는다.
+- DBMS는 PK 컬럼에 대해 중복 여부를 검사한다.
+
+### PK를 설정하는 다양한 방법
+컬럼을 선언할 때 primary key를 붙인다.
+~~~~
+create table test_table2 (
+  uid varchar(10) primary key,
+  pwd varchar(10)
+);
+~~~~
+
+컬럼을 선언한 후에 제약조건을 설정할 때 primary key 컬럼을 지정할 수 있다.
+~~~~
+create table test_table3 (
+  uid varchar(10),
+  pwd varchar(10),
+  constraint primary key (uid)
+);
+~~~~
+
+테이블을 생성한 후 제약조건을 설정할 때 primary key 컬럼을 지정할 수 있다.
+~~~~
+문법:
+alter table 테이블명 
+  add constraint [제약조건라벨] primary key (컬럼명, 컬럼명, ...);
+
+예:   
+create table test_table4 (
+  uid varchar(10),
+  pwd varchar(10)
+);
+
+alter table test_table4
+  add constraint primary key (uid);
+
+~~~~
+
+
 ## 테이블 삭제
 ~~~~
 > drop table 테이블명;
