@@ -148,6 +148,142 @@ from lect
 where sdt >= '2017-02-01' and sdt < '2017-04-01';
 ~~~~
 
+### SQL 연산자 사용하기
+#### in 연산자
+예: '강남301', '강남303', '강남401', '강남402', '강남403' 강의실이 배정된 
+    모든 강의를(강의번호, 강의명) 조회하라.
+~~~~
+select lno, titl
+from lect
+where crmno=1 or crmno=2 or crmno=3 or crmno=4 or crmno=5;
+
+-- 여러 값 중에 하나에 해당되는 지 검사하는 편리한 연산자 'in'
+select lno, titl
+from lect
+where crmno in (1, 2, 3, 4, 5);
+
+-- not 연산자를 사용하면 in의 반대 조건을 만들 수 있다.
+select lno, titl
+from lect
+where crmno not in (1, 2, 3, 4, 5);
+~~~~ 
+
+#### between ... and ... 연산자
+예: 2017년 2월에서 3월까지 개설되는 강의의 이름과 시작일, 종료일을 조회하라.
+~~~~
+select titl, sdt, edt
+from lect
+where sdt between '2017-02-01' and '2017-03-31';
+~~~~
+
+예: '강남301', '강남303', '강남401', '강남402', '강남403' 강의실이 배정된 
+    모든 강의를(강의번호, 강의명) 조회하라.
+~~~~
+select lno, titl
+from lect
+where crmno between 1 and 5;
+
+select lno, titl 
+from lect
+where crmno not between 1 and 5;
+~~~~    
+
+#### null 조회
+예: 트위터가 없는 강사(강사번호, 홈페이지)를 조회하라.
+~~~~
+select tno, hmpg
+from tcher
+where twit is null;
+~~~~
+
+예: 페이스북이 있는 강사(강사번호, 트위터)를 조회하라.
+~~~~
+select tno, twit
+from tcher
+where fcbk is not null;
+~~~~
+
+#### like 연산자
+예: 강남에 있는 강의실(강의실번호, 이름)을 조회하라.
+~~~~
+-- "%" 플래그는 0자 이상을 의미한다.
+-- 강의실 이름이 강남으로 시작하는 것
+select crmno, name 
+from croom 
+where name like '강남%'; 
+
+-- 강의실 이름이 1로 끝나는 것
+select crmno, name 
+from croom 
+where name like '%1'; 
+
+-- 강의실 이름에 5를 포함하는 것
+-- 모든 문자를 비교해야 하기 때문에 조회 속도가 가능 느리다. 주의해서 사용할 것.
+-- 해당 글자를 포함하는지 모든 문자열을 검색해야 하기 때문에 
+-- 비용(CPU,메모리,시간 사용)사이 많이 든다.
+select crmno, name 
+from croom 
+where name like '%3%';
+
+-- "_" 플래그는 한 개의 문자를 의미한다.
+-- 강의실 이름이 "강남x02" 인 것을 조회
+select crmno, name 
+from croom 
+where name like '강남_02';
+
+-- 강의실 이름이 앞의 두 글자는 아무거나, 세 번째는 3, 나머지는 0자이상 
+select crmno, name 
+from croom 
+where name like '__3%';
+~~~~
+
+### 집합 연산자
+#### union all
+- 두 개의 select 결과를 그대로 합칠 때 유용하다.
+
+예: 매니저 회원번호와 강사 회원번호를 조회하라.
+~~~~
+select mrno
+from mgr
+union all
+select tno
+from tcher;
+~~~~ 
+
+#### union
+- 두 개의 select 결과를 합친다. 다만 중복 데이터는 제거하여 한 개만 남긴다.
+
+예: 매니저 회원번호와 강사 회원번호를 조회하라.
+~~~~
+select mrno
+from mgr
+union
+select tno
+from tcher;
+~~~~
+
+#### minus 기능 구현
+- MySQL은 집합에서 다른 집합의 데이터를 빼는 연산자가 없다.
+- 다른 연산자를 조합하여 처리하라!
+
+예: 강사를 겸하지 않는 매니저를 조회하라.
+~~~~
+select mrno
+from mgr
+where mrno not in (select tno from tcher);
+~~~~
+
+#### intersect(교집합) 기능 구현
+- MySQL은 교집합을 구하는 연산자가 없다.
+- 다른 연산자를 조합하여 처리하라!
+
+예: 강사와 매니저를 겸하는 회원을 조회하라.
+~~~~
+select mrno
+from mgr
+where mrno in (select tno from tcher);
+~~~~
+
 
 
 

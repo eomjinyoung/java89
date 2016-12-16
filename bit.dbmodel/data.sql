@@ -39,6 +39,9 @@ insert into tcher(tno,hmpg,fcbk,twit) values(23,null,'www.facebook.com/user23','
 insert into tcher(tno,hmpg,fcbk,twit) values(24,null,null,'www.twitter.com/user24');
 insert into tcher(tno,hmpg,fcbk,twit) values(25,null,null,null);
 
+-- 매니저이면서 강사
+insert into tcher(tno,hmpg,fcbk,twit) values(31,null,null,null);
+
 -- 강사 사진 데이터
 insert into tch_phot(tpno,tno,path) values(1,21,'t21_1.gif');
 insert into tch_phot(tpno,tno,path) values(2,21,'t21_2.gif');
@@ -53,6 +56,9 @@ insert into tch_phot(tpno,tno,path) values(8,25,'t25_1.gif');
 insert into mgr(mrno,posi,fax,path) values(31,'대리','111-1111','m31.gif');
 insert into mgr(mrno,posi,fax,path) values(32,'주임','111-1111','m32.gif');
 insert into mgr(mrno,posi,fax,path) values(33,'과장','111-1111','m33.gif');
+
+-- 강사이면서 매니저
+insert into mgr(mrno,posi,fax,path) values(23,'부장','111-1111','m23.gif');
 
 -- 강의실 데이터
 insert into croom(crmno,name) values(1, '강남301');
