@@ -144,12 +144,32 @@ insert into tchr_lect(lno, tno) values(8, 21);
 insert into tchr_lect(lno, tno) values(8, 23);
 insert into tchr_lect(lno, tno) values(8, 24);
 
+-- 수강신청 데이터
+insert into lect_appy(lano, lno, sno, rdt) values(1, 1, 1, '2016-11-28');
+insert into lect_appy(lano, lno, sno, rdt) values(2, 1, 2, '2016-11-28');
+insert into lect_appy(lano, lno, sno, rdt) values(3, 1, 3, '2016-12-01');
+insert into lect_appy(lano, lno, sno, rdt) values(4, 1, 4, '2016-12-02');
+insert into lect_appy(lano, lno, sno, rdt) values(5, 1, 7, '2016-12-05');
+insert into lect_appy(lano, lno, sno, rdt) values(6, 1, 8, '2016-12-25');
 
+insert into lect_appy(lano, lno, sno, rdt) values(7, 5, 1, '2016-11-28');
+insert into lect_appy(lano, lno, sno, rdt) values(8, 5, 2, '2016-11-29');
+insert into lect_appy(lano, lno, sno, rdt) values(9, 5, 3, '2016-11-30');
+insert into lect_appy(lano, lno, sno, rdt) values(10, 5, 5, '2016-12-01');
+insert into lect_appy(lano, lno, sno, rdt) values(11, 5, 6, '2016-12-01');
+insert into lect_appy(lano, lno, sno, rdt) values(12, 5, 7, '2016-12-02');
+insert into lect_appy(lano, lno, sno, rdt) values(13, 5, 9, '2016-12-03');
 
-
-
-
-
+insert into lect_appy(lano, lno, sno, rdt) values(14, 8, 1, '2016-12-03');
+insert into lect_appy(lano, lno, sno, rdt) values(15, 8, 2, '2016-12-03');
+insert into lect_appy(lano, lno, sno, rdt) values(16, 8, 3, '2016-12-04');
+insert into lect_appy(lano, lno, sno, rdt) values(17, 8, 4, '2016-12-04');
+insert into lect_appy(lano, lno, sno, rdt) values(18, 8, 5, '2016-12-12');
+insert into lect_appy(lano, lno, sno, rdt) values(19, 8, 6, '2016-12-12');
+insert into lect_appy(lano, lno, sno, rdt) values(20, 8, 7, '2016-12-12');
+insert into lect_appy(lano, lno, sno, rdt) values(21, 8, 8, '2016-12-30');
+insert into lect_appy(lano, lno, sno, rdt) values(22, 8, 9, '2016-12-30');
+insert into lect_appy(lano, lno, sno, rdt) values(23, 8, 10, '2017-01-05');
 
 
 
