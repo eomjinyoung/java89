@@ -81,6 +81,43 @@ update memb set pwd=password('0000');
 select * from memb where email='user01@test.com' and pwd=password('0000');
 ~~~~
 
+## 데이터 삭제하기
+문법:
+~~~~
+delete from 테이블명 where 조건;
+~~~~
+
+예:
+~~~~
+insert into memb(email,pwd,name,tel) 
+values('user04@test.com',password('0000'),'홍길동4','1111-1111');
+
+insert into memb(email,pwd,name,tel) 
+values('user05@test.com',password('0000'),'홍길동5','1111-1111');
+
+insert into memb(email,pwd,name,tel) 
+values('user06@test.com',password('0000'),'홍길동6','1111-1111');
+
+insert into memb(email,pwd,name,tel) 
+values('user07@test.com',password('0000'),'홍길동7','1111-1111');
+
+insert into memb(email,pwd,name,tel) 
+values('user08@test.com',password('0000'),'홍길동8','1111-1111');
+
+insert into memb(email,pwd,name,tel) 
+values('user09@test.com',password('0000'),'홍길동9','1111-1111');
+
+-- '홍길동9' 삭제
+delete from memb where name='홍길동9';
+
+-- 이메일이 'user08'로 시작하는 회원, 이름이 '7'로 끝나는 회원을 삭제
+delete from memb where email like 'user08%' or name like '%7';
+~~~~
+
+
+
+
+
 
 
 
