@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class StudentSelector2 {
   public static void main(String[] args) throws Exception {
@@ -14,6 +15,7 @@ public class StudentSelector2 {
       list.add(name);
     }
     
+    Scanner keyScan = new Scanner(System.in);
     while (list.size() > 0) {
       int count = (int)(Math.random() * list.size());
       int no = 0;
@@ -23,6 +25,7 @@ public class StudentSelector2 {
         Thread.currentThread().sleep(300);
       }
       System.out.println(list.remove(no));
+      keyScan.nextLine();
     }
 
   }
