@@ -143,7 +143,44 @@ from lect full outer join croom on lect.crmno=croom.crmno;
 예: 수강신청 정보를 조회하라.
 (수강신청번호, 강의명, 강의실명, 매니저명, 매니저직책, 수강생명, 이메일, 재직여부) 
 ~~~~
+select lano, titl
+from lect_appy
+left outer join lect on lect_appy.lno=lect.lno; 
 
+select lano, titl, croom.name
+from lect_appy
+left outer join lect on lect_appy.lno=lect.lno
+left outer join croom on lect.crmno=croom.crmno; 
+
+select lano, titl, croom.name, memb.name
+from lect_appy
+left outer join lect on lect_appy.lno=lect.lno
+left outer join croom on lect.crmno=croom.crmno
+left outer join memb on lect.mrno=memb.mno; 
+
+select lano, titl, croom.name, memb.name, mgr.posi
+from lect_appy
+left outer join lect on lect_appy.lno=lect.lno
+left outer join croom on lect.crmno=croom.crmno
+left outer join memb on lect.mrno=memb.mno
+left outer join mgr on memb.mno=mgr.mrno; 
+
+select lano, titl, croom.name, memb.name, mgr.posi, m2.name, m2.email
+from lect_appy
+left outer join lect on lect_appy.lno=lect.lno
+left outer join croom on lect.crmno=croom.crmno
+left outer join memb on lect.mrno=memb.mno
+left outer join mgr on memb.mno=mgr.mrno 
+left outer join memb m2 on lect_appy.sno=m2.mno;
+
+select lano, titl, croom.name, memb.name, mgr.posi, m2.name, m2.email, stud.work
+from lect_appy
+left outer join lect on lect_appy.lno=lect.lno
+left outer join croom on lect.crmno=croom.crmno
+left outer join memb on lect.mrno=memb.mno
+left outer join mgr on memb.mno=mgr.mrno 
+left outer join memb m2 on lect_appy.sno=m2.mno
+left outer join stud on lect_appy.sno=stud.sno;
 ~~~~
 
 
