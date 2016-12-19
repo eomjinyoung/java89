@@ -121,6 +121,18 @@ values(8,null,null,'.NET과정','.NET배우기','2017-05-01','2017-10-30',30,600
 insert into lect(lno,crmno,mrno,titl,dscp,sdt,edt,qty,pric,thrs)
 values(9,null,null,'IoT과정','IoT배우기','2017-06-01','2017-11-30',30,6000000,960);
 
+insert into lect(lno,crmno,mrno,titl,dscp,sdt,edt,qty,pric,thrs)
+values(10,null,null,'자바기초(주말반) 1차','자바기초','2017-06-01','2017-07-30',30,450000,40);
+
+insert into lect(lno,crmno,mrno,titl,dscp,sdt,edt,qty,pric,thrs)
+values(11,null,null,'자바기초(주말반) 2차','자바기초','2017-06-01','2017-07-30',30,450000,40);
+
+insert into lect(lno,crmno,mrno,titl,dscp,sdt,edt,qty,pric,thrs)
+values(12,null,null,'자바기초(주말반) 3차','자바기초','2017-07-01','2017-08-30',30,450000,40);
+
+insert into lect(lno,crmno,mrno,titl,dscp,sdt,edt,qty,pric,thrs)
+values(13,null,null,'자바기초(주말반) 4차','자바기초','2017-07-01','2017-08-30',30,450000,40);
+
 -- 강의실 배정
 update lect set crmno=1 where lno=1;
 update lect set crmno=2 where lno=2;
@@ -129,6 +141,8 @@ update lect set crmno=5 where lno=5;
 update lect set crmno=15 where lno=6;
 update lect set crmno=16 where lno=7;
 update lect set crmno=7 where lno=9;
+update lect set crmno=1 where lno=10;
+update lect set crmno=15 where lno=13;
 
 -- 매니저 배정
 update lect set mrno=31 where lno=1;
