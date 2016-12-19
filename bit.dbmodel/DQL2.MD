@@ -143,45 +143,117 @@ from lect full outer join croom on lect.crmno=croom.crmno;
 예: 수강신청 정보를 조회하라.
 (수강신청번호, 강의명, 강의실명, 매니저명, 매니저직책, 수강생명, 이메일, 재직여부) 
 ~~~~
-select lano, titl
-from lect_appy
-left outer join lect on lect_appy.lno=lect.lno; 
+select lano, lno, sno 
+from lect_appy;
 
-select lano, titl, croom.name
+select lano, titl, sno
 from lect_appy
-left outer join lect on lect_appy.lno=lect.lno
-left outer join croom on lect.crmno=croom.crmno; 
+	 left outer join lect on lect_appy.lno=lect.lno; 
 
-select lano, titl, croom.name, memb.name
+select lano, titl, name
 from lect_appy
-left outer join lect on lect_appy.lno=lect.lno
-left outer join croom on lect.crmno=croom.crmno
-left outer join memb on lect.mrno=memb.mno; 
+	 left outer join lect on lect_appy.lno=lect.lno
+	 left outer join memb on lect_appy.sno=memb.mno;
 
-select lano, titl, croom.name, memb.name, mgr.posi
+select lano, titl, sdt, edt, name
 from lect_appy
-left outer join lect on lect_appy.lno=lect.lno
-left outer join croom on lect.crmno=croom.crmno
-left outer join memb on lect.mrno=memb.mno
-left outer join mgr on memb.mno=mgr.mrno; 
+	 left outer join lect on lect_appy.lno=lect.lno
+	 left outer join memb on lect_appy.sno=memb.mno;	 
+	 
+select lano, titl, sdt, edt, name, name
+from lect_appy
+	 left outer join lect on lect_appy.lno=lect.lno
+	 left outer join memb on lect_appy.sno=memb.mno;		 
+	 
+select lano, titl, sdt, edt, croom.name, m2.name, mgr.posi, memb.name, memb.email
+from lect_appy
+	 left outer join lect on lect_appy.lno=lect.lno
+	 left outer join memb on lect_appy.sno=memb.mno
+	 left outer join croom on lect.crmno=croom.crmno	
+	 left outer join memb m2 on lect.mrno=m2.mno
+	 left outer join mgr on lect.mrno=mgr.mrno;
 
-select lano, titl, croom.name, memb.name, mgr.posi, m2.name, m2.email
+select 
+	lano,  			-- 수강신청번호
+	titl, 			-- 강의명
+	sdt, 			-- 강의시작일
+	croom.name, 	-- 강의실명
+	m2.name, 		-- 매니저명
+	mgr.posi, 		-- 매지저 직위
+	memb.name, 		-- 학생명
+	memb.email, 	-- 학생이메일
+	stud.work		-- 학생 재직여부 
 from lect_appy
-left outer join lect on lect_appy.lno=lect.lno
-left outer join croom on lect.crmno=croom.crmno
-left outer join memb on lect.mrno=memb.mno
-left outer join mgr on memb.mno=mgr.mrno 
-left outer join memb m2 on lect_appy.sno=m2.mno;
-
-select lano, titl, croom.name, memb.name, mgr.posi, m2.name, m2.email, stud.work
-from lect_appy
-left outer join lect on lect_appy.lno=lect.lno
-left outer join croom on lect.crmno=croom.crmno
-left outer join memb on lect.mrno=memb.mno
-left outer join mgr on memb.mno=mgr.mrno 
-left outer join memb m2 on lect_appy.sno=m2.mno
-left outer join stud on lect_appy.sno=stud.sno;
+	 left outer join lect on lect_appy.lno=lect.lno
+	 left outer join memb on lect_appy.sno=memb.mno
+	 left outer join croom on lect.crmno=croom.crmno	
+	 left outer join memb m2 on lect.mrno=m2.mno
+	 left outer join mgr on lect.mrno=mgr.mrno
+	 left outer join stud on lect_appy.sno=stud.sno;	 
 ~~~~
+
+## 서브 쿼리
+-- 쿼리문 안에 또 다른 쿼리문을 넣는 문법
+-- select, from, where 절에 넣을 수 있다.
+
+예: 수강신청 정보를 조회하라.
+(수강신청번호, 강의명, 강의실명, 매니저명, 매니저직책, 수강생명, 이메일, 재직여부) 
+~~~~
+select lano, lno, sno 
+from lect_appy;
+
+-- select 문에 서브쿼리 넣기
+-- 컬럼 자리에 서브쿼리를 넣을 때는 반드시 결과가 한 개 이하여야 한다.
+select 
+	lano, 
+	(select titl from lect where lect.lno=lect_appy.lno) 'lecture title', 
+	sno 
+from lect_appy;
+
+select 
+	lano, 
+	(select titl from lect where lect.lno=lect_appy.lno) 'lecture title', 
+	(select sdt from lect where lect.lno=lect_appy.lno) 'start date', 
+	(select name from memb where memb.mno=lect_appy.sno) 'student name' 
+from lect_appy;
+~~~~
+
+### from 절에 서브쿼리 넣기
+
+예: 강의실이 배정되지 않은 수강신청 정보를 모두 뽑아라.
+~~~~
+-- 서브쿼리를 사용하지 않은 예
+select lano, titl, lect.crmno
+from lect_appy
+     left outer join lect on lect_appy.lno=lect.lno
+where lect.crmno is null;
+
+-- 서브쿼리를 사용하는 예
+-- 서브쿼리를 사용하여 가상 테이블을 만들 수 있다.
+select lano, titl, t1.crmno
+from lect_appy
+     join (select lno, titl, crmno from lect where crmno is null) t1 
+       on lect_appy.lno=t1.lno;
+~~~~ 
+
+### where에 서브쿼리 넣기
+
+예: 강의실이 배정되지 않은 강의에 대해서만 수강 신청 번호와 강의 번호, 학생 번호를 출력하라!
+~~~~
+select lano, lno, sno, memb.name
+from lect_appy
+     left outer join memb on lect_appy.sno=memb.mno
+where lno in (select lno from lect where crmno is null);
+~~~~
+
+
+
+
+
+
+
+
+
 
 
 
