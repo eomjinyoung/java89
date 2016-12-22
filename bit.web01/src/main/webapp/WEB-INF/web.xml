@@ -6,6 +6,13 @@
   version="3.1"
   metadata-complete="false">
 
+<!-- 리스너 등록 -->
+<!--  
+  <listener>
+    <listener-class>bitcamp.servlet7.Listener1</listener-class>
+  </listener>
+-->
+
 <!-- 필터 클래스 등록 -->
 <!--  
   <filter>
@@ -23,6 +30,7 @@
 
 
 <!-- 서블릿 클래스 등록 -->
+<!-- 
   <servlet>
     <servlet-name>servlet 04</servlet-name>
     <servlet-class>bitcamp.servlet.Servlet04</servlet-class>
@@ -31,8 +39,10 @@
     <servlet-name>servlet 05</servlet-name>
     <servlet-class>bitcamp.servlet.Servlet05</servlet-class>
   </servlet>
-  
+--> 
+
 <!-- 서블릿 클래스에 명령어를 부여 -->
+<!--  
   <servlet-mapping>
     <servlet-name>servlet 04</servlet-name>
     <url-pattern>/okok/haha/servlet04</url-pattern>
@@ -41,6 +51,7 @@
     <servlet-name>servlet 05</servlet-name>
     <url-pattern>/servlet05</url-pattern>
   </servlet-mapping>
+-->
 </web-app>
 
 

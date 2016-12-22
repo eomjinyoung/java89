@@ -62,6 +62,6 @@ public class Filter2 implements Filter {
   
   @Override
   public void destroy() {
-    System.out.println("Filter1.destroy()");
+    System.out.println("Filter2.destroy()");
   }
 }
