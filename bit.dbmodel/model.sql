@@ -276,7 +276,7 @@ ALTER TABLE MEMB
 
 -- 코드조각
 CREATE TABLE CODE (
-	CONO  INTEGER     NOT NULL COMMENT '콘텐츠일련번호', -- 콘텐츠일련번호
+	CDNO  INTEGER     NOT NULL COMMENT '콘텐츠일련번호', -- 콘텐츠일련번호
 	CONTS TEXT        NOT NULL COMMENT '코드', -- 코드
 	PL    VARCHAR(10) NULL     COMMENT '프로그래밍언어' -- 프로그래밍언어
 )
@@ -286,7 +286,7 @@ COMMENT '코드조각';
 ALTER TABLE CODE
 	ADD CONSTRAINT PK_CODE -- 코드조각 Primary key
 		PRIMARY KEY (
-			CONO -- 콘텐츠일련번호
+			CDNO -- 콘텐츠일련번호
 		);
 
 -- 콘텐츠
@@ -307,7 +307,7 @@ ALTER TABLE CONTENT
 
 -- 게시판
 CREATE TABLE BOARD (
-	CONO  INTEGER      NOT NULL COMMENT '콘텐츠일련번호', -- 콘텐츠일련번호
+	BDNO  INTEGER      NOT NULL COMMENT '콘텐츠일련번호', -- 콘텐츠일련번호
 	TITL  VARCHAR(255) NOT NULL COMMENT '제목', -- 제목
 	CONTS TEXT         NOT NULL COMMENT '내용' -- 내용
 )
@@ -317,12 +317,12 @@ COMMENT '게시판';
 ALTER TABLE BOARD
 	ADD CONSTRAINT PK_BOARD -- 게시판 Primary key
 		PRIMARY KEY (
-			CONO -- 콘텐츠일련번호
+			BDNO -- 콘텐츠일련번호
 		);
 
 -- 피드
 CREATE TABLE FEED (
-	CONO  INTEGER NOT NULL COMMENT '콘텐츠일련번호', -- 콘텐츠일련번호
+	FDNO  INTEGER NOT NULL COMMENT '콘텐츠일련번호', -- 콘텐츠일련번호
 	CONTS TEXT    NOT NULL COMMENT '피드내용' -- 피드내용
 )
 COMMENT '피드';
@@ -331,7 +331,7 @@ COMMENT '피드';
 ALTER TABLE FEED
 	ADD CONSTRAINT PK_FEED -- 피드 Primary key
 		PRIMARY KEY (
-			CONO -- 콘텐츠일련번호
+			FDNO -- 콘텐츠일련번호
 		);
 
 -- 태그
@@ -372,11 +372,10 @@ ALTER TABLE FOLLOW
 
 -- 프로젝트
 CREATE TABLE PROJ (
-	PJNO  INTEGER      NOT NULL COMMENT '프로젝트일련번호', -- 프로젝트일련번호
+	PJNO  INTEGER      NOT NULL COMMENT '콘텐츠일련번호', -- 콘텐츠일련번호
 	TITL  VARCHAR(255) NOT NULL COMMENT '프로젝트명', -- 프로젝트명
 	CONTS TEXT         NOT NULL COMMENT '내용', -- 내용
 	MNO   INTEGER      NOT NULL COMMENT '회원일련번호', -- 회원일련번호
-	RDT   DATETIME     NOT NULL COMMENT '등록일', -- 등록일
 	SDT   DATE         NOT NULL COMMENT '시작일', -- 시작일
 	EDT   DATE         NOT NULL COMMENT '종료일' -- 종료일
 )
@@ -386,7 +385,7 @@ COMMENT '프로젝트';
 ALTER TABLE PROJ
 	ADD CONSTRAINT PK_PROJ -- 프로젝트 Primary key
 		PRIMARY KEY (
-			PJNO -- 프로젝트일련번호
+			PJNO -- 콘텐츠일련번호
 		);
 
 -- 프로젝트 Index
@@ -397,8 +396,8 @@ CREATE INDEX IX_PROJ
 
 -- 프로젝트회원
 CREATE TABLE PROJ_MEMB (
-	PJNO INTEGER     NOT NULL COMMENT '프로젝트일련번호', -- 프로젝트일련번호
 	MNO  INTEGER     NOT NULL COMMENT '회원일련번호', -- 회원일련번호
+	PJNO INTEGER     NOT NULL COMMENT '콘텐츠일련번호', -- 콘텐츠일련번호
 	ROL  VARCHAR(10) NULL     COMMENT '역할' -- 역할
 )
 COMMENT '프로젝트회원';
@@ -407,13 +406,13 @@ COMMENT '프로젝트회원';
 ALTER TABLE PROJ_MEMB
 	ADD CONSTRAINT PK_PROJ_MEMB -- 프로젝트회원 Primary key
 		PRIMARY KEY (
-			PJNO, -- 프로젝트일련번호
-			MNO   -- 회원일련번호
+			MNO,  -- 회원일련번호
+			PJNO  -- 콘텐츠일련번호
 		);
 
 -- 자료실
 CREATE TABLE DOWNLOAD (
-	CONO INTEGER      NOT NULL COMMENT '콘텐츠일련번호', -- 콘텐츠일련번호
+	DNNO INTEGER      NOT NULL COMMENT '콘텐츠일련번호', -- 콘텐츠일련번호
 	PATH VARCHAR(255) NOT NULL COMMENT '파일경로' -- 파일경로
 )
 COMMENT '자료실';
@@ -422,18 +421,18 @@ COMMENT '자료실';
 ALTER TABLE DOWNLOAD
 	ADD CONSTRAINT PK_DOWNLOAD -- 자료실 Primary key
 		PRIMARY KEY (
-			CONO -- 콘텐츠일련번호
+			DNNO -- 콘텐츠일련번호
 		);
 
 -- 할일
 CREATE TABLE TODO (
 	TDNO  INTEGER      NOT NULL COMMENT '할일일련번호', -- 할일일련번호
-	PJNO  INTEGER      NOT NULL COMMENT '프로젝트일련번호', -- 프로젝트일련번호
 	MNO   INTEGER      NULL     COMMENT '회원일련번호', -- 회원일련번호
 	SEQ   INTEGER      NOT NULL COMMENT '순서', -- 순서
 	CONTS VARCHAR(255) NOT NULL COMMENT '내용', -- 내용
 	STAT  VARCHAR(10)  NULL     COMMENT '상태', -- 상태
-	STDT  DATETIME     NULL     COMMENT '상태설정일' -- 상태설정일
+	STDT  DATETIME     NULL     COMMENT '상태설정일', -- 상태설정일
+	PJNO  INTEGER      NULL     COMMENT '콘텐츠일련번호' -- 콘텐츠일련번호
 )
 COMMENT '할일';
 
@@ -558,7 +557,7 @@ ALTER TABLE TCHR_LECT
 ALTER TABLE CODE
 	ADD CONSTRAINT FK_CONTENT_TO_CODE -- 콘텐츠 -> 코드조각
 		FOREIGN KEY (
-			CONO -- 콘텐츠일련번호
+			CDNO -- 콘텐츠일련번호
 		)
 		REFERENCES CONTENT ( -- 콘텐츠
 			CONO -- 콘텐츠일련번호
@@ -578,7 +577,7 @@ ALTER TABLE CONTENT
 ALTER TABLE BOARD
 	ADD CONSTRAINT FK_CONTENT_TO_BOARD -- 콘텐츠 -> 게시판
 		FOREIGN KEY (
-			CONO -- 콘텐츠일련번호
+			BDNO -- 콘텐츠일련번호
 		)
 		REFERENCES CONTENT ( -- 콘텐츠
 			CONO -- 콘텐츠일련번호
@@ -588,7 +587,7 @@ ALTER TABLE BOARD
 ALTER TABLE FEED
 	ADD CONSTRAINT FK_CONTENT_TO_FEED -- 콘텐츠 -> 피드
 		FOREIGN KEY (
-			CONO -- 콘텐츠일련번호
+			FDNO -- 콘텐츠일련번호
 		)
 		REFERENCES CONTENT ( -- 콘텐츠
 			CONO -- 콘텐츠일련번호
@@ -634,14 +633,24 @@ ALTER TABLE PROJ
 			MNO -- 회원일련번호
 		);
 
+-- 프로젝트
+ALTER TABLE PROJ
+	ADD CONSTRAINT FK_CONTENT_TO_PROJ -- 콘텐츠 -> 프로젝트
+		FOREIGN KEY (
+			PJNO -- 콘텐츠일련번호
+		)
+		REFERENCES CONTENT ( -- 콘텐츠
+			CONO -- 콘텐츠일련번호
+		);
+
 -- 프로젝트회원
 ALTER TABLE PROJ_MEMB
 	ADD CONSTRAINT FK_PROJ_TO_PROJ_MEMB -- 프로젝트 -> 프로젝트회원
 		FOREIGN KEY (
-			PJNO -- 프로젝트일련번호
+			PJNO -- 콘텐츠일련번호
 		)
 		REFERENCES PROJ ( -- 프로젝트
-			PJNO -- 프로젝트일련번호
+			PJNO -- 콘텐츠일련번호
 		);
 
 -- 프로젝트회원
@@ -658,7 +667,7 @@ ALTER TABLE PROJ_MEMB
 ALTER TABLE DOWNLOAD
 	ADD CONSTRAINT FK_CONTENT_TO_DOWNLOAD -- 콘텐츠 -> 자료실
 		FOREIGN KEY (
-			CONO -- 콘텐츠일련번호
+			DNNO -- 콘텐츠일련번호
 		)
 		REFERENCES CONTENT ( -- 콘텐츠
 			CONO -- 콘텐츠일련번호
@@ -668,10 +677,20 @@ ALTER TABLE DOWNLOAD
 ALTER TABLE TODO
 	ADD CONSTRAINT FK_PROJ_MEMB_TO_TODO -- 프로젝트회원 -> 할일
 		FOREIGN KEY (
-			PJNO, -- 프로젝트일련번호
-			MNO   -- 회원일련번호
+			MNO,  -- 회원일련번호
+			PJNO  -- 콘텐츠일련번호
 		)
 		REFERENCES PROJ_MEMB ( -- 프로젝트회원
-			PJNO, -- 프로젝트일련번호
-			MNO   -- 회원일련번호
+			MNO,  -- 회원일련번호
+			PJNO  -- 콘텐츠일련번호
+		);
+
+-- 할일
+ALTER TABLE TODO
+	ADD CONSTRAINT FK_CONTENT_TO_TODO -- 콘텐츠 -> 할일
+		FOREIGN KEY (
+			TDNO -- 할일일련번호
+		)
+		REFERENCES CONTENT ( -- 콘텐츠
+			CONO -- 콘텐츠일련번호
 		);
