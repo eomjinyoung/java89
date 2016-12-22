@@ -375,7 +375,6 @@ CREATE TABLE PROJ (
 	PJNO  INTEGER      NOT NULL COMMENT '콘텐츠일련번호', -- 콘텐츠일련번호
 	TITL  VARCHAR(255) NOT NULL COMMENT '프로젝트명', -- 프로젝트명
 	CONTS TEXT         NOT NULL COMMENT '내용', -- 내용
-	MNO   INTEGER      NOT NULL COMMENT '회원일련번호', -- 회원일련번호
 	SDT   DATE         NOT NULL COMMENT '시작일', -- 시작일
 	EDT   DATE         NOT NULL COMMENT '종료일' -- 종료일
 )
@@ -618,16 +617,6 @@ ALTER TABLE FOLLOW
 	ADD CONSTRAINT FK_MEMB_TO_FOLLOW2 -- 회원 -> 팔로잉2
 		FOREIGN KEY (
 			FWNG_NO -- 팔로잉대상회원일련번호
-		)
-		REFERENCES MEMB ( -- 회원
-			MNO -- 회원일련번호
-		);
-
--- 프로젝트
-ALTER TABLE PROJ
-	ADD CONSTRAINT FK_MEMB_TO_PROJ -- 회원 -> 프로젝트
-		FOREIGN KEY (
-			MNO -- 회원일련번호
 		)
 		REFERENCES MEMB ( -- 회원
 			MNO -- 회원일련번호
