@@ -29,7 +29,7 @@ insert into content(cono,mno,rdt,vw_cnt) values(13,2,now(),0);
 insert into proj(pjno,titl,conts,sdt,edt) values(11,'프로젝트1','내용1','2016-10-01','2016-12-30');
 insert into proj(pjno,titl,conts,sdt,edt) values(12,'프로젝트2','내용2','2016-11-01','2017-02-20');
 insert into proj(pjno,titl,conts,sdt,edt) values(13,'프로젝트3','내용3','2016-12-01','2017-03-30');
-
+ 
 -- 할 일 데이터
 insert into content(cono,mno,rdt,vw_cnt) values(14,1,now(),0);
 insert into content(cono,mno,rdt,vw_cnt) values(15,1,now(),7);
