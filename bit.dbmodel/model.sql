@@ -58,6 +58,9 @@ DROP TABLE IF EXISTS DOWNLOAD RESTRICT;
 -- 할일
 DROP TABLE IF EXISTS TODO RESTRICT;
 
+-- 콘텐츠파일링크
+DROP TABLE IF EXISTS FIL_LK RESTRICT;
+
 -- 수강신청
 CREATE TABLE LECT_APPY (
 	LANO INTEGER  NOT NULL COMMENT '수강신청일련번호', -- 수강신청일련번호
@@ -382,7 +385,8 @@ CREATE TABLE PROJ (
 	TITL  VARCHAR(255) NOT NULL COMMENT '프로젝트명', -- 프로젝트명
 	CONTS TEXT         NOT NULL COMMENT '내용', -- 내용
 	SDT   DATE         NOT NULL COMMENT '시작일', -- 시작일
-	EDT   DATE         NOT NULL COMMENT '종료일' -- 종료일
+	EDT   DATE         NOT NULL COMMENT '종료일', -- 종료일
+	PATH  VARCHAR(255) NULL     COMMENT '로고' -- 로고
 )
 COMMENT '프로젝트';
 
@@ -446,6 +450,21 @@ ALTER TABLE TODO
 	ADD CONSTRAINT PK_TODO -- 할일 Primary key
 		PRIMARY KEY (
 			TDNO -- 할일일련번호
+		);
+
+-- 콘텐츠파일링크
+CREATE TABLE FIL_LK (
+	CONO INTEGER NOT NULL COMMENT '콘텐츠일련번호', -- 콘텐츠일련번호
+	DNNO INTEGER NOT NULL COMMENT '자료실파일일련번호' -- 자료실파일일련번호
+)
+COMMENT '콘텐츠파일링크';
+
+-- 콘텐츠파일링크
+ALTER TABLE FIL_LK
+	ADD CONSTRAINT PK_FIL_LK -- 콘텐츠파일링크 Primary key
+		PRIMARY KEY (
+			CONO, -- 콘텐츠일련번호
+			DNNO  -- 자료실파일일련번호
 		);
 
 -- 수강신청
@@ -688,4 +707,24 @@ ALTER TABLE TODO
 		)
 		REFERENCES CONTENT ( -- 콘텐츠
 			CONO -- 콘텐츠일련번호
+		);
+
+-- 콘텐츠파일링크
+ALTER TABLE FIL_LK
+	ADD CONSTRAINT FK_CONTENT_TO_FIL_LK -- 콘텐츠 -> 콘텐츠파일링크
+		FOREIGN KEY (
+			CONO -- 콘텐츠일련번호
+		)
+		REFERENCES CONTENT ( -- 콘텐츠
+			CONO -- 콘텐츠일련번호
+		);
+
+-- 콘텐츠파일링크
+ALTER TABLE FIL_LK
+	ADD CONSTRAINT FK_DOWNLOAD_TO_FIL_LK -- 자료실 -> 콘텐츠파일링크
+		FOREIGN KEY (
+			DNNO -- 자료실파일일련번호
+		)
+		REFERENCES DOWNLOAD ( -- 자료실
+			DNNO -- 콘텐츠일련번호
 		);
