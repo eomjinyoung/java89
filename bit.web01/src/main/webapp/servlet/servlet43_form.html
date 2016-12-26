@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>파일업로드</title>
+</head>
+<body>
+<h1>파일업로드 폼</h1>
+파일 데이터를 서버에 업로드 하려면, 
+<ul>
+  <li>POST 요청이어야 한다</li>
+  <li>멀티파트 인코딩 방식으로 업로드 해야 한다.</li>
+</ul>
+파일을 배치 폴더에 저장하기.<br>
+HTML을 사용하여 저장한 파일을 요청하기.<br>
+업로드 파일명이 중복되지 않도록 처리하기.<br>
+
+<form action='servlet43' method='POST' enctype="multipart/form-data">
+<table border='1'>
+<tr><th>아이디</th><td><input name="userId" type='text' placeholder='예)bbb'></td></tr>
+<tr><th>암호</th><td><input name='password' type='password'></td></tr>
+<tr><th>이름</th><td><input name='name' type='text' placeholder='예)홍길동'></td></tr>
+<tr><th>사진</th><td><input name='photo' type='file'></td></tr>
+</table>
+<button type='submit'>등록</button>
+</form>
+</body>
+</html>
+
+
+
+
