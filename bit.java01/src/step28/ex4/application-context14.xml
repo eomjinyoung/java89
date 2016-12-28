@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans 
+    xmlns="http://www.springframework.org/schema/beans"
+    xmlns:p="http://www.springframework.org/schema/p"  
+    xmlns:c="http://www.springframework.org/schema/c"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+      http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+  <bean id="e1" class="step28.ex4.Engine" p:valve="12" p:ventil="6"/>
+  <bean id="e2" class="step28.ex4.Engine" p:valve="16" p:ventil="8"/>
+  
+  <!-- 의존 객체를 주입할 때 <ref> 태그나 ref 속성을 사용한다. -->
+  <bean id="c1" class="step28.ex4.Car">
+    <property name="model"><value>티코</value></property>
+    <property name="engine"><ref bean="e1"/></property>
+  </bean>
+  
+  <bean id="c2" class="step28.ex4.Car">
+    <property name="model" value="그랜저"/>
+    <property name="engine" ref="e2"/>
+  </bean>
+  
+  <!-- 한 객체를 여러 객체에서 공유할 수 있다. -->
+  <bean id="c3" class="step28.ex4.Car">
+    <property name="model" value="에쿠스"/>
+    <property name="engine" ref="e2"/>
+  </bean>
+  
+  <!-- p 네임스페이스로 객체를 지정할 때는 다음의 규칙을 적용한다.
+       p:프로퍼티명-ref="객체이름 또는 별명" -->
+  <bean id="c4" class="step28.ex4.Car" p:model="소나타" p:engine-ref="e1"/>
+  
+</beans>
+
+
+
+
+
+
+
+
+
+
