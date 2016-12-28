@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- p 네임스페이스도 xsi 네임스페이스처럼 
+     네임스페이스의 이름만 지정하면 된다.
+     schemaLocation은 지정할 필요가 없다.
+ -->
+<beans 
+    xmlns="http://www.springframework.org/schema/beans"
+    xmlns:p="http://www.springframework.org/schema/p"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+      http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+  <!-- 객체를 생성할 때 프로퍼터에 값을 넣고 싶다면,
+       다른 말로 셋터 메서드를 호출하여 값을 넣고 싶다면,
+       다음과 같이 <property> 태그를 사용하라!
+   -->
+  <bean id="c1" class="step28.ex3.Car">
+    <!-- 
+      name에는 프로퍼명(셋터/겟터에서 set/get을 제외하고 첫 알파벳을 소문자로 한 이름)을 지정한다.
+      value에는 값을 지정한다. 값은 문자열로 표현한다.
+      단, 프로퍼티 타입이 primitive type일 경우 문자열이 해당 타입으로 자동 형변환한다. 
+     -->
+    <property name="model" value="티코"/>
+    <property name="maker" value="테슬라"/>
+    <property name="cc" value="900"/>
+  </bean>
+  
+  <!-- 프로퍼티의 값을 지정할 때 <value> 태그를 사용하는 방법
+       값의 type을 지정하지 않으면 자동으로 처리된다.
+   -->
+  <bean id="c2" class="step28.ex3.Car">
+    <property name="model">
+      <value>소나타</value>
+    </property>
+    <property  name="maker">
+      <value type="java.lang.String">비트자동차</value>
+    </property>
+    <property name="cc">
+      <value type="int">1980</value>
+    </property>
+  </bean>
+  
+  <!-- <bean> 태그의 속성을 이용하여 프로퍼티 값을 지정한다. -->
+  <bean id="c3" class="step28.ex3.Car" 
+        p:model="그랜저" p:maker="비트자동차" p:cc="3500"/>
+  
+</beans>
+
+
+
+
+
+
+
+
+
+

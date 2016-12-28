@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- c 네임스페이스도 xsi 네임스페이스처럼 
+     네임스페이스의 이름만 지정하면 된다.
+     schemaLocation은 지정할 필요가 없다.
+ -->
+<beans 
+    xmlns="http://www.springframework.org/schema/beans"
+    xmlns:p="http://www.springframework.org/schema/p"  
+    xmlns:c="http://www.springframework.org/schema/c"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+      http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+  <!-- 생성자 호출하기
+     => 어떤 생성자를 호출할 지 지정하지 않으면 기본 생성자가 호출된다.
+   -->
+  <bean id="c1" class="step28.ex3.Car"/>
+  
+  <!-- Car(String) 생성자 호출 -->
+  <bean id="c2" class="step28.ex3.Car">
+    <constructor-arg value="티코"/>
+  </bean>
+  
+  <!-- Car(int) 생성자 호출? 
+       => 문자열 우선하기 때문에 Car(String) 생성자가 호출된다.
+  -->
+  <bean id="c3" class="step28.ex3.Car">
+    <constructor-arg value="900"/>
+  </bean>
+  
+  <!-- Car(int) 생성자 호출하고 싶다면, 
+       => 명확하게 값의 타입을 지정하라!
+  -->
+  <bean id="c4" class="step28.ex3.Car">
+    <constructor-arg type="int" value="900"/>
+  </bean>
+  
+  <!-- Car(String,int) 또는 Car(int,String) 생성자 호출 
+       => 실행 결과 기준으로 판단해보면,
+          첫 번째 파라미터의 값을 int로 형변환할 수 있다면
+          Car(int,String)을 호출한다.
+          즉 파라미터 값 순서에 영향을 받는다는 것을 알 수 있다. 
+  -->
+  <bean id="c5" class="step28.ex3.Car">
+    <constructor-arg value="1980"/>
+    <constructor-arg value="소나타"/>
+  </bean>
+  
+  <!-- Car(int,String) 생성자 호출 
+       => 정확하게 파라미터 타입을 지정하라!
+       => 그러나 클래스에 선언된 메서드의 순서에 영향을 받는다.
+  -->
+  <bean id="c6" class="step28.ex3.Car">
+    <constructor-arg type="int" value="2000"/>
+    <constructor-arg type="java.lang.String" value="그랜저"/>
+  </bean>
+  
+  <!-- 생성자 호출의 가장 정확한 방법 
+       => 클래스에 선언된 생성자의 순서에도 영향을 받지 않고,
+          <constructor-arg>로 값을 지정한 순서에도 영향을 안 받는 방법?
+          => 파라미터의 순서와 타입을 지정하라!
+  -->
+  <bean id="c7" class="step28.ex3.Car">
+    <constructor-arg type="java.lang.String" value="그랜저" index="1"/>
+    <constructor-arg type="int" value="2000" index="0"/>
+  </bean>
+  
+  <!-- p 네임스페이스처럼 생성자 파라미터 값을 위한 c 네임스페이스를 제공한다.
+       <beans> 태그에 c 네임스페이스를 선언하고 다음과 같이 사용하라! 
+       c:파라미터명="값"
+       -->
+  <bean id="c8" class="step28.ex3.Car" c:model="티코2"/>
+  <bean id="c9" class="step28.ex3.Car" c:cc="900"/>
+  
+  <!-- 파라미터 이름이 model과 cc와 일치하는 생성자를 호출한다.
+       만약 그런 생성자가 여러 개 있을 경우 그냥 스프링에서 선택한다.
+       만약 정확하게 생성자를 지정하고 싶다면 <constructor-arg> 태그를 사용하라!   -->
+  <bean id="c10" class="step28.ex3.Car" c:model="티코3" c:cc="900"/>
+</beans>
+
+
+
+
+
+
+
+
+
+
