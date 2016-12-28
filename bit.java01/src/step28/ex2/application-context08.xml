@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans 
+    xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+      http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+  <!-- 스프링 IoC 컨테이너가 생성해야 할 객체를 지정한다
+    id 속성 값을 설정하지 않으면 name 속성의 값을 key로 사용한다.
+    즉 name 속성의 값 중에서 첫 번째 이름을 기본 이름으로 사용하고,
+    나머지 이름은 별명으로 사용한다.
+   -->
+  <bean name="a1" class="step28.ex2.Car"/>
+  <bean name="b1 b2" class="step28.ex2.Car"/>
+</beans>

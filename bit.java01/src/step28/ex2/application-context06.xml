@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans 
+    xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+      http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+  <!-- 스프링 IoC 컨테이너가 생성해야 할 객체를 지정한다
+    id      : 생성한 객체를 저장할 때 사용할 key
+    class   : 생성할 객체의 클래스 이름(전체 이름)
+   -->
+  <bean id="c1" name="c2" class="step28.ex2.Car"/>
+</beans>
