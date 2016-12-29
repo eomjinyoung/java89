@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans 
+    xmlns="http://www.springframework.org/schema/beans"
+    xmlns:p="http://www.springframework.org/schema/p"  
+    xmlns:c="http://www.springframework.org/schema/c"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+      http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+  <!-- 인스턴스 팩토리 메서드를 호출하려면,
+       먼저 팩토기 객체를 생성해야 한다. -->
+  <bean id="factory" class="step28.ex5.CarFactory2"/>
+  
+  <!-- 인스턴스 팩토리 메서드를 호출할 때는 class 이름을 지정하는 대신
+       factory-bean 이름을 지정해야 한다. -->
+  <bean id="obj1" 
+        factory-bean="factory" 
+        factory-method="createCar">
+    <constructor-arg value="소나타"/>
+  </bean>
+  
+  
+</beans>
+
+
+
+
+
+
+
+
+
+
