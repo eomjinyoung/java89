@@ -17,13 +17,12 @@ import org.springframework.beans.PropertyEditorRegistry;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 
 public class CustomPropertyEditorRegistrar implements PropertyEditorRegistrar {
-  CustomDateEditor customDateEditor;
+  SimpleDateFormat dateFormat;
   
   public CustomPropertyEditorRegistrar() {
     System.out.println("CustomPropertyEditorRegistrar()");
     
-    customDateEditor = new CustomDateEditor(
-                          new SimpleDateFormat("yyyy-MM-dd"), false);
+    dateFormat = new SimpleDateFormat("yyyy-MM-dd");
   }
   
   @Override
@@ -43,9 +42,14 @@ public class CustomPropertyEditorRegistrar implements PropertyEditorRegistrar {
     // 우리는 단지 그 객체를 생성하여 등록하면 된다.
     registry.registerCustomEditor(
         Date.class, // 문자열을 어떤 타입의 객체로 변환할 것인지 지정. 
-        customDateEditor // 날짜 변환기
+        new CustomDateEditor(dateFormat, false) // 날짜 변환기
     );
     
+    // => 문자열을 step28.ex6.Engine 객체로 바꿔주는 변환기 등록
+    registry.registerCustomEditor(
+        Engine.class, 
+        new EngineEditor()
+    );
   }
 
 }

@@ -27,7 +27,10 @@
         
   <bean id="obj2" class="step28.ex6.Car"
         p:maker="비트자동차" p:model="그랜저" p:cc="1980" p:madeDate="2017-05-05"/>
-        
+  
+  <bean id="obj3" class="step28.ex6.Car"
+        p:maker="비트자동차" p:model="그랜저" p:cc="1980" p:madeDate="2017-05-05"
+        p:engine="16,8"/>
 </beans>
 
 

@@ -15,6 +15,7 @@ public class SpringTest25 {
     System.out.println("----------------------");
     System.out.println(iocContainer.getBean("obj1"));
     System.out.println(iocContainer.getBean("obj2"));
+    System.out.println(iocContainer.getBean("obj3"));
   }
 }
 
