@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans 
+    xmlns="http://www.springframework.org/schema/beans"
+    xmlns:p="http://www.springframework.org/schema/p"  
+    xmlns:c="http://www.springframework.org/schema/c"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+      http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+  <!-- 빈 생성 후 뒤처리를 전담하는 객체를 준비한다. --> 
+  <bean class="step28.ex7.MyBeanPostProcessor"/>
+  
+  <bean id="obj1" class="step28.ex7.Car" p:maker="비트자동차" p:model="소나타"/>
+        
+  <bean id="obj2" class="step28.ex7.Car" p:maker="비트자동차" p:model="티코"/>
+        
+  <bean id="obj3" class="step28.ex7.Car" p:maker="비트자동차" p:model="그랜저"/>
+        
+</beans>
+
+
+
+
+
+
+
+
+
+
