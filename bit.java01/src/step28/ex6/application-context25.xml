@@ -17,17 +17,17 @@
     <property name="propertyEditorRegistrars">
         <list>
             <!-- 우리가 만든 등록기를 추가한다. -->
+            <bean class="step28.ex6.CustomPropertyEditorRegistrar"/>
         </list>
     </property>
   </bean> 
    
-  <bean id="obj1" class="step28.ex6.Car">
-    <property name="maker" value="비트자동차"/>
-    <property name="model" value="소나타"/>
-    <property name="cc" value="1980"/>
-    <property name="madeDate" value="2017-01-01"/>
-  </bean>
-  
+  <bean id="obj1" class="step28.ex6.Car"
+        p:maker="비트자동차" p:model="소나타" p:cc="1980" p:madeDate="2017-01-01"/>
+        
+  <bean id="obj2" class="step28.ex6.Car"
+        p:maker="비트자동차" p:model="그랜저" p:cc="1980" p:madeDate="2017-05-05"/>
+        
 </beans>
 
 
