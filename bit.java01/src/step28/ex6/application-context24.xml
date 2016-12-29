@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans 
+    xmlns="http://www.springframework.org/schema/beans"
+    xmlns:p="http://www.springframework.org/schema/p"  
+    xmlns:c="http://www.springframework.org/schema/c"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+      http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+  <!-- 스프링 IoC 컨테이너는 기본적으로 String 타입의 값을 
+       자바 원시 타입(byte,short,int,long,float,double,boolean,char) 값으로
+       자동 변환해준다. 
+       그 외의 타입은 개발자가 변환기를 추가해야 가능하다.
+   -->
+   
+  <!-- java.lang.String ==> java.util.Date으로 변환할 수 없어서 오류 발생! -->
+  <!--  
+  <bean id="obj1" class="step28.ex6.Car" 
+        p:maker="비트자동차" p:model="티코" p:cc="980" p:madeDate="2017-01-01"/>
+  -->
+  
+  <!-- java.lang.String 타입의 값을 java.util.Date으로 직접 변환해야 한다. -->
+  <bean id="obj2" class="step28.ex6.Car">
+    <property name="maker" value="비트자동차"/>
+    <property name="model" value="티코"/>
+    <property name="cc" value="980"/>
+    <property name="madeDate">
+      <!-- java.sql.Date은 java.util.Date의 서브 클래스이다.
+           따라서 java.sql.Date 객체를 생성하여 madeDate 프로퍼티에 저장할 수 있다. -->
+      <bean class="java.sql.Date" factory-method="valueOf">
+        <constructor-arg value="2017-01-01"/>
+      </bean>
+    </property>
+  </bean>
+  
+  <!-- 또 다른 방법 -->
+  <!-- 문자열을 java.util.Date 객체로 바꿔주는 포맷터 준비 -->
+  <bean id="formatter" class="java.text.SimpleDateFormat">
+    <constructor-arg value="yyyy-MM-dd"/>
+  </bean>
+  
+  <bean id="obj3" class="step28.ex6.Car">
+    <property name="maker" value="비트자동차"/>
+    <property name="model" value="소나타"/>
+    <property name="cc" value="1980"/>
+    <property name="madeDate">
+      <bean factory-bean="formatter" factory-method="parse">
+        <constructor-arg value="2017-01-01"/>
+      </bean>
+    </property>
+  </bean>
+  
+</beans>
+
+
+
+
+
+
+
+
+
+
