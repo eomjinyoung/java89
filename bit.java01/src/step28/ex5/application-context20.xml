@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans 
+    xmlns="http://www.springframework.org/schema/beans"
+    xmlns:p="http://www.springframework.org/schema/p"  
+    xmlns:c="http://www.springframework.org/schema/c"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+      http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+  <!-- 다음은 CarFactory 객체를 만들어 obj1으로 저장한다. -->
+  <bean id="obj1" class="step28.ex5.CarFactory"/>
+  
+  <!-- 다음은 CarFactory 객체를 만드는 것이 아니라,
+       CarFactory.createCar()를 호출하여 그 리턴 값을 obj2로 저장한다. -->
+  <bean id="obj2" class="step28.ex5.CarFactory" factory-method="createCar">
+  
+    <!-- 다음 태그를 사용하여 createCar() 메서드에 넘길 값을 지정한다. -->
+    <constructor-arg value="티코"/>
+  </bean>
+  
+  <!-- java.sql.Date.valueOf()를 호출하여 문자열을 Date객체로 만들기 -->
+  <bean id="d1" class="java.sql.Date" factory-method="valueOf">
+    <constructor-arg value="2017-01-01"/>
+  </bean>
+  
+</beans>
+
+
+
+
+
+
+
+
+
+

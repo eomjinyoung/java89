@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans 
+    xmlns="http://www.springframework.org/schema/beans"
+    xmlns:p="http://www.springframework.org/schema/p"  
+    xmlns:c="http://www.springframework.org/schema/c"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+      http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+  <bean id="c1" class="step28.ex4.Car">
+    <property name="model" value="그랜저"/>
+    <property name="engine"> 
+      <bean class="step28.ex4.Engine" p:valve="12" p:ventil="6"/>
+    </property>
+  </bean>
+  
+  <bean id="c2" class="step28.ex4.Car">
+    <property name="model" value="그랜저2"/>
+    <property name="engine">
+      <bean class="step28.ex4.Engine" p:valve="12" p:ventil="6"/>
+    </property>
+  </bean>
+</beans>
+
+
+
+
+
+
+
+
+
+

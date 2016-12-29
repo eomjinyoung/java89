@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans 
+    xmlns="http://www.springframework.org/schema/beans"
+    xmlns:p="http://www.springframework.org/schema/p"  
+    xmlns:c="http://www.springframework.org/schema/c"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+      http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+  <bean id="t1" class="step28.ex4.Tire" p:maker="비트타이어" p:diameter="14"/>
+  
+  <bean id="c1" class="step28.ex4.Car5">
+    <property name="model" value="그랜저"/>
+    <property name="options">
+      <map> 
+        <entry>
+          <key><value>sparetire</value></key>
+          <ref bean="t1"/>
+        </entry>
+        <entry key="sparetire2" value-ref="t1"/>
+        <entry key="sparetire3">
+          <ref bean="t1"/>
+        </entry>
+        <entry key="sparetire4">
+          <bean class="step28.ex4.Tire" p:maker="비트타이어2" p:diameter="14"/>
+        </entry>
+        <entry key="sunroof" value="yes"/>
+      </map>
+    </property>
+  </bean>
+  
+</beans>
+
+
+
+
+
+
+
+
+
+

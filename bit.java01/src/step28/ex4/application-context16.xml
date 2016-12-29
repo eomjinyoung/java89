@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans 
+    xmlns="http://www.springframework.org/schema/beans"
+    xmlns:p="http://www.springframework.org/schema/p"  
+    xmlns:c="http://www.springframework.org/schema/c"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+      http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+  <bean id="t1" class="step28.ex4.Tire" p:maker="비트타이어" p:diameter="14"/>
+  
+  <bean id="c1" class="step28.ex4.Car2">
+    <property name="model" value="그랜저"/>
+    <property name="tires">
+      <array>
+        <!-- 다음과 같이 기존 객체를 배열에 주입할 수 있다. -->
+        <ref bean="t1"/> 
+        
+        <!-- 다음과 같이 새 객체를 만들어 배열에 주입할 수 있다. -->
+        <bean class="step28.ex4.Tire" p:maker="비트타이어2" p:diameter="14"/>
+      </array>
+    </property>
+  </bean>
+  
+  <bean id="c2" class="step28.ex4.Car2">
+    <property name="model" value="그랜저"/>
+    <property name="tires">
+      <list> <!-- 배열인 경우 <array> 대신 <list>를 사용해도 된다. -->
+        <ref bean="t1"/> 
+        <bean class="step28.ex4.Tire" p:maker="비트타이어2" p:diameter="14"/>
+      </list>
+    </property>
+  </bean>
+  
+</beans>
+
+
+
+
+
+
+
+
+
+
