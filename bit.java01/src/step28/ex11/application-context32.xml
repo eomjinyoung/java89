@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans 
+    xmlns="http://www.springframework.org/schema/beans"
+    xmlns:p="http://www.springframework.org/schema/p"  
+    xmlns:c="http://www.springframework.org/schema/c"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+      http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+  <bean id="e1" class="step28.ex11.Engine" p:valve="16" p:ventil="8"/>
+  <bean id="e2" class="step28.ex11.Engine" p:valve="16" p:ventil="8"/>
+
+  <!-- @Autowired 는 객체를 찾을 때 타입이 일치하는 지 검사하여 찾는다.
+       만약 같은 타입의 객체가 여러 개 있을 경우 예외가 발생한다!
+   -->
+  <bean id="obj1" class="step28.ex11.Car" p:maker="비트자동차" p:model="소나타"/>
+  <bean id="obj2" class="step28.ex11.Car" p:maker="비트자동차" p:model="티코"/>
+  <bean id="obj3" class="step28.ex11.Car" p:maker="비트자동차" p:model="그랜저"/>
+  
+  <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
+</beans>
+
+
+
+
+
+
+
+
+
+

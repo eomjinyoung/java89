@@ -7,17 +7,16 @@
     xsi:schemaLocation="http://www.springframework.org/schema/beans 
       http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
 
-  <bean id="e1" class="step28.ex8.Engine" p:valve="16" p:ventil="8"/>
+  <bean id="e1" class="step28.ex9.Engine" p:valve="16" p:ventil="8"/>
   
   <!-- Car 객체에 Engine 객체를 명시적으로 주입하지 않았다. -->
-  <bean id="obj1" class="step28.ex8.Car" p:maker="비트자동차" p:model="소나타"/>
-  <bean id="obj2" class="step28.ex8.Car" p:maker="비트자동차" p:model="티코"/>
-  <bean id="obj3" class="step28.ex8.Car" p:maker="비트자동차" p:model="그랜저"/>
+  <bean id="obj1" class="step28.ex9.Car" p:maker="비트자동차" p:model="소나타"/>
+  <bean id="obj2" class="step28.ex9.Car" p:maker="비트자동차" p:model="티코"/>
+  <bean id="obj3" class="step28.ex9.Car" p:maker="비트자동차" p:model="그랜저"/>
   
   <!-- 객체를 생성한 후 각 객체의 @Autowired 가 붙은 셋터 메서드를 찾아 
        그 메서드가 원하는 파라미터를 자동으로 주입해주는 담당자를 등록하자!
-       스프링 IoC 컨테이너는 이 담당자가 존재하면 실행하고,
-       존재하지 않으면 실행하지 않는다.-->
+       이 객체는 인스턴스 변수에 붙은 @Autowired도 인식한다.--> 
   <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
 </beans>
 
