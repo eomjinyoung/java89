@@ -1,18 +1,19 @@
-/* 주제: @Qualifier 를 사용하여 주입할 객체의 이름을 지정할 수 있다. 
+/* 주제: @Resource 를 사용하면 @Autowired와 @Qualifier를 대체할 수 있다.
+ *       이 애노테이션은 자바에서 제공하는 애노테이션이다. 
  * 
  */
-package step28.ex11;
+package step28.ex12;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
+import javax.annotation.Resource;
 
 public class Car {
   String model; 
   String maker; 
   int cc;       
   
-  @Autowired 
-  @Qualifier("e2") 
+  //@Autowired 
+  //@Qualifier("e2") 
+  @Resource(name="e1")
   Engine engine;
   
   @Override

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans 
+    xmlns="http://www.springframework.org/schema/beans"
+    xmlns:p="http://www.springframework.org/schema/p"  
+    xmlns:c="http://www.springframework.org/schema/c" 
+    xmlns:context="http://www.springframework.org/schema/context" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+      http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+      http://www.springframework.org/schema/context
+      http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+
+  <bean id="obj1" class="step28.ex13.Car" 
+        p:maker="비트자동차" p:model="소나타" p:engine-ref="e1"/>
+  <bean id="obj2" class="step28.ex13.Car" 
+        p:maker="비트자동차" p:model="티코" p:engine-ref="e1"/>
+  <bean id="obj3" class="step28.ex13.Car" 
+        p:maker="비트자동차" p:model="그랜저" p:engine-ref="e1"/>
+  
+  <!-- <bean> 태그 선언 순서는 상관없다. 필요한 시점에 해당 태그를 찾아 
+       그 태그에 선언된 클래스의 인스턴스를 만든다. 
+       비록 Engine 객체가 Car 객체 선언 이후에 있다 하더라도 
+       Car 객체에서 setEngine() 호출하기 전에 다음 객체가 먼저 생성된다.-->
+  <bean id="e1" class="step28.ex13.Engine" p:valve="16" p:ventil="8"/>
+
+  <!-- 애노테이션 사용 안함. -->
+  <!-- 
+  <context:annotation-config/>
+   -->
+</beans>
+
+
+
+
+
+
+
+
+
+

@@ -1,19 +1,21 @@
-/* 주제: @Qualifier 를 사용하여 주입할 객체의 이름을 지정할 수 있다. 
+/* 주제: <bean> 태그의 선언과 객체 생성 순서 
  * 
  */
-package step28.ex11;
+package step28.ex13;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
+import javax.annotation.Resource;
 
 public class Car {
   String model; 
   String maker; 
   int cc;       
   
-  @Autowired 
-  @Qualifier("e2") 
+  @Resource(name="e1")
   Engine engine;
+
+  public Car() {
+    System.out.println("Car()");
+  }
   
   @Override
   public String toString() {
@@ -25,6 +27,7 @@ public class Car {
   }
 
   public void setModel(String model) {
+    System.out.println("setModel()");
     this.model = model;
   }
 
@@ -33,6 +36,7 @@ public class Car {
   }
 
   public void setMaker(String maker) {
+    System.out.println("setMaker()");
     this.maker = maker;
   }
 
@@ -41,6 +45,7 @@ public class Car {
   }
 
   public void setCc(int cc) {
+    System.out.println("setCc()");
     this.cc = cc;
   }
 
@@ -49,6 +54,7 @@ public class Car {
   }
 
   public void setEngine(Engine engine) {
+    System.out.println("setEngine()");
     this.engine = engine;
   }
   

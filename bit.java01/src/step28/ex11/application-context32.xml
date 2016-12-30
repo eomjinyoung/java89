@@ -2,13 +2,16 @@
 <beans 
     xmlns="http://www.springframework.org/schema/beans"
     xmlns:p="http://www.springframework.org/schema/p"  
-    xmlns:c="http://www.springframework.org/schema/c"  
+    xmlns:c="http://www.springframework.org/schema/c" 
+    xmlns:context="http://www.springframework.org/schema/context" 
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.springframework.org/schema/beans 
-      http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+      http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+      http://www.springframework.org/schema/context
+      http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
   <bean id="e1" class="step28.ex11.Engine" p:valve="16" p:ventil="8"/>
-  <bean id="e2" class="step28.ex11.Engine" p:valve="16" p:ventil="8"/>
+  <bean id="e2" class="step28.ex11.Engine" p:valve="32" p:ventil="16"/>
 
   <!-- @Autowired 는 객체를 찾을 때 타입이 일치하는 지 검사하여 찾는다.
        만약 같은 타입의 객체가 여러 개 있을 경우 예외가 발생한다!
@@ -17,7 +20,19 @@
   <bean id="obj2" class="step28.ex11.Car" p:maker="비트자동차" p:model="티코"/>
   <bean id="obj3" class="step28.ex11.Car" p:maker="비트자동차" p:model="그랜저"/>
   
+  <!-- annotation-config 태그는 beans 네임스페이스의 소속된 태그가 아니라
+       context 네임스페이스에 소속된 태그다. -->
+  <context:annotation-config/>
+  
+  <!-- <annotation-config> 태그를 선언하면 다음 클래스를 직접 등록할 필요가 없다. 
+       이 태그를 선언하면 다음 객체를 자동으로 만든다.  
+       => AutowiredAnnotationBeanPostProcessor, 
+       => CommonAnnotationBeanPostProcessor, 
+       => PersistenceAnnotationBeanPostProcessor,
+       => RequiredAnnotationBeanPostProcessor   -->
+  <!--      
   <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
+   -->
 </beans>
 
 
