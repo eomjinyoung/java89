@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans 
+    xmlns="http://www.springframework.org/schema/beans"
+    xmlns:p="http://www.springframework.org/schema/p"  
+    xmlns:c="http://www.springframework.org/schema/c" 
+    xmlns:context="http://www.springframework.org/schema/context" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+      http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+      http://www.springframework.org/schema/context
+      http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+  <!-- <context:component-scan>은 <context:annotation-config> 기능을 포함하고 있기 때문에
+       굳이 annotation-config 태그를 선언할 필요가 없다. -->
+  <!--  
+  <context:annotation-config/>
+  -->
+  
+  <!-- @Component 애노테이션을 처리할 객체를 등록해야 한다. 
+       직접 객체를 등록하지 말고 다음과 같이 단축 명령을 사용하라!
+  -->
+  <context:component-scan base-package="step28.ex14"/>
+  
+</beans>
+
+
+
+
+
+
+
+
+
+
