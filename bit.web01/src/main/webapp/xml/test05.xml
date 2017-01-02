@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- DTD(Document Type Definition)를 사용하여 태그의 규칙 정의  -->
-<!DOCTYPE people [
+<!DOCTYPE student [
 
 <!-- 엘리먼트 선언 -->
 <!-- 자식 태그를 갖는 엘리먼트 선언 -->

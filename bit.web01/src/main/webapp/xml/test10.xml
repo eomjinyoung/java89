@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 외부 DTD를 가져오는 문법   -->
+<!DOCTYPE books SYSTEM "books.dtd">
+
+<!-- DTD 선언 문법
+1) 문법: 
+<!DOCTYPE 루트태그 PUBLIC/SYTEM "PUBLIC 이름" "DTD 파일 URL">
+
+2) SYSTEM 일 경우, DTD 파일의 위치만 지정한다.
+<!DOCTYPE books SYSTEM "books.dtd">
+
+3) PUBLIC 일 경우, 공개적인 이름도 함께 지정한다.
+<!DOCTYPE books PUBLIC "-//bitcamp//books 1.0//en" "books.dtd">
+
+-               => 국제 공인이면 +, 비공인이면 -
+bitcamp         => DTD 개발 및 유지보수 업체명
+books 1.0       => DTD 명 및 버전 번호
+en              => DTD 규칙을 정의할 때 사용한 언어
+ -->
+
+
+<books>
+  <book id='b001' pid='p01' aid='a01 a03'>책 제목1</book>
+
+  <press id='p01' name='비트출판사'/>
+  <press id='p02' name='대한출판사'/>
+  <press id='p03' name='한국출판사'/>
+  
+  <author id='a01'>홍길동</author>  
+  <author id='a02'>임꺽정</author>
+  <author id='a03'>유관순</author>
+</books>
+
+
+
+
+
+
+

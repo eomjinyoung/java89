@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT books (book*, press*, author*)>
+<!ELEMENT book (#PCDATA)>
+<!ELEMENT press EMPTY>
+<!ELEMENT author (#PCDATA)>
+
+<!ATTLIST book
+  id ID #REQUIRED  
+  pid IDREF #IMPLIED
+  aid IDREFS #IMPLIED
+>
+
+<!ATTLIST press
+  id ID #REQUIRED
+  name CDATA #REQUIRED
+>
+
+<!ATTLIST author
+  id ID #REQUIRED
+>

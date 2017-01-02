@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- DTD(Document Type Definition)를 사용하여 태그의 규칙 정의  -->
-<!DOCTYPE people [
+<!DOCTYPE books [
 
 <!-- 엘리먼트 선언 -->
 <!-- 태그를 사용하는 개수 지정
