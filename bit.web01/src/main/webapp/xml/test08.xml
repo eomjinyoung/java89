@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- DTD(Document Type Definition)를 사용하여 태그의 규칙 정의  -->
+<!DOCTYPE people [
+
+<!ELEMENT books (book)*>
+<!ELEMENT book (#PCDATA)>
+
+<!-- 속성 선언
+문법) 속성명 타입 옵션 
+#REQUIRED : 필수 속성
+#IMPLIED  : 선택 속성
+#FIXED    : 고정 값. 지정된 값 외에는 넣을 수 없다. 값을 생략하면 고정된 값이 들어간다. 
+-->
+
+<!ATTLIST book
+  author CDATA #REQUIRED  
+  title CDATA #REQUIRED
+  page CDATA #IMPLIED
+  lang (KR|JP|EN) #IMPLIED
+  press CDATA #FIXED '비트출판사'
+>
+
+]>
+
+<books>
+  <book author="홍길동" title="책제목1">
+    책에 대한 설명..
+  </book>
+  
+  <book author="임꺽정" title="책제목2" page="200" lang="EN" press="비트출판사">
+    책에 대한 설명..
+  </book>
+</books>
+
+
+
+
+
+
+

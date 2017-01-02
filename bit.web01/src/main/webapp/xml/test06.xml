@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- DTD(Document Type Definition)를 사용하여 태그의 규칙 정의  -->
+<!DOCTYPE people [
+
+<!-- 엘리먼트 선언 -->
+<!-- 자식 태그를 갖는 엘리먼트 선언
+1) 선언된 순서대로 작성해야 한다.
+2) | 연산자는 여러 개 중 한 개를 선택할 때 사용한다.
+ -->
+<!ELEMENT student (name,email,tel,(man|woman|trans))>
+
+<!-- 문자열을 내용으로 갖는 태그. Parsed Character Data의 약자.-->
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT email (#PCDATA)>
+<!ELEMENT tel (#PCDATA)>
+
+<!-- 내용이 없는 태그 -->
+<!ELEMENT man EMPTY>
+<!ELEMENT woman EMPTY>
+<!ELEMENT trans EMPTY>
+
+]>
+<student>
+  <name>홍길동</name>
+  <email>hong@test.com</email>
+  <tel>1111-1111</tel>
+  <trans/>
+</student>
+
+
+
+
+
+
+

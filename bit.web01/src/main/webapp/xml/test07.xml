@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- DTD(Document Type Definition)를 사용하여 태그의 규칙 정의  -->
+<!DOCTYPE people [
+
+<!-- 엘리먼트 선언 -->
+<!-- 태그를 사용하는 개수 지정
+기본: 1 개 필수
+? : 0 또는 1
+* : 0 개 이상
++ : 1 개 이상
+ -->
+<!ELEMENT books (book)*>
+<!ELEMENT book (author+,title,desc?)>
+
+<!ELEMENT author (#PCDATA)>
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT desc (#PCDATA)>
+
+]>
+
+<books>
+  <book>
+    <author>홍길동</author>
+    <title>제목1</title>
+  </book>
+  <book>
+    <author>윤봉길</author>
+    <author>안중근</author>
+    <title>제목2</title>
+    <desc>설명...</desc>
+  </book>
+</books>
+
+
+
+
+
+
+

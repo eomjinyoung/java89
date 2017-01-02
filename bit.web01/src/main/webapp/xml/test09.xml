@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- DTD(Document Type Definition)를 사용하여 태그의 규칙 정의  -->
+<!DOCTYPE people [
+
+<!ELEMENT books (book*, press*, author*)>
+<!ELEMENT book (#PCDATA)>
+<!ELEMENT press EMPTY>
+<!ELEMENT author (#PCDATA)>
+
+
+<!-- 속성 선언
+속성 타입
+1) CDATA      : 문자열
+2) (값|값|값) : 열거형
+3) ID         : XML 이름짓는 규칙에 따라 작성한 문자열. 즉 숫자나 "-"로 시작할 수 없다.
+4) IDREF      : 다른 태그의 ID 값을 참조  
+-->
+
+<!ATTLIST book
+  id ID #REQUIRED  
+  pid IDREF #IMPLIED
+  aid IDREFS #IMPLIED
+>
+
+<!ATTLIST press
+  id ID #REQUIRED
+  name CDATA #REQUIRED
+>
+
+<!ATTLIST author
+  id ID #REQUIRED
+>
+]>
+
+<books>
+  <book id='b001' pid='p01' aid='a01 a03'>책 제목1</book>
+
+  <press id='p01' name='비트출판사'/>
+  <press id='p02' name='대한출판사'/>
+  <press id='p03' name='한국출판사'/>
+  
+  <author id='a01'>홍길동</author>  
+  <author id='a02'>임꺽정</author>
+  <author id='a03'>유관순</author>
+</books>
+
+
+
+
+
+
+
