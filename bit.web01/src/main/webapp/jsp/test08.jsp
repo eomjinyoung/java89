@@ -32,7 +32,14 @@ rd.forward(request, response);
      단 이전에 출력한 데이터가 버퍼의 크기(기본 8196바이트)를 초과한다면,
      버퍼의 데이터가 자동으로 클라이언트로 출력되기 때문에
      포워딩은 무시된다.-->
-<jsp:forward page="test08_2.jsp"></jsp:forward>
+<%
+// JSP에서 다른 JSP로 forward/include 하기 전에 이 메서드를 호출해야만,
+// jsp:param을 이용하여 한글을 보낼 수 있다.
+request.setCharacterEncoding("UTF-8"); %>
+<jsp:forward page="test08_2.jsp" >
+  <jsp:param name="name" value="홍길동" />
+  <jsp:param name="age" value="20" />
+</jsp:forward>
 
 
 

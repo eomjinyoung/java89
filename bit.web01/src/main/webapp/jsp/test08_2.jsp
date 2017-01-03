@@ -11,6 +11,8 @@
 </head>
 <body>
 <h1>test08_2</h1>
+name: <%=request.getParameter("name")%><br> 
+age: <%=request.getParameter("age")%><br> 
 </body>
 </html>
 
