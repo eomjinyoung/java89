@@ -6,12 +6,30 @@
   version="3.1"
   metadata-complete="false">
 
+<!-- 컨텍스트 파라미터 등록
+=> 서블릿과 필터에서도 사용할 수 있다.
+=> ServletContext 객체를 이용할 수 있다면 이 값을 꺼낼 수 있다.
+=> 서블릿과 필터들이 공유할 값은 컨텍스트 파라미터로 선언하라!
+ -->
+<context-param>
+  <param-name>name</param-name>
+  <param-value>홍길동3</param-value>
+</context-param>
+<context-param>
+  <param-name>age</param-name>
+  <param-value>40</param-value>
+</context-param>
+
+
 <!-- 리스너 등록 -->
 <!--  
   <listener>
     <listener-class>bitcamp.servlet7.Listener1</listener-class>
   </listener>
 -->
+  <listener>
+    <listener-class>bitcamp.servlet11.MyServletContextListener</listener-class>
+  </listener>
 
 <!-- 필터 클래스 등록 -->
 <!--  
@@ -20,6 +38,20 @@
     <filter-class>bitcamp.servlet7.Filter1</filter-class>
   </filter>
 -->
+  <filter>
+    <filter-name>MyFilter</filter-name>
+    <filter-class>bitcamp.servlet11.MyFilter</filter-class>
+    <!-- 이 필터만 사용할 수 있는 값을 넘길 수 있다. -->
+    <init-param>
+      <param-name>name</param-name>
+      <param-value>홍길동2</param-value>
+    </init-param>
+    <init-param>
+      <param-name>age</param-name>
+      <param-value>30</param-value>
+    </init-param>
+  </filter>
+  
 <!-- 필터를 적용할 URL 지정 -->
 <!--  
   <filter-mapping>
@@ -27,6 +59,10 @@
     <url-pattern>/servlet/servlet34</url-pattern>
   </filter-mapping>
 -->
+  <filter-mapping>
+    <filter-name>MyFilter</filter-name>
+    <url-pattern>/servlet11/myservlet</url-pattern>
+  </filter-mapping>
 
 
 <!-- 서블릿 클래스 등록 -->
@@ -40,7 +76,20 @@
     <servlet-class>bitcamp.servlet.Servlet05</servlet-class>
   </servlet>
 --> 
-
+  <servlet>
+    <servlet-name>MyServlet</servlet-name>
+    <servlet-class>bitcamp.servlet11.MyServlet</servlet-class>
+    <!-- 이 서블릿만 사용할 수 있는 값을 넘길 수 있다. -->
+    <init-param>
+      <param-name>name</param-name>
+      <param-value>홍길동</param-value>
+    </init-param>
+    <init-param>
+      <param-name>age</param-name>
+      <param-value>20</param-value>
+    </init-param>
+  </servlet>
+  
 <!-- 서블릿 클래스에 명령어를 부여 -->
 <!--  
   <servlet-mapping>
@@ -52,6 +101,10 @@
     <url-pattern>/servlet05</url-pattern>
   </servlet-mapping>
 -->
+  <servlet-mapping>
+    <servlet-name>MyServlet</servlet-name>
+    <url-pattern>/servlet11/myservlet</url-pattern>
+  </servlet-mapping>
 </web-app>
 
 
