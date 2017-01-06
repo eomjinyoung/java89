@@ -10,16 +10,25 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class Control04 {
+  // aaa 파라미터가 있을 때 호출된다. 값은 상관없다.
   @RequestMapping(value="/ex2/param", params="aaa")
   public void aaa() {
     System.out.println("aaa()");
   }
   
-  @RequestMapping(value="/ex2/param", params="bbb")
-  public void bbb() {
+  // bbb 파라미터가 있을 때 호출된다. 단 값이 okok이어야 한다.
+  @RequestMapping(value="/ex2/param", params="bbb=okok")
+  public void bbb1() {
     System.out.println("bbb()");
   }
   
+  // bbb 파라미터가 있을 때 호출된다. 단 값이 nono이어야 한다.
+  @RequestMapping(value="/ex2/param", params="bbb=nono")
+  public void bbb2() {
+    System.out.println("bbb()");
+  }
+  
+  // aaa와 bbb 파라미터가 모두 있을 때 호출된다. 값은 상관없다.
   @RequestMapping(value="/ex2/param", params={"aaa","bbb"})
   public void aaabbb() {
     System.out.println("aaabbb()");
