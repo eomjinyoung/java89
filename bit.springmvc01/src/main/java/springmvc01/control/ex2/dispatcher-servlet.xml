@@ -9,6 +9,16 @@
 
   <context:component-scan base-package="springmvc01.control.ex2"/>
 
+  <!--  뷰 컴포넌트 관리자(View Resolver; 뷰 해결사) 등록 -->
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	    <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+	    
+	    <!-- 페이지 컨트롤러가 리턴한 URL 앞에 붙일 값 -->
+	    <property name="prefix" value="/"/>
+	    
+	    <!-- 페이지 컨트롤러가 리턴한 URL 뒤에 붙일 값 -->
+	    <property name="suffix" value=".jsp"/>
+	</bean>
 </beans>
 
 
