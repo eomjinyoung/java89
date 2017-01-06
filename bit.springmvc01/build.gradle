@@ -1,0 +1,52 @@
+apply plugin: 'java'
+apply plugin: 'eclipse-wtp' 
+apply plugin: 'war'         
+
+eclipse {
+  wtp {
+    facet {
+      facet name: 'jst.web', version: '3.1'  // 사용할 서블릿 API 버전  
+      facet name: 'jst.java', version: '1.8' // 웹 프로그램 개발할 때 사용한 자바 버전
+    }
+  }
+}
+
+
+compileJava {
+  options.encoding = 'UTF-8'  // 소스 파일의 인코딩을 알려준다.
+  sourceCompatibility = '1.8' // 어떤 자바 버전의 문법을 사용했는 지 알려준다.
+}
+
+repositories {
+  mavenCentral()  
+}
+
+dependencies {
+  // 로컬에서 의존 라이브러리 가져오기
+  compile fileTree(dir:'libs', include: '*.jar')
+  
+  // 파일 업로드에서 멀티파트 데이터를 처리하는 라이브러리
+  compile group: 'commons-fileupload', name: 'commons-fileupload', version: '1.3.2'
+  
+  // 스프링 관련 라이브러리
+  //compile group: 'org.springframework', name: 'spring-context', version: '4.3.5.RELEASE'
+  
+  // 스프링 webmvc 라이브러리
+  // => 이 라이브러리는 spring-context 라이브러리를 사용하기 때문에
+  //    이 라이브러리만 포함해도 이 라이브러리가 의존하는 다른 라이브러리까지 자동으로 포함된다.
+  //    그래서 위의 spring-context를 제거해도 된다.
+  compile group: 'org.springframework', name: 'spring-webmvc', version: '4.3.5.RELEASE'
+  
+  // JSTL 확장 라이브러리
+  compile group: 'javax.servlet', name: 'jstl', version: '1.2'
+  
+  // 컴파일 할 때만 사용하고 배치에는 포함시키지 않는 라이브러리들
+  providedCompile group: 'javax.servlet', name: 'javax.servlet-api', version: '3.1.0'
+  
+}
+
+
+
+
+
+

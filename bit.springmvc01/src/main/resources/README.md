@@ -1,0 +1,2 @@
+- 프로그램 실행할 때 사용할 설정 정보를 담은 파일을 두는 폴더
+- 예) xxx.properties, xxx.xml, xxx.txt 
