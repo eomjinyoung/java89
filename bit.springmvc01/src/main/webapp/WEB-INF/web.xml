@@ -7,52 +7,31 @@
   metadata-complete="false">
 
 <!--  컨텍스트 파라미터 등록 -->
-  <context-param>
-    <param-name>contextConfigLocation</param-name>
-    <param-value>/WEB-INF/conf/application-context.xml</param-value>
-  </context-param>  
+  
 
 <!-- 리스너 등록 -->
-  <listener>
-    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-  </listener>
+  
 
 <!-- 필터 등록 -->
-  <filter>
-    <filter-name>CharacterEncodingFilter</filter-name>
-    <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
-    <init-param>
-      <param-name>encoding</param-name>
-      <param-value>UTF-8</param-value>
-    </init-param>
-  </filter>
+  
 
 <!-- 필터를 어느 요청에 적용할 것인 지 설정한다. -->
-  <filter-mapping>
-    <filter-name>CharacterEncodingFilter</filter-name>
-    <url-pattern>/*</url-pattern>
-  </filter-mapping>
+  
 
 <!-- 서블릿 클래스 등록 -->
-  <!-- 스프링 프론트 컨트롤러
-       => 페이지 컨트롤러와 웹 관련 객체를 자체 보유한 스프링 IoC 컨테이너에서 관리한다.
-       => *.do 요청을 받아서 페이지 컨트롤러의 메서드를 찾아서 호출한다.
-       => DispatcherServlet은 자신이 보유한 IoC 컨테이너에 들어있는 객체를 사용한다.
-          또한 ContextLoaderListener가 관리하는 객체도 사용할 수 있다.
-   -->
   <servlet>
-        <servlet-name>dispatcher</servlet-name>
-        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-        <init-param>
-            <param-name>contextConfigLocation</param-name>
-            <param-value>/WEB-INF/conf/dispatcher-servlet.xml</param-value>
-        </init-param>
-    </servlet>
+    <servlet-name>dispatcher</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <init-param>
+	    <param-name>contextConfigLocation</param-name>
+	    <param-value>classpath:springmvc01/control/ex2/dispatcher-servlet.xml</param-value>
+    </init-param>
+  </servlet>
 
-    <servlet-mapping>
-        <servlet-name>dispatcher</servlet-name>
-        <url-pattern>*.do</url-pattern>
-    </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>dispatcher</servlet-name>
+    <url-pattern>*.do</url-pattern>
+  </servlet-mapping>
 </web-app>
 
 
