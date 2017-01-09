@@ -130,6 +130,20 @@ public class Control07 {
   public void test08(Student student) {
     System.out.println(student);
   }
+  
+  /* 같은 이름의 파라미터 값이 여러 개일 경우,
+   * => 파라미터 변수를 배열로 선언하라!
+   */
+  @RequestMapping("/ex3/test09")
+  public void test09(String name, int age, String[] language) {
+    System.out.println(name);
+    System.out.println(age);
+    if (language != null) {
+      for (String str : language) {
+        System.out.println(str);
+      }
+    }
+  }
 }
 
 
