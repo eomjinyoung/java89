@@ -55,6 +55,48 @@ public class Control09 {
     }
   }
   
+  /* 멀티파트 데이터 다루기
+   * => /webapp/ex4/test02form.jsp 로 테스트하라!
+   */
+  @RequestMapping("/ex4/test02")
+  public void test02(Student student, 
+      MultipartFile photo1, MultipartFile photo2, Model model) {
+    
+    model.addAttribute("student", student);
+
+    if (photo1.getSize() > 0) { // 파일이 있다면 저장한다.
+      String newFilename = this.getNewFilename();
+      String filepath = context.getRealPath("/ex4/" + newFilename);
+      try {
+        photo1.transferTo(new File(filepath));
+        student.setPhotoPath1(newFilename);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    }
+    
+    model.addAttribute("photo2_originFilename", photo2.getOriginalFilename());
+    model.addAttribute("photo2_filesize", photo2.getSize());
+    if (photo2.getSize() > 0) { 
+      String newFilename = this.getNewFilename();
+      String filepath = context.getRealPath("/ex4/" + newFilename);
+      try {
+        photo2.transferTo(new File(filepath));
+        student.setPhotoPath2(newFilename);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    }
+  }
+  
+  int count;
+  
+  synchronized private String getNewFilename() {
+    if (count > 100) {
+      count = 0;
+    }
+    return System.currentTimeMillis() + "_" + count++;
+  }
   
   
 }
