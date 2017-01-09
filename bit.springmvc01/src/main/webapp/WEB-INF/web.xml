@@ -13,10 +13,20 @@
   
 
 <!-- 필터 등록 -->
-  
+  <filter>
+    <filter-name>CharacterEncodingFilter</filter-name>
+    <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+    <init-param>
+      <param-name>encoding</param-name>
+      <param-value>UTF-8</param-value>
+    </init-param>
+  </filter>
 
 <!-- 필터를 어느 요청에 적용할 것인 지 설정한다. -->
-  
+  <filter-mapping>
+    <filter-name>CharacterEncodingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>  
 
 <!-- 서블릿 클래스 등록 -->
   <servlet>
@@ -24,7 +34,7 @@
     <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
     <init-param>
 	    <param-name>contextConfigLocation</param-name>
-	    <param-value>classpath:springmvc01/control/ex3/dispatcher-servlet.xml</param-value>
+	    <param-value>classpath:springmvc01/control/ex4/dispatcher-servlet.xml</param-value>
     </init-param>
     <load-on-startup>1</load-on-startup>
   </servlet>
