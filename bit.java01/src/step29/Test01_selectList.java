@@ -31,7 +31,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-public class Test01 {
+public class Test01_selectList {
 
   public static void main(String[] args) throws Exception {
     //1. SqlSessionFactory 객체 생성
