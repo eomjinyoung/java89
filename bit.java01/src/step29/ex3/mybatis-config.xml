@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+  <properties resource="step29/ex3/jdbc.properties"/>
+  
+  <!-- Mybatis 설정 파일에서 타입에 대한 간단한 별명을 정의한다.
+       SQL 맵퍼 파일에서 이 별명을 사용한다. -->
+  <typeAliases>
+    <typeAlias type="step29.ex3.Contact" alias="contact"/>
+  </typeAliases>
+  
+  <environments default="development">
+    <environment id="development">
+      <transactionManager type="JDBC"/>
+      <dataSource type="POOLED">
+        <property name="driver" value="${driver}"/>
+        <property name="url" value="${url}"/>
+        <property name="username" value="${username}"/>
+        <property name="password" value="${password}"/>
+      </dataSource>
+    </environment>
+  </environments>
+  
+  <mappers>
+    <mapper resource="step29/ex3/ContactsMapper.xml"/>
+  </mappers>
+</configuration>
+
+
+
+
+
+
+

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="contacts">
+  <resultMap type="contact" id="contact-map">
+    <id column="email" property="email"/>
+    <result column="posi" property="position"/>
+  </resultMap>
+  
+  <!-- 반복되는 SQL 코드 조각을 별도로 정의해 두었다가 삽입할 수 있다. -->
+  <sql id="select01">
+    select posi, name, tel, email 
+  </sql>
+  
+  <!-- Dynamic SQL 생성하기
+      => Mybatis에서 제공하는 특별한 태그를 사용하여 
+         SQL을 동적으로 생성하는 방법
+      => 조건에 따라 여러 개의 SQL문을 생성해야 하는 경우, 
+         SQL 문 생성을 줄일 수 있다.
+   -->
+  <select id="selectContacts" resultMap="contact-map" parameterType="map">
+    <include refid="select01"/>
+    from ex_contacts
+    order by 
+    <choose>
+      <when test="order == 'name_desc'">name desc</when>
+      <when test="order == 'name_asc'">name asc</when>
+      <when test="order == 'tel_desc'">tel desc</when>
+      <when test="order == 'tel_asc'">tel asc</when>
+      <when test="order == 'posi_desc'">posi desc</when>
+      <when test="order == 'posi_asc'">posi asc</when>
+      <when test="order == 'email_desc'">email desc</when>
+      <otherwise>email asc</otherwise>
+    </choose>
+  </select>
+  
+  <!-- foreach 태그로 SQL 코드를 반복해서 만들기 -->
+  <select id="selectContacts2" resultMap="contact-map">
+    <include refid="select01"/>
+    from ex_contacts
+    where name in 
+    <foreach collection="list" item="keyword" index="i" open="(" separator="," close=")">
+      #{keyword}
+    </foreach>
+    order by name asc 
+  </select>
+  
+  <!-- 조건에 따라 where절을 만들기 -->
+  <select id="selectContacts3" resultMap="contact-map" parameterType="map">
+    <include refid="select01"/>
+    from ex_contacts
+    <where> 
+	    <if test="name != null">name=#{name}</if>
+	    <if test="tel != null">and tel=#{tel}</if>
+	    <if test="position != null">and posi=#{position}</if>
+    </where>
+    order by name asc 
+  </select>
+  
+  <insert id="insertContacts" parameterType="contact">
+    insert into ex_contacts(email,name,tel,posi)
+    values (#{email}, #{name}, #{tel}, #{position})
+  </insert>
+  
+  <update id="updateContacts" parameterType="contact">
+    update ex_contacts set name=#{name}, tel=#{tel}, posi=#{position}
+    where email=#{email}
+  </update>
+  
+  <delete id="deleteContacts" parameterType="string">
+    delete from ex_contacts
+    where email=#{email}
+  </delete>
+  
+  <select id="selectOneContacts" resultMap="contact-map" parameterType="string">
+    <include refid="select01"/> 
+    from ex_contacts
+    where email=#{ohora_email}
+  </select>
+</mapper>
+
+
+
+
+
+
+
+

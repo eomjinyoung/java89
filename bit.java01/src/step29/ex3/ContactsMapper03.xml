@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="contacts">
+  <resultMap type="contact" id="contact-map">
+    <id column="email" property="email"/>
+    <result column="posi" property="position"/>
+  </resultMap>
+  
+  <!-- 반복되는 SQL 코드 조각을 별도로 정의해 두었다가 삽입할 수 있다. -->
+  <sql id="select01">
+    select posi, name, tel, email 
+  </sql>
+  
+  <select id="selectContacts" resultMap="contact-map">
+    <include refid="select01"/>
+    from ex_contacts
+  </select>
+  
+  <insert id="insertContacts" parameterType="contact">
+    insert into ex_contacts(email,name,tel,posi)
+    values (#{email}, #{name}, #{tel}, #{position})
+  </insert>
+  
+  <update id="updateContacts" parameterType="contact">
+    update ex_contacts set name=#{name}, tel=#{tel}, posi=#{position}
+    where email=#{email}
+  </update>
+  
+  <delete id="deleteContacts" parameterType="string">
+    delete from ex_contacts
+    where email=#{email}
+  </delete>
+  
+  <select id="selectOneContacts" resultMap="contact-map" parameterType="string">
+    <include refid="select01"/> 
+    from ex_contacts
+    where email=#{ohora_email}
+  </select>
+</mapper>
+
+
+
+
+
+
+
+

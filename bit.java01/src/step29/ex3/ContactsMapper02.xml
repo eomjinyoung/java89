@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="contacts">
+  <!-- 타입 전체 이름을 적는 대신 Mybatis 설정 파일에 정의된 별명을 사용한다. -->
+  <!-- 컬럼 이름과 객체의 프로퍼티 이름이 다를 경우, 
+       컬럼과 프로퍼티를 미리 연결해둘 수 있다.
+       그러면 SELECT 문을 작성할 때 일일이 컬럼에 별명을 부여할 필요가 없다. -->
+  <resultMap type="contact" id="contact-map">
+    <!-- PK 컬럼은 id 태그를 사용하여 정의하라! 
+         Mybatis에서 객체를 관리할 때 이 태그의 프로퍼티를 이용할 것이다. -->
+    <id column="email" property="email"/>
+   
+    <!-- 컬럼 이름과 프로퍼티 이름이 같을 경우 생략해도 된다.  -->
+    <!--  
+    <result column="name" property="name"/>
+    <result column="tel" property="tel"/>
+    -->
+    
+    <result column="posi" property="position"/>
+  </resultMap>
+  
+  <!-- 결과 타입으로 객체를 직접 지정하는 대신 위에서 정의한 결과 맵을 지정할 수 있다. 
+       => resultType 속성 대신 resultMap 속성을 사용하라!     -->
+  <select id="selectContacts" resultMap="contact-map">
+    select 
+      posi, 
+      name, 
+      tel, 
+      email 
+    from ex_contacts
+  </select>
+  
+  <insert id="insertContacts" parameterType="contact">
+    insert into ex_contacts(email,name,tel,posi)
+    values (#{email}, #{name}, #{tel}, #{position})
+  </insert>
+  
+  <update id="updateContacts" parameterType="contact">
+    update ex_contacts set name=#{name}, tel=#{tel}, posi=#{position}
+    where email=#{email}
+  </update>
+  
+  <!-- 파라미터의 타입이 자바 원시 타입이나 String일 경우,
+       in-param의 이름은 아무거나 가능하다. -->
+  <delete id="deleteContacts" parameterType="string">
+    delete from ex_contacts
+    where email=#{email}
+  </delete>
+  
+  <select id="selectOneContacts" resultMap="contact-map" parameterType="string">
+    select 
+      posi, 
+      name, 
+      tel, 
+      email 
+    from ex_contacts
+    where email=#{ohora_email}
+  </select>
+</mapper>
+
+
+
+
+
+
+
+

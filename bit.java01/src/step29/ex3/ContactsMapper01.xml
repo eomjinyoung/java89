@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="contacts">
+  <!-- 타입 전체 이름을 적는 대신 Mybatis 설정 파일에 정의된 별명을 사용한다. -->
+  <select id="selectContacts" resultType="contact">
+    select 
+      posi as position, 
+      name, 
+      tel, 
+      email 
+    from ex_contacts
+  </select>
+  
+  <insert id="insertContacts" parameterType="contact">
+    insert into ex_contacts(email,name,tel,posi)
+    values (#{email}, #{name}, #{tel}, #{position})
+  </insert>
+  
+  <update id="updateContacts" parameterType="contact">
+    update ex_contacts set name=#{name}, tel=#{tel}, posi=#{position}
+    where email=#{email}
+  </update>
+  
+  <!-- 파라미터의 타입이 자바 원시 타입이나 String일 경우,
+       in-param의 이름은 아무거나 가능하다. -->
+  <delete id="deleteContacts" parameterType="string">
+    delete from ex_contacts
+    where email=#{email}
+  </delete>
+  
+  <select id="selectOneContacts" resultType="contact" parameterType="string">
+    select 
+      posi as position, 
+      name, 
+      tel, 
+      email 
+    from ex_contacts
+    where email=#{ohora_email}
+  </select>
+</mapper>
+
+
+
+
+
+
+
+
