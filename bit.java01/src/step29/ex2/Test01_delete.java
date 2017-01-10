@@ -3,9 +3,6 @@
 package step29.ex2;
 
 import java.io.InputStream;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -15,7 +12,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 public class Test01_delete {
 
   public static void main(String[] args) throws Exception {
-    InputStream in = Resources.getResourceAsStream("step29/mybatis-config.xml");
+    InputStream in = Resources.getResourceAsStream("step29/ex2/mybatis-config.xml");
     SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(in); 
     SqlSession sqlSession = sqlSessionFactory.openSession();
 

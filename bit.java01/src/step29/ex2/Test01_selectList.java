@@ -7,7 +7,6 @@ package step29.ex2;
 
 import java.io.InputStream;
 import java.util.List;
-import java.util.Map;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;

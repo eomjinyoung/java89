@@ -32,7 +32,11 @@
   </delete>
   
   <select id="selectOneContacts" resultType="step29.ex2.Contact" parameterType="java.lang.String">
-    select posi, name, tel, email 
+    select 
+      posi as position, 
+      name, 
+      tel, 
+      email 
     from ex_contacts
     where email=#{ohora_email}
   </select>
