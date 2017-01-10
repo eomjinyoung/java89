@@ -33,5 +33,9 @@ repositories {
 dependencies {
   // 스프링 관련 라이브러리
   compile group: 'org.springframework', name: 'spring-context', version: '4.3.5.RELEASE'
+  
+  // Mybatis 관련 라이브러리
+  compile group: 'org.mybatis', name: 'mybatis', version: '3.4.2'
+  
 }
 
