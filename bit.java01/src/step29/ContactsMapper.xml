@@ -4,6 +4,6 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="contacts">
   <select id="selectContacts" resultType="map">
-    
+    select posi, name, tel, email from ex_contacts
   </select>
 </mapper>

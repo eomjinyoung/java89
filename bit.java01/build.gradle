@@ -37,5 +37,8 @@ dependencies {
   // Mybatis 관련 라이브러리
   compile group: 'org.mybatis', name: 'mybatis', version: '3.4.2'
   
+  // 로컬에서 의존 라이브러리 가져오기
+  // => JDBC 드라이버 추가
+  compile fileTree(dir:'libs', include: '*.jar')
 }
 
