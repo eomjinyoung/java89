@@ -13,8 +13,6 @@
   <bean id="sqlSessionFactory" class="step29.ex5.SqlSessionFactoryFactoryBean">
     <property name="configLocation" value="step29/ex5/mybatis-config.xml"/>
   </bean>
-        
-  
 
 </beans>
 

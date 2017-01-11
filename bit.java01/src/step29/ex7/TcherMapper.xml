@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 네임스페이스를 이용하여 SQL의 이름을 관리할 수 있다. -->  
+<mapper namespace="step29.ex7.TeacherDao">
+
+  <resultMap type="teacher" id="teacher-map">
+    <id column="mno" property="memberNo"/>
+    <!-- 컬럼 이름에 테이블 별명을 붙인 경우에는 
+         컬럼명과 프로퍼티명이 같더라도 생략해서는 안된다. -->
+    <result column="name" property="name"/>
+    <result column="tel" property="tel"/>
+    <result column="email" property="email"/>
+    <result column="pwd" property="password"/>
+    <result column="hmpg" property="homepage"/>
+    <result column="fcbk" property="facebook"/>
+    <result column="twit" property="twitter"/>
+    <collection property="photoList" ofType="photo">
+      <!-- 조인 대상 테이블의 PK 커럼을 지정하라! -->
+      <id column="tpno" property="no"/>
+      <result column="path" property="filePath"/>
+    </collection>
+  </resultMap>
+  
+  <select id="selectList" resultMap="teacher-map">
+    select 
+      m.mno, 
+      m.name, 
+      m.email, 
+      m.tel, 
+      t.hmpg, 
+      t.fcbk, 
+      t.twit
+    from memb m inner join tcher t on m.mno=t.tno 
+  </select>
+ 
+</mapper>
+
+
+
+
+
+
+
+

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+  <context:component-scan base-package="step29.ex7"/>
+  
+  <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+    <property name="dataSource" ref="dataSource"/>
+    <property name="mapperLocations" value="classpath*:step29/ex7/*Mapper.xml" />
+    
+    <!-- step29.ex7 패키지에 존재하는 모든 클래스에 대해 별명을 부여한다.
+         별명은 클래스이름이다. -->
+    <property name="typeAliasesPackage" value="step29.ex7" />
+  </bean>
+  
+  <!-- DAO 인터페이스를 자동 구현하는 객체 추가 -->
+  <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+    <!-- DAO 인터페이스가 있는 패키지를 지정한다. -->
+	  <property name="basePackage" value="step29.ex7" />
+	</bean>
+  
+  <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+    <property name="locations" value="classpath:step29/ex7/jdbc.properties"/>
+	</bean>
+	
+	<bean id="dataSource" destroy-method="close"
+	        class="org.apache.commons.dbcp.BasicDataSource">
+	    <property name="driverClassName" value="${jdbc.driverClassName}"/>
+	    <property name="url" value="${jdbc.url}"/>
+	    <property name="username" value="${jdbc.username}"/>
+	    <property name="password" value="${jdbc.password}"/>
+	</bean>
+
+  <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+      <property name="dataSource" ref="dataSource"/>
+  </bean>
+</beans>
+
+
+
+
+
+
+

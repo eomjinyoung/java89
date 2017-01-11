@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+  <typeAliases>
+    <typeAlias type="step29.ex6.Member" alias="member"/>
+    <typeAlias type="step29.ex6.Student" alias="student"/>
+    <typeAlias type="step29.ex6.Teacher" alias="teacher"/>
+    <typeAlias type="step29.ex6.Photo" alias="photo"/>
+  </typeAliases>
+
+  <mappers>
+    <mapper resource="step29/ex6/StudMapper.xml"/>
+    <mapper resource="step29/ex6/TcherMapper.xml"/>
+    <mapper resource="step29/ex6/MembMapper.xml"/>
+  </mappers>
+</configuration>
+
+
+
+
+
+
+

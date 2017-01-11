@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+  <context:component-scan base-package="step29.ex6"/>
+  
+  <!-- Mybatis에서 제공해주는 SqlSessionFactory 공장 객체를 사용하여 
+       SqlSessionFactory를 만들어보자!
+       1) 그 공장 객체가 들어 있는 라이브러리를 가져와야 한다.
+          - mvnrepository.com에서 검색(검색어: mybatis-spring)하여 
+            build.gradle 파일에 라이브러리 정보를 추가한다.
+          - "gradle eclipse"를 실행하여 라이브러리를 가져온다.
+             이클립스 설정 파일을 갱신한다.
+          - 프로젝트를 리프래시 한다.
+       2) 그 라이브러리에 들어있는 클래스를 사용하여 SqlSessionFactory를 만든다.
+       3) DataSource는 스프링에서 관리한다.
+          - Apache의 commons-dbcp 라이브러리 추가해야 한다.
+           -->
+  <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+    <property name="configLocation" value="step29/ex6/mybatis-config.xml"/>
+    
+    <!-- 이 클래스를 통해 SqlSessionFactory를 만들 때, 
+         mybatis-config.xml에 설정된 dataSource는 사용하지 않는다.
+         대신 스프링에서 관리하는 dataSource를 사용한다.
+         왜? 스프링 IoC 컨테이너가 객체를 관리하는 일이 맡았으니까,
+             가능한 SqlSessionFactory가 사용하는 객체들도
+             스프링에서 관리하는 것이 낫기 때문이다. 
+         혹시 개발자가 dataSource를 설정하지 않을까봐, 
+         dataSource 프로퍼티를 필수 입력으로 선언해 두었다.
+         그래서 반드시 dataSource 프로퍼티를 설정해야 한다. -->
+    <property name="dataSource" ref="dataSource"/>
+  </bean>
+  
+  <!-- DB 커넥션을 관리해주는 객체 DataSource를 준비한다. -->
+  <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+    <property name="locations" value="classpath:step29/ex6/jdbc.properties"/>
+	</bean>
+	
+	<bean id="dataSource" destroy-method="close"
+	        class="org.apache.commons.dbcp.BasicDataSource">
+	    <property name="driverClassName" value="${jdbc.driverClassName}"/>
+	    <property name="url" value="${jdbc.url}"/>
+	    <property name="username" value="${jdbc.username}"/>
+	    <property name="password" value="${jdbc.password}"/>
+	</bean>
+
+  <!-- DataSource에서 관리하는 DB 커넥션 객체의 트랜잭션을 관리하는 객체 등록  -->
+  <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+      <property name="dataSource" ref="dataSource"/>
+  </bean>
+</beans>
+
+
+
+
+
+
+
