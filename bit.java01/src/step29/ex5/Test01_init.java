@@ -4,29 +4,18 @@
  */
 package step29.ex5;
 
-import java.util.List;
-
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.support.FileSystemXmlApplicationContext;
 
-public class Test01_selectList {
+public class Test01_init {
   public static void main(String[] args) {
     ApplicationContext iocContainer = new ClassPathXmlApplicationContext(
         "step29/ex5/application-context.xml");
     
-    TeacherDao teacherDao = iocContainer.getBean(TeacherDao.class);
-    
-    List<Teacher> teachers = teacherDao.selectList();
-    
-    for (Teacher teacher : teachers) {
-      System.out.printf("%s, %s, %s, %s, %s, %s, %s\n", 
-          teacher.getMemberNo(),
-          teacher.getName(),
-          teacher.getEmail(),
-          teacher.getTel(),
-          teacher.getHomepage(),
-          teacher.getFacebook(),
-          teacher.getTwitter());
+    String[] names = iocContainer.getBeanDefinitionNames();
+    for (String name : names) {
+      System.out.println(iocContainer.getBean(name));
     }
   }
 }

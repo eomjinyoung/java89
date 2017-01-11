@@ -9,23 +9,9 @@
 
   <context:component-scan base-package="step29.ex5"/>
   
-  <!-- 1) SqlSessionFactoryBuilder가 사용할 Mybatis 설정 파일을 읽는 도구를 준비한다.
-       => 즉 스프링 IoC 컨테이너에 저장할 객체를 InputStream 객체이다. -->
-  <bean id="mybatis-configInputStream" 
-        class="org.apache.ibatis.io.Resources"
-        factory-method="getResourceAsStream">
-    <constructor-arg value="step29/ex4/mybatis-config.xml"/>      
-  </bean>
-
-  <!-- SqlSessionFactory를 만들어줄 SqlSessionFactoryBuilder 객체 준비 -->  
-  <bean id="sqlSessionFactoryBuilder"
-        class="org.apache.ibatis.session.SqlSessionFactoryBuilder"/>
-        
-  <!-- 3) SqlSessionFactoryBuilder를 통해 SqlSessionFactory를 생성하여 저장한다. -->
-  <bean id="sqlSessionFactory"
-        factory-bean="sqlSessionFactoryBuilder"
-        factory-method="build">
-    <constructor-arg ref="mybatis-configInputStream"/>
+  <!-- SqlSessionFactoryFactoryBean으로부터 SqlSessionFactory 객체를 만든다. -->
+  <bean id="sqlSessionFactory" class="step29.ex5.SqlSessionFactoryFactoryBean">
+    <property name="configLocation" value="step29/ex5/mybatis-config.xml"/>
   </bean>
         
   
