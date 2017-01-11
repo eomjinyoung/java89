@@ -51,6 +51,10 @@
             inner join tch_phot tp on t.tno=tp.tno
   </select>
   
+  <insert id="insert" parameterType="teacher">
+    insert into tcher(tno, hmpg, fcbk, twit)
+    values(#{memberNo}, #{homepage}, #{facebook}, #{twitter})
+  </insert>
 </mapper>
 
 

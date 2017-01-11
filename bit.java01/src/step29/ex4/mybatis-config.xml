@@ -27,6 +27,7 @@
   <mappers>
     <mapper resource="step29/ex4/StudMapper.xml"/>
     <mapper resource="step29/ex4/TcherMapper.xml"/>
+    <mapper resource="step29/ex4/MembMapper.xml"/>
   </mappers>
 </configuration>
 

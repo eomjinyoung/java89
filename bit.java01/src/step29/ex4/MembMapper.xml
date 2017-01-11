@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 네임스페이스를 이용하여 SQL의 이름을 관리할 수 있다. -->  
+<mapper namespace="member">
+
+  <!-- memb 테이블에 입력한 후, 자동으로 생성된 mno 컬럼의 값을
+       파라미터로 넘겨받은 객체의 memberNo 프로퍼티에 저장한다. -->
+  <insert id="insert" parameterType="member" 
+          useGeneratedKeys="true" keyColumn="mno" keyProperty="memberNo">
+    insert into memb(name, email, tel, pwd)
+    values(#{name}, #{email}, #{tel}, #{password})
+  </insert>  
+</mapper>
+
+
+
+
+
+
+
+
