@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+  <context:component-scan base-package="step29.ex5"/>
+  
+  <!-- 1) SqlSessionFactoryBuilder가 사용할 Mybatis 설정 파일을 읽는 도구를 준비한다.
+       => 즉 스프링 IoC 컨테이너에 저장할 객체를 InputStream 객체이다. -->
+  <bean id="mybatis-configInputStream" 
+        class="org.apache.ibatis.io.Resources"
+        factory-method="getResourceAsStream">
+    <constructor-arg value="step29/ex4/mybatis-config.xml"/>      
+  </bean>
+
+  <!-- SqlSessionFactory를 만들어줄 SqlSessionFactoryBuilder 객체 준비 -->  
+  <bean id="sqlSessionFactoryBuilder"
+        class="org.apache.ibatis.session.SqlSessionFactoryBuilder"/>
+        
+  <!-- 3) SqlSessionFactoryBuilder를 통해 SqlSessionFactory를 생성하여 저장한다. -->
+  <bean id="sqlSessionFactory"
+        factory-bean="sqlSessionFactoryBuilder"
+        factory-method="build">
+    <constructor-arg ref="mybatis-configInputStream"/>
+  </bean>
+        
+  
+
+</beans>
+
+
+
+
+
+
+

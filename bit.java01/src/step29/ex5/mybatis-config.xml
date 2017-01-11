@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+  <properties resource="step29/ex5/jdbc.properties"/>
+  
+  <typeAliases>
+    <typeAlias type="step29.ex5.Member" alias="member"/>
+    <typeAlias type="step29.ex5.Student" alias="student"/>
+    <typeAlias type="step29.ex5.Teacher" alias="teacher"/>
+    <typeAlias type="step29.ex5.Photo" alias="photo"/>
+  </typeAliases>
+  
+  <environments default="development">
+    <environment id="development">
+      <transactionManager type="JDBC"/>
+      <dataSource type="POOLED">
+        <property name="driver" value="${driver}"/>
+        <property name="url" value="${url}"/>
+        <property name="username" value="${username}"/>
+        <property name="password" value="${password}"/>
+      </dataSource>
+    </environment>
+  </environments>
+  
+  <mappers>
+    <mapper resource="step29/ex5/StudMapper.xml"/>
+    <mapper resource="step29/ex5/TcherMapper.xml"/>
+    <mapper resource="step29/ex5/MembMapper.xml"/>
+  </mappers>
+</configuration>
+
+
+
+
+
+
+
