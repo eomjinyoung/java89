@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<!-- Mybatis가 DAO 인터페이스를 자동 구현하는 경우,
+     네임스페이스 값은 반드시 인터페이스의 전체 이름(패키지명+인터페이스명)과 같아야 한다. -->
+<mapper namespace="step29.ex7.MemberDao">
+
+  <!-- SQL 문의 아이디 값은 메서드 이름과 같아야 한다.
+       또한 파라미티와 리턴 타입도 같아야 한다.
+       insert,update, delete은 리턴 값이 int이다.
+       따라서 메서드를 선언할 때 int라고 해도 되고, void라고 해도 된다. -->
+  <insert id="insert" parameterType="member" 
+          useGeneratedKeys="true" keyColumn="mno" keyProperty="memberNo">
+    insert into memb(name, email, tel, pwd)
+    values(#{name}, #{email}, #{tel}, password(#{password}))
+  </insert>  
+
+</mapper>
+
+
+
+
+
+
+
+

@@ -4,4 +4,5 @@ import java.util.List;
 
 public interface TeacherDao {
   List<Teacher> selectList(); 
+  int insert(Teacher teacher);
 }

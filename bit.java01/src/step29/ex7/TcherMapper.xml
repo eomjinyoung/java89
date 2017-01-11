@@ -35,6 +35,10 @@
     from memb m inner join tcher t on m.mno=t.tno 
   </select>
  
+  <insert id="insert" parameterType="teacher">
+    insert into tcher(tno, hmpg, fcbk, twit)
+    values(#{memberNo}, #{homepage}, #{facebook}, #{twitter})
+  </insert>
 </mapper>
 
 

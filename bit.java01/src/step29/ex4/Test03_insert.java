@@ -20,8 +20,8 @@ public class Test03_insert {
     
     // DB에 입력할 데이터를 준비한다.
     Teacher teacher = new Teacher();
-    teacher.setName("오호라강사");
-    teacher.setEmail("ohora@test.com");
+    teacher.setName("오호라2강사");
+    teacher.setEmail("ohora2@test.com");
     teacher.setTel("1111-1255");
     teacher.setPassword("1111");
     teacher.setHomepage("ohora.test.com");
@@ -30,7 +30,12 @@ public class Test03_insert {
     
     try {
       sqlSession.insert("member.insert", teacher);
+      System.out.println("memb 입력 성공!");
+      
+      teacher.setMemberNo(0);
       sqlSession.insert("teacher.insert", teacher);
+      System.out.println("tcher 입력 성공!");
+      
       sqlSession.commit(); 
       System.out.println("입력 성공!");
       
