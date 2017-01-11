@@ -2,7 +2,9 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="bitcamp">
+<!-- 네임스페이스를 이용하여 SQL의 이름을 관리할 수 있다. -->
+<mapper namespace="student">
+
   <resultMap type="student" id="student-map">
     <id column="mno" property="memberNo"/>
     <!--  

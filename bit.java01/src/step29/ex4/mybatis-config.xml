@@ -8,6 +8,8 @@
   <typeAliases>
     <typeAlias type="step29.ex4.Member" alias="member"/>
     <typeAlias type="step29.ex4.Student" alias="student"/>
+    <typeAlias type="step29.ex4.Teacher" alias="teacher"/>
+    <typeAlias type="step29.ex4.Photo" alias="photo"/>
   </typeAliases>
   
   <environments default="development">
@@ -24,6 +26,7 @@
   
   <mappers>
     <mapper resource="step29/ex4/StudMapper.xml"/>
+    <mapper resource="step29/ex4/TcherMapper.xml"/>
   </mappers>
 </configuration>
 
