@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bitcamp">
+  <resultMap type="student" id="student-map">
+    <id column="mno" property="memberNo"/>
+    <!--  
+    <result column="name" property="name"/>
+    <result column="tel" property="tel"/>
+    <result column="email" property="email"/>
+    -->
+    <result column="pwd" property="password"/>
+    <result column="work" property="working"/>
+    <result column="lst_schl" property="grade"/>
+    <result column="schl_nm" property="schoolName"/>
+    <result column="pst_no" property="postNo"/>
+    <result column="bas_adr" property="basicAddress"/>
+    <result column="det_adr" property="detailAddress"/>
+    <result column="path" property="photoPath"/>
+  </resultMap>
+  
+  <select id="select" resultMap="student-map">
+    select mno, name, email, tel, work, lst_schl, schl_nm, path
+    from memb m inner join stud s on m.mno=s.sno 
+  </select>
+  
+  
+</mapper>
+
+
+
+
+
+
+
+
