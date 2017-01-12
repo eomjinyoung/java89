@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE books SYSTEM "books.dtd">
+
+<!-- 태그 안에 '<' 문자를 넣으면 새로운 태그의 시작으로 인식한다.
+     오류 처리 방법?
+     1) XML에서 내부에 미리 정의된 상수를 사용하는 방법
+        예) &상수명;
+        - XML에서 미리 정의된 상수
+          < ==> &lt;
+          > ==> &gt;
+          & ==> &amp;
+          ' ==> &apos;
+          " ==> &quot;
+     2) 만약 많은 양의 데이터 속에 XML에서 오류를 일으키는 경우, 특별한 태그 사용
+        예) <![CDATA[ 내용 ]]>
+      -->
+<books>
+  <book id='b001' pid='p01' aid='a01'>
+    if (10 &lt; 20) 
+      System.out.println("10 &lt; 20");
+  </book>
+  
+  <!-- 큰 따옴표 안에서 작은 따옴표를 사용할 때는 문제없다. -->  
+  <press id='p01' name="비트'출판'사"/>
+  
+  <!-- 작은 따옴표 안에서 작은 따옴표를 사용할 때는 XML entity referece를 사용해야 한다. -->
+  <press id='p02' name='비트&apos;출판&apos;사'/>
+  
+  <!-- 작은 따옴표 안에서 큰 따옴표를 사용할 때는 문제없다. -->  
+  <press id='p03' name='비트"출판"사'/>
+  
+  <!-- 큰 따옴표 안에서 큰 따옴표를 사용할 때는 XML entity referece를 사용해야 한다. -->
+  <press id='p04' name="비트&quot;출판&quot;사"/>
+  
+  <author id='a01'>홍길동</author>
+  
+  <!-- 콘텐츠 중간에 &를 넣고 싶다면 XML 엔티티 레퍼런스를 사용하라! -->
+  <author id='a02'>홍&amp;박</author>
+  
+  <!-- > 문자는 그냥 써도 오류가 아니다. 그러나 가능한 XML 엔티티를 사용하라! -->
+  <author id='a03'>10 > 5 ==> 10 &gt; 5</author>  
+  
+  <!-- 콘텐츠 내용에 XML에서는 사용할 수 없는 많은 문자를 포함하고 있다면,
+       일일이 XML 엔티티 레퍼런스를 사용하는 것은 번거롭다.
+       이 경우 특수 태그를 이용하라! 단 속성의 값에는 사용할 수 없다. -->
+  <author id='a04'>
+  <![CDATA[
+    if (a < 20) {
+      System.out.println("a & b");
+    }
+  ]]>
+  </author>
+</books>
+
+
+
+
+
+
+
