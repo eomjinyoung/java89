@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-4.3.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+
+  <context:component-scan base-package="step30.ex3"/>
+  
+  <!-- AOP 필터(Advice) 객체 -->
+  <bean id="myAdvice" class="step30.ex3.MyAdvice"/>
+  
+  <!-- AOP 필터 객체를 어느 위치에 꼽을 것인지 설정 -->
+  <aop:config>
+    
+    <!-- 언제 충고를 실행할 지 설정한다. "관점을 설정하기" -->
+    <aop:aspect id="myAspect" ref="myAdvice">
+    
+      <!-- 필터를 삽입할 위치를 지정한다. -->
+      <aop:pointcut expression="execution(* step30.ex3.Calculator.*(..))" id="calcPoint"/>
+
+      <!-- 필터 실행 순서를 지정한다. -->
+      <!-- 위에서 설정한 위치의 메서드가 실행하기 전에 m1() 메서드가 호출된다. 
+           m1() 호출 전에 파라미터 값을 조회할 수 있다.-->
+      <aop:before method="m1" pointcut-ref="calcPoint"/>
+      
+      <!-- 위에서 설정한 위치의 메서드가 값을 리턴한 후에 m2() 메서드가 호출된다. 
+           완전히 값을 리턴하기 전에 이 메서드에서 리턴 값을 조회할 수 있다.-->
+      <aop:after-returning method="m2" pointcut-ref="calcPoint"/>
+      
+      <!-- 위에서 설정한 위치의 메서드 호출이 완전히 끝난 후에 m3() 메서드가 호출된다. -->
+      <aop:after method="m3" pointcut-ref="calcPoint"/>
+    </aop:aspect>
+  </aop:config>
+  
+</beans>
+
+
+
+
+
+
+

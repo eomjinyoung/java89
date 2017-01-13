@@ -46,6 +46,9 @@ dependencies {
   // 스프링 트랜잭션 라이브러리 가져오기
   compile group: 'org.springframework', name: 'spring-jdbc', version: '4.3.5.RELEASE'
   
+  // AOP 관련 라이브러리 가져오기
+  compile group: 'org.aspectj', name: 'aspectjweaver', version: '1.8.10'
+  
   // 로컬에서 의존 라이브러리 가져오기
   // => JDBC 드라이버 추가
   compile fileTree(dir:'libs', include: '*.jar')
