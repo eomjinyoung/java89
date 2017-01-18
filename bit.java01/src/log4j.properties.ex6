@@ -1,0 +1,13 @@
+#log4j.properties
+log4j.rootLogger=DEBUG, logfile, stdout
+
+log4j.appender.logfile=org.apache.log4j.RollingFileAppender
+log4j.appender.logfile.File=ex6.log
+log4j.appender.logfile.MaxFileSize=1KB
+log4j.appender.logfile.MaxBackupIndex=5
+log4j.appender.logfile.layout=org.apache.log4j.PatternLayout
+log4j.appender.logfile.layout.ConversionPattern=%d [%t] (%F:%L) %-5p %c - %m%n
+
+log4j.appender.stdout=org.apache.log4j.ConsoleAppender
+log4j.appender.stdout.layout=org.apache.log4j.PatternLayout
+log4j.appender.stdout.layout.ConversionPattern=%d [%t] %-5p %c - %m%n
