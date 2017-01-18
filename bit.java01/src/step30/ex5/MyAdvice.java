@@ -15,7 +15,7 @@ public class MyAdvice {
     System.out.println("----------------------");
     System.out.printf("a=%d, b=%d\n", jp.getArgs()[0], jp.getArgs()[1]);
   }
-  
+
   @AfterReturning(value="execution(* step30..Calculator.*(..))", returning="result")
   public void m2(int result) {
     System.out.println("**********************");
