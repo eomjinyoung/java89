@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>javascript</title>
+</head>
+<body>
+<h1>변수와 데이터 타입</h1>
+<pre>
+자바는 정적 타입 바인딩으로 변수를 다룬다.
+- static type binding
+- 변수의 타입이 결정되면 다른 타입으로 바꿀 수 없다.
+
+자바스크립트는 동적 타입 바인딩으로 변수를 다룬다.
+- dynamic type binding
+- 변수에 값을 넣을 때 마다 그 값의 타입으로 바뀐다.
+</pre>
+<script>
+"use strict" 
+
+var v1;
+
+console.log(typeof v1); // typeof 연산자는 변수의 현재 타입명을 출력한다.
+
+v1 = 100;
+console.log(typeof v1); // number
+
+v1 = 3.14; 
+console.log(typeof v1); // number
+
+v1 = true;
+console.log(typeof v1); // boolean
+
+v1 = "홍길동";
+console.log(typeof v1); // string
+
+v1 = '홍길동'; // 자바에서는 문자 한 개를 표현할 때 작은 따옴표를 사용하지만,
+               // 자바스크립트는 모두 문자열로 취급한다.
+               // 즉 큰 따옴표나 작은 따옴표나 같다.
+console.log(typeof v1); // string
+
+v1 = new Object();
+console.log(typeof v1); // object
+
+v1 = null; // 객체가 없음을 지정하는 특별한 상수 값
+console.log(typeof v1); // object
+
+v1 = undefined; // 변수를 type unbinding 시키기
+console.log(typeof v1); // undefined
+
+v1 = NaN; // NaN(Not a Number)는 숫자가 아님을 지정하는 특별한 상수 값 
+console.log(typeof v1); // number
+
+function f1() {}
+v1 = f1; // 함수의 주소를 저장한다.
+console.log(typeof v1); // function 
+
+/* 정리!
+ * 자바스크립트의 데이터 종류
+ * 숫자(number), 문자열(string), 논리 값(boolean), 타입없음(undefined), 
+ * 객체(object), 함수(function)
+ */
+ 
+ /* 동적 타입 바인딩(dynamic type binding)
+  * - 값을 넣을 때 변수의 타입이 결정된다.
+  * - 한 개의 변수로 다양한 타입의 값을 다룰 수 있어서 편리하다.
+  * - 그러나 대형 시스템 개발할 때는 오히려 이런 것이 소스 코드 관리에 방해가 된다.
+  */
+</script>
+</body>
+</html>
+
+
+
+
+
+

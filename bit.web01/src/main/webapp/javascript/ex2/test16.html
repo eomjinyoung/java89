@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>javascript</title>
+</head>
+<body>
+<h1>함수의 주소와 파라미터</h1>
+<pre>
+- 함수를 객체로 다루기 때문에 파라미터 값으로 전달할 수 있다.
+</pre>
+<script>
+"use strict" 
+
+function plus(a, b) {
+	return a + b;
+}
+
+// 함수 주소를 마음 껏 주고 받을 수 있다.
+function compute(a) {
+	console.log(a(1000, 2000));
+}
+
+// 함수의 이름이 곧 함수의 주소를 보관하고 있는 변수이다.
+compute(plus);
+
+</script>
+</body>
+</html>
+
+
+
+
+
+

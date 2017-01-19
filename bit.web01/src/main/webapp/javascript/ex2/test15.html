@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>javascript</title>
+</head>
+<body>
+<h1>함수의 주소</h1>
+<pre>
+- 함수를 객체로 다루기 때문에
+  함수 주소를 주고 받을 수 있다.
+- 일반 변수에 함수 주소를 저장하면 그 변수를 함수처럼 사용할 수 있다. 
+</pre>
+<script>
+"use strict" 
+
+function plus(a, b) {
+	return a + b;
+}
+
+// 함수도 객체이기 때문에 함수 주소를 다른 변수에 저장할 수 있다.
+// 그러면 그 변수를 함수처럼 사용한다.
+var ok = plus;
+
+console.log(ok(100, 200));
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
