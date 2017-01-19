@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>javascript</title>
+</head>
+<body>
+<h1>함수의 호이스팅(hoisting)</h1>
+<pre>
+- 함수 선언은 위치에 상관없이 맨 위로 끌어 올려져서 먼저 실행된다. 
+- 단, 익명 함수는 예외이다. 왜? 할당연산자(=) 때문이다.
+</pre>
+<script>
+"use strict" 
+
+
+// 비록 plus() 함수가 아래에 선언되었다 할지라도 호출 가능!
+// 이유? console.log()를 실행하기 전에 끌어올려졌기 때문이다.
+console.log(typeof plus);
+console.log(plus(10, 20)); // OK!
+
+// minus는 변수 선언만 위로 끌어올려졌고,
+// 할당연산자의 오른쪽에 있는 익명 함수 선언은 
+// 그 줄을 실행할 때 비로서 선언되기 때문에 끌어올려지지 않는다.
+console.log(typeof minus);
+console.log(minus(10, 20)); // minus 변수에 아무것도 할당되지 않았기 때문에, 오류!
+
+function plus(a, b) {  // 이렇게 선언된 함수는 맨 위로 올라간다.
+	return a + b;
+}
+
+var minus = function(a, b) {
+	return a - b;
+}
+
+
+</script>
+</body>
+</html>
+
+
+
+
+
+

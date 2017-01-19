@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>javascript</title>
+</head>
+<body>
+<h1>함수 내장 변수 - arguments</h1>
+<pre>
+- 함수에 넘어오는 아규먼트를 저장하는 내장 배열 변수가 있다.
+- 함수에 선언된 파라미터 개수와 상관없이 모든 아규먼트 값이 
+  arguments 배열에 저장된다.
+</pre>
+<script>
+"use strict"
+
+function print(name1, name2) { // name은 파라미터이다.
+  console.log(name1, name2);
+  console.log("배열개수 =", arguments.length)
+  for (var i = 0; i < arguments.length; i++) {
+	  console.log(i, arguments[i]);
+  }
+}
+
+print("홍길동"); 
+console.log("-----------------");
+
+print(); // 실행 OK!
+console.log("-----------------");
+
+print("임꺽정", "유관순"); // OK
+console.log("-----------------");
+
+print("aaa", "bbb", "ccc", "ddd"); // OK
+console.log("-----------------");
+
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+

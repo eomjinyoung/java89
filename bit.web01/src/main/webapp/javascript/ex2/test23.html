@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>javascript</title>
+</head>
+<body>
+<h1>script 태그와 예외 발생!</h1>
+<pre>
+- script 태그를 실행하다가 예외가 발생하면?
+</pre>
+<script>
+"use strict"
+
+console.log(plus(10, 20));  // plus() 함수가 없기 때문에 오류 발생!
+
+// 자바스크립트를 실행하다가 예외가 발생하면 즉시 다음 코드의 실행을 멈추가 
+// 현재 script 태그를 나간다.
+// 물론 다음 script 태그는 정상 실행한다.
+console.log("첫 번째 script 태그"); // 위에서 예외 발생. 따라서 이 문장 실행안함.
+</script>
+
+<script>
+"use strict" 
+
+console.log("두 번째 script 태그");
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>javascript</title>
+</head>
+<body>
+<h1>script 태그와 변수의 사용 범위</h1>
+<pre>
+- 웹브라우저의 탭 당 한 개의 window 객체가 존재한다.
+- script 태그에서 글로벌 변수나 메서드를 만들면 window 객체에 소속된다.
+- 따라서 앞 쪽 script 태그에서 선언한 글로벌 변수와 함수는 
+  뒤 쪽 script 태그에서 사용할 수 있다.
+</pre>
+<script>
+"use strict" 
+
+function plus(a, b) {  // 이렇게 선언된 함수는 맨 위로 올라간다.
+	return a + b;
+}
+
+var minus = function(a, b) {
+	return a - b;
+}
+</script>
+
+<script>
+"use strict"
+
+console.log(window.plus(10, 20)); 
+console.log(window.minus(10, 20));
+</script>
+</body>
+</html>
+
+
+
+
+
+

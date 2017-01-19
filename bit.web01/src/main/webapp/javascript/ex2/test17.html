@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>javascript</title>
+</head>
+<body>
+<h1>함수의 주소와 리턴</h1>
+<pre>
+- 함수를 객체로 다루기 때문에 리턴 할 수 있다.
+</pre>
+<script>
+"use strict" 
+
+function createOperation(op) {
+	switch(op) {
+	case "plus":
+		return plus;
+	case "minus":
+		return minus;
+	default:
+		return null;
+	}
+	
+	function plus(a, b) {
+		return a + b;
+	}
+	
+	function minus(a, b) {
+		return a - b;
+	}
+}
+
+var p = createOperation("plus"); // plus() 함수 주소를 리턴할 것이다.
+console.log(p(10, 20));
+
+var m = createOperation("minus"); // minus() 함수 주소를 리턴할 것이다.
+console.log(m(10, 20));
+</script>
+</body>
+</html>
+
+
+
+
+
+

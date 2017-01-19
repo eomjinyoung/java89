@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>javascript</title>
+</head>
+<body>
+<h1>함수와 window 객체</h1>
+<pre>
+- 함수의 이름이 변수라고 하였다!
+- 글로벌 변수는 window 객체에 저장된다고 하였다.
+</pre>
+<script>
+"use strict" 
+
+function plus(a, b) {  // 이렇게 선언된 함수는 맨 위로 올라간다.
+	return a + b;
+}
+
+var minus = function(a, b) {
+	return a - b;
+}
+
+console.log(window.plus(10, 20)); 
+console.log(window.minus(10, 20));
+
+// 참고!
+alert("okok");
+window.alert("nono");
+
+</script>
+</body>
+</html>
+
+
+
+
+
+

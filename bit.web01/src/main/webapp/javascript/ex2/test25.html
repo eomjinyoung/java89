@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>javascript</title>
+</head>
+<body>
+<h1>함수의 파라미터와 아규먼트</h1>
+<pre>
+- 파라미터는 변수이다.
+- 아규먼트는 변수에 전달하는 값이다.
+- 함수를 호출할 때 파라미터의 개수와 상관없이 아규먼트를 전달할 수 있다.
+</pre>
+<script>
+"use strict"
+
+function print(name) { // name은 파라미터이다.
+	console.log(name);
+}
+
+// 자바스크립트는 오버로딩 불가하다!
+// 왜? 같은 이름을 가진 함수를 선언하면 이전에 선언된 함수를 덮어쓴다.
+// 왜? 자바의 map 객체에 값을 넣는 방식으로 동작하기 때문이다.
+//    map.put("print", 값1);
+//    map.put("print", 값2); <--- 기존의 값1을 대체한다.
+//
+function print(name1, name2) { // name은 파라미터이다.
+  console.log(name1, name2);
+}
+
+print("홍길동"); // "홍길동"은 name 파라미터에 전달하는 아규먼트(값)이다.
+
+print(); // 실행 OK!
+print("임꺽정", "유관순"); // OK
+print("aaa", "bbb", "ccc", "ddd"); // OK
+
+
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
