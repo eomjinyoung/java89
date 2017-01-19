@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>javascript</title>
+</head>
+<body>
+<h1>strict 모드에서 변수 선언하는 방법</h1>
+<pre>
+strict 모드에서 변수 선언
+- var 변수명 = 값;
+- window.변수명 = 값;
+</pre>
+<script>
+"use strict" // 이렇게 반드시 script 태그의 첫 부분에 선언해야 한다.
+
+// window를 정확히 적으면 var를 적을 필요가 없다.
+window.v1 = 100;
+
+// window를 적지 않는다면 var을 붙여야 한다.
+var v2;
+v2 = 200;
+
+//v3 = 300; // window를 붙이지 않았을 때, var을 안 붙이면 오류!
+
+console.log(window.v1, window.v2);
+
+</script>
+</body>
+</html>
+
+
+
+
+

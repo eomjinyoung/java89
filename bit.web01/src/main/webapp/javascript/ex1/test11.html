@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>javascript</title>
+</head>
+<body>
+<h1>변수와 블록 II</h1>
+<pre>
+자바스크립트의 변수 범위는,
+- 함수 밖에 선언하는 글로벌 변수
+- 함수 안에 선언하는 로컬 변수
+이렇게 두 개의 범위만 있다.
+</pre>
+<script>
+"use strict" 
+
+function f1() {
+  var v1 = 100;
+  { 
+    var v2 = 200; // 자바스크립트는 블록 범위를 제공하지 않는다.
+  }
+  console.log(v1, v2); // v1, v2 모두 OK!
+}
+
+f1();
+</script>
+</body>
+</html>
+
+
+
+
+
+

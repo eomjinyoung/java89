@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>javascript</title>
+</head>
+<body>
+<h1>변수</h1>
+<pre>
+자바스크립트의 변수는 두 종류로 나뉜다.
+1. 객체의 프로퍼티
+2. 함수의 로컬 변수
+</pre>
+<script>
+// 객체 프로퍼티 : v1
+window.v1 = 200;
+
+// 함수의 로컬 변수 : v2, v3
+function f1(v2) {
+	v3 = v2 * 100;
+	console.log(v1, v2, v3);
+}
+
+// 함수 호출
+f1(window.v1);
+</script>
+</body>
+</html>
+
+
+
+
+

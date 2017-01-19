@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>javascript</title>
+</head>
+<body>
+<h1>변수 선언 호이스팅(hoisting)</h1>
+<pre>
+변수 선언 문은 자바스크립트를 실행하기 전에 맨 위로 끌어 올려져 가장 먼저 실행된다.
+</pre>
+<script>
+"use strict" 
+
+var v1;
+v1 = 100;
+
+v2 = 200;
+var v2; // 변수 선언은 그 위치에 상관없이 맨 위로 끌어 올려져 먼저 실행된다.
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
