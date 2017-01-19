@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>javascript</title>
+<script>
+window.alert("Hello1"); // 메시지 창을 닫기 전까지 리턴하지 않는다.
+console.log("1111"); // 웹브라우저 콘솔 창으로 출력한다.
+</script>
+
+<script>
+window.alert("Hello2");
+console.log("2222"); 
+</script>
+</head>
+<body>
+<script>
+window.alert("Hello3");
+console.log("3333"); 
+</script>
+<h1>script 태그 실행 순서</h1>
+<p>
+script 태그가 선언된 순서대로 실행한다.<br>
+실행이 완료될 때까지 다음 태그는 기다린다.<br>
+실행 중간에 예외가 발생하면 script 태그를 나온다. 즉시 다음을 실행한다.<br>
+</p>
+<script>
+window.alert("Hello4");
+console.log("4444");
+</script>
+</body>
+</html>

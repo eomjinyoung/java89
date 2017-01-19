@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>javascript</title>
+</head>
+<body>
+<h1>script 태그 적정 위치</h1>
+<pre>
+예전에는 head 태그 안에 두었다.
+요즘은 body 태그 끝에 둔다.
+이유?
+- 요즘은 웹 화면이 매우 복잡해졌다. 
+- 따라서 자바스크립트의 코드 양이 증가하였다.
+- HTML 페이지의 앞 부분에 위치하면, 
+  그 자바스크립트를 처리하는 동안 빈 화면을 오랫동안 출력할 것이다.
+- 화면 출력을 빨리하고 싶다면,
+  body 태그의 끝에 두어라!
+</pre>
+<script>
+window.alert("body 태그 끝나는 지점에 script태그를 둔다.");
+</script>
+</body>
+</html>
