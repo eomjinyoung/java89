@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>javascript</title>
+</head>
+<body>
+<h1>객체에 프로퍼티 추가 및 꺼내기</h1>
+<pre>
+- 자바스크립트 객체는 자바의 맵 객체처럼 사용한다.
+- 기본 설계도가 없기 때문에 임의의 프로퍼티를 추가하거나 꺼낼 수 있다.
+</pre>
+<script>
+"use strict"
+
+var obj1 = new Object();
+obj1.name = "홍길동";
+obj1["name2"] = "홍길동2";
+obj1['name3'] = "홍길동3";
+
+console.log(obj1);
+
+// 프로퍼티 명에 공백이나 특수 문자를 포함한 경우 점(.) 방식으로 프로퍼티를 추가할 수 없다.
+//obj1.first name = "길동"; // 오류!
+//obj1.last ^^ = "홍"; // 오류!
+obj1["first name"] = "길동";
+obj1["last ^^"] = "홍";
+console.log(obj1);
+
+Object.defineProperty(obj1, "name4", {value:"홍길동4"});
+
+//객체 프로퍼티 값 꺼내기
+console.log(obj1.name);
+console.log(obj1['name2']);
+console.log(obj1["name3"]);
+console.log(obj1.name4);
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+

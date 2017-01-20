@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>javascript</title>
+</head>
+<body>
+<h1>객체에 변수와 함수 추가하기 I</h1>
+<pre>
+- 자바스크립트 객체 생성 단축 표기법을 사용하여 변수와 함수를 추가한다.
+</pre>
+<script>
+"use strict"
+
+var calc = new Object();
+calc.result = 0;
+calc.plus = function(value) {
+	//같은 객체에 소속된 변수를 사용할 때는 반드시 this를 붙인다. 생략불가!
+  this.result += value; // result = result + value
+};
+calc.minus = function(value) {
+	this.result -= value; // result = result - value
+};
+
+calc.plus(10);
+calc.plus(33);
+calc.minus(15);
+console.log(calc.result);
+
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+

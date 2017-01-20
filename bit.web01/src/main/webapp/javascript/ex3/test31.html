@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>javascript</title>
+</head>
+<body>
+<h1>JSON 방식으로 객체에 함수 추가하기</h1>
+<pre>
+- 자바스크립트 객체 생성 단축 표기법을 사용하여 함수를 추가할 수 있다.
+</pre>
+<script>
+"use strict"
+
+var obj1 = {
+	plus: function(a, b) {
+		  return a + b; 
+	},
+	"minus": function(a, b) {
+		  return a - b;
+	},
+	'multiple': multiple
+};
+
+// 함수 호출
+console.log( obj1.plus(10, 20) );
+console.log( obj1["minus"](10, 20) );
+console.log( obj1['multiple'](10, 20) );
+
+// 이렇게 script 태그에 바로 선언하는 함수는 window 객체에 소속된다. 
+function multiple(a, b) {
+	return a * b;
+}
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+

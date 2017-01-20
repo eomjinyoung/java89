@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>javascript</title>
+</head>
+<body>
+<h1>객체 생성</h1>
+<pre>
+- 자바스크립트에서 객체는 프로토타입 방식으로 생성한다.
+- 즉 기본 객체를 생성한 후 프로퍼티를 추가하는 방식.
+- 자바와 달리 class라는 설계도 없다.
+- 자바와 비교한다면 Map 객체와 유사하다.
+</pre>
+<script>
+"use strict"
+
+var obj1 = new Object();
+
+var obj2 = {}; // 위 방식의 단축 문법. JavaScript Object Notation(JSON).
+
+// obj1과 obj2는 기본 프로퍼티(변수와 함수)를 포함하고 있다.
+
+
+var obj3 = Object.create(null); // 완전 빈 객체 생성
+
+var obj4 = Object.create({}); // obj1이나 obj2처럼 기본 프로퍼티를 포함한 객체를 생성할 수 있다.
+
+console.log(obj1);
+console.log(obj2);
+console.log(obj3);
+console.log(obj4);
+</script>
+
+</body>
+</html>
+
+
+
+
+
+

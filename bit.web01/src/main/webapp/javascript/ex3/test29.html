@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>javascript</title>
+</head>
+<body>
+<h1>객체에 함수 추가 및 호출하기</h1>
+<pre>
+- 자바스크립트에서 함수도 프로퍼티이다.
+- 사용방법은 같다.
+</pre>
+<script>
+"use strict"
+
+var obj1 = new Object();
+obj1.plus = function(a, b) {
+	return a + b;	
+};
+obj1.minus = function(a, b) {
+	return a - b;
+};
+obj1.multiple = multiple; // obj1.프로퍼티명 = 함수명;
+
+// 함수 호출
+console.log( obj1.plus(10, 20) );
+console.log( obj1["minus"](10, 20) );
+console.log( obj1['multiple'](10, 20) );
+
+
+
+// 이렇게 script 태그에 바로 선언하는 함수는 window 객체에 소속된다. 
+function multiple(a, b) {
+	return a * b;
+}
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
