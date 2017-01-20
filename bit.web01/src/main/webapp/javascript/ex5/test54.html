@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>javascript</title>
+</head>
+<body>
+<h1>DOM API 사용 - 속성 추가하기</h1>
+<pre>
+- 개발자가 HTML을 제어할 용도로 새 속성을 추가할 때는
+  다음과 같은 규칙으로 속성명을 작성하라! (규칙이 아니라 권고사항이다.)
+  => data-속성명
+- 해당 태그에 이미 존재하는 속성이라면 다음과 같이 속성을 추가할 수 있다.
+  => 태그객체.속성명 = 값;
+  => 태그객체["속성명"] = 값;
+- 해당 태그에 존재하지 않는 속성을 추가하려면 위와 같이 할 수 없다.
+  다음과 같이 함수를 호출해야 한다.
+  => 태그객체.setAttribute("새속성명", "값");
+</pre>
+
+<h1 id="header01">제목1<a href='http://www.daum.net'>다음...</a></h1>
+<h1 id="header02">제목2<a href='http://www.daum.net'>다음...</a></h1>
+<h1 id="header03">제목3<a href='http://www.daum.net'>다음...</a></h1>
+<h1 id="header04">제목4<a href='http://www.daum.net'>다음...</a></h1>
+<h1 id="header05">제목5<a href='http://www.daum.net'>다음...</a></h1>
+
+<script>
+"use strict"
+
+var tagId = window.prompt("아이디를 입력하세요.");
+
+var e = document.getElementById(tagId);
+
+// 찾은 태그에 속성을 추가하자!
+e["style"] = "background-color: blue"; // 기존에 존재하는 속성 추가
+//e["data-test"] = "오호라..."; // 새 속성 추가 => 안된다.
+e.setAttribute("data-test", "오호라..."); // 새 속성을 추가할 때는 이 메서드를 호출해야 한다.
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+

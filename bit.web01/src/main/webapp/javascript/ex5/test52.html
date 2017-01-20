@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>javascript</title>
+</head>
+<body>
+<h1>DOM API 사용 - 내용 바꾸기</h1>
+<pre>
+- textContent 속성 : 콘텐츠에 HTML 태그가 있더라도 무시하고 일반 텍스트 취급한다.
+- innnerHTML 속성  : 콘텐츠에 HTML 태그가 있으면 해석하여 처리한다.  
+</pre>
+
+<h1 id="header01">제목1</h1>
+<h1 id="header02">제목2</h1>
+<h1 id="header03">제목3</h1>
+<h1 id="header04">제목4</h1>
+<h1 id="header05">제목5</h1>
+
+<script>
+"use strict"
+
+var tagId = window.prompt("아이디를 입력하세요.");
+var tagContent = window.prompt("태그의 내용을 입력하세요.");
+
+var e = document.getElementById(tagId);
+
+// 찾은 태그의 콘텐츠를 변경한다.
+//e.textContent = tagContent;
+e.innerHTML = tagContent;
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
