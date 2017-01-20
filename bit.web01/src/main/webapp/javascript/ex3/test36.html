@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>javascript</title>
+</head>
+<body>
+<h1>객체 생성할 때 함수 중복 문제 II</h1>
+<pre>
+- 자바스크립트 객체를 여러 개 생성할 때,
+  매번 같은 코드를 가진 함수를 선언하면 메모리가 낭비된다.
+- 코딩이 번거롭다.  
+</pre>
+<script>
+"use strict"
+
+var s1 = {
+	name: "홍길동",
+	age: 20,
+	kor: 100,
+	eng: 100,
+	math: 100,
+	sum: function() {
+		return this.kor + this.eng + this.math;
+	},
+	aver: function() {
+		return this.sum() / 3;
+	}
+};
+
+var s2 = {
+  name: "임꺽정",
+  age: 22,
+  kor: 90,
+  eng: 90,
+  math: 90,
+  sum: function() {
+    return this.kor + this.eng + this.math;
+  },
+  aver: function() {
+    return this.sum() / 3;
+  }
+};
+
+console.log(s1.name, s1.sum(), s1.aver());
+console.log(s2.name, s2.sum(), s2.aver());
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+

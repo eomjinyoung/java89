@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>javascript</title>
+</head>
+<body>
+<h1>객체 생성할 때 함수 중복 문제 I</h1>
+<pre>
+- 자바스크립트 객체를 여러 개 생성할 때,
+  매번 같은 코드를 가진 함수를 선언하면 메모리가 낭비된다.
+- 코딩이 번거롭다.
+   
+</pre>
+<script>
+"use strict"
+
+var calc1 = {
+	"result": 0,
+	"plus": function(value) {
+	  this.result += value; // result = result + value
+	},
+	"minus": function(value) {
+		  this.result -= value; // result = result - value
+	}
+};
+
+var calc2 = {
+  "result": 0,
+  "plus": function(value) {
+    this.result += value; // result = result + value
+  },
+  "minus": function(value) {
+      this.result -= value; // result = result - value
+  }
+};
+
+calc1.plus(10);
+calc2.plus(100);
+
+calc1.plus(33);
+calc2.minus(50);
+
+calc1.minus(15);
+calc2.minus(30);
+
+console.log(calc1.result);
+console.log(calc2.result);
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+

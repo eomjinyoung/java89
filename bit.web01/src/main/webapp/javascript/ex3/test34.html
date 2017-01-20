@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>javascript</title>
+</head>
+<body>
+<h1>객체에 변수와 함수 추가하기 III</h1>
+<pre>
+- 자바스크립트 객체 생성 단축 표기법을 사용하여 변수와 함수를 추가한다.
+</pre>
+<script>
+"use strict"
+
+var student = {
+	name: "홍길동",
+	age: 20,
+	kor: 100,
+	eng: 100,
+	math: 100,
+	sum: function() {
+		return this.kor + this.eng + this.math;
+	},
+	aver: function() {
+		return this.sum() / 3;
+	}
+};
+
+console.log(student.sum(), student.aver());
+
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
