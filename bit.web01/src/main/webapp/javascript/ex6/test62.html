@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>javascript</title>
+</head>
+<body>
+<h1>이벤트 처리 - 이벤트 등록 II</h1>
+<pre>
+1) onxxx 이름으로 이벤트 리스너(핸들러) 등록하기
+   => onxxx 이름은 이벤트 별로 미리 정의되어 있다.
+   => 이벤트가 발생하면 자바스크립트 엔진은 그 이벤트에 대한 함수가 등록되었는지 
+      조사하여 등록되어 있을 때 호출한다.
+   => 단점은 이벤트 리스너를 오직 한 개만 등록할 수 있다.
+   
+2) addEventListener(이벤트명, 함수)를 호출하여 이벤트 리스너를 등록하기
+   => 이 방식의 장점은 이벤트 리스너를 여러 개 등록할 수 있다.   
+   => MS IE 브라우저의 경우 버전 9부터 지원한다.
+      => 이전 버전은 메서드명이 다르다. attachEvent()/detachEvent()
+      => MS IE8 이하 버전에서도 동작하게 하려면 조건문으로 검사해서
+         추가 코드를 작성해야 한다.
+      
+3) HTML 태그의 속성에 자바스크립트 코드를 직접 넣는 방식
+   => 간단히 처리할 때 좋다.
+   => 그러나 HTML과 자바스크립트 코드가 뒤섞이기 때문에
+      나중에 유지보수 할 때 소스코드 가독성이 떨어진다.
+      
+</pre>
+
+<button id="btn1" type="button">버튼1</button>
+
+<script>
+"use strict"
+
+// 버튼을 눌렀을 때 발생되는 이벤트 : click 이벤트 처리
+var btn1 = document.querySelector('#btn1'); 
+
+// 주의! 첫 번째 파라미터는 onxxxx가 아니라 이벤트 이름이어야 한다.
+// 클릭 이벤트의 경우, "click" 이라는 이름을 사용한다. "onclick" 아니다!
+btn1.addEventListener("click", function() {  // 이벤트 파라미터를 사용할 일이 없다면, 생략하라!
+  alert("리스너11111");
+});
+
+btn1.addEventListener("click", function() {
+  alert("리스너22222");
+});
+
+btn1.addEventListener("click", function() {
+  alert("리스너33333");
+});
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
