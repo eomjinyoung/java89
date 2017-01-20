@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>javascript</title>
+</head>
+<body>
+<h1>웹브라우저 내장(built-in) 객체 - window.history</h1>
+<pre>
+- window 
+  각각의 탭마다 제공된다. 해당 탭의 윈도우 정보를 다룰 때 사용하는 객체이다.
+- window.location
+  현재 탭에서 출력하는 페이지의 URL 정보를 다룰 때 사용하는 객체이다.
+- window.history
+  사용자가 페이지 이동한 정보를 다룰 때 사용하는 객체이다.     
+- window.navigator
+  웹 브라우저 정보를 다룰 때 사용하는 객체이다.
+- window.screen
+  페이지를 출력하는 화면 정보를 다룰 때 사용하는 객체이다.
+
+</pre>
+
+<!-- history 객체의 back(), go() 함수를 이용하여 페이지를 이동할 때, 
+     그 페이지가 캐시된 경우에는 서버에서 새로 받지 않고 캐시된 것을 로딩한다.
+     그래서 주의해야 한다. 무조건 서버에서 새 페이지를 받고 싶다면,
+     location.href를 사용하라! -->
+<button type="button" onclick="history.back()">이전 페이지</button>
+<button type="button" onclick="history.go(-3)">이전으로 세번 이동</button>
+
+<script>
+"use strict"
+</script>
+
+</body>
+</html>
+
+
+
+
+
+

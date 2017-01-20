@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>javascript</title>
+</head>
+<body>
+<h1>웹브라우저 내장(built-in) 객체 - window.location</h1>
+<pre>
+- window 
+  각각의 탭마다 제공된다. 해당 탭의 윈도우 정보를 다룰 때 사용하는 객체이다.
+- window.location
+  현재 탭에서 출력하는 페이지의 URL 정보를 다룰 때 사용하는 객체이다.
+- window.history
+  사용자가 페이지 이동한 정보를 다룰 때 사용하는 객체이다.     
+- window.navigator
+  웹 브라우저 정보를 다룰 때 사용하는 객체이다.
+- window.screen
+  페이지를 출력하는 화면 정보를 다룰 때 사용하는 객체이다.
+
+</pre>
+<script>
+"use strict"
+
+// 페이지 이동하기 
+window.alert("깃허브 홈페이지로 이동하겠습니다.");
+window.location.href = "http://www.github.com";
+// 주의! 
+// 특히 모바일에서 화면이동할 때 location.href를 이용하여 이동하라!
+// a 태그를 이용하여 이동하면, 이전에 방문한 페이지인 경우, 
+// 캐시 메모리에 임시 보관된 페이지를 띄우게 된다.
+// 그러나 location.href는 무조건 서버에서 받은 페이지를 띄운다.
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>javascript</title>
+</head>
+<body>
+<h1>웹브라우저 내장(built-in) 객체 - window.navigator</h1>
+<pre>
+- window 
+  각각의 탭마다 제공된다. 해당 탭의 윈도우 정보를 다룰 때 사용하는 객체이다.
+- window.location
+  현재 탭에서 출력하는 페이지의 URL 정보를 다룰 때 사용하는 객체이다.
+- window.history
+  사용자가 페이지 이동한 정보를 다룰 때 사용하는 객체이다.     
+- window.navigator
+  웹 브라우저 정보를 다룰 때 사용하는 객체이다.
+- window.screen
+  페이지를 출력하는 화면 정보를 다룰 때 사용하는 객체이다.
+
+</pre>
+
+<script>
+"use strict"
+
+console.log(window.navigator);
+console.log(window.navigator.userAgent);
+
+if (navigator.userAgent.indexOf("Chrome") >= 0) {
+	alert('크롬 브라우저입니다.');
+	
+} else if (navigator.userAgent.indexOf("Safari") >= 0) {
+	alert('사파리 브라우저입니다.');
+	
+} else if (navigator.userAgent.indexOf("Firefox") >= 0) {
+	alert('파이어폭스 브라우저입니다.');
+}
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
