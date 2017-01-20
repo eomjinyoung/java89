@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>javascript</title>
+<style type="text/css">
+body {
+  font-family: '맑은 고딕', sans-serif;
+}
+#sidemenu {
+  color: white;
+  padding: 10px 5px;
+  float: left;
+  margin: 5px 5px 5px 0px;
+}
+#sidemenu a {
+  color: white;
+  text-decoration: none;
+}
+#content {
+  margin-left: 200px;
+}
+#footer {
+  clear: left;
+}
+</style>
+</head>
+<body>
+<h1>DOM API 사용 - CSS 셀렉터를 이용하여 태그 찾기</h1>
+<pre>
+- 태그를 정교하게 찾고 싶다면, CSS 셀렉터 명령을 사용하라!
+- document.querySelector(CSS 셀렉터 명령)
+  => 리턴 값은 한 개의 엘리먼트이다.
+  => 만약 여러 개를 찾았다면 그 중에 0번째 태그만 리턴한다.
+  
+- document.querySelectorAll(CSS 셀렉터 명령)
+  => 리턴 값은 HTMLCollection이다.
+  => 여러 개를 찾을 때 사용하라!
+</pre>
+
+<hr>
+
+<div id='header' style='background-color:gray; height:40px;position:relative;'>
+  <div style='width:300px; height:38px; position:absolute; left:0px; top:0px;'>
+    <img src='../image/logo.jpeg'  height='30' style='float:left; margin-top:6px; margin-left:6px;'>
+    <div style='color:white; font-weight:bold; margin-left:60px; padding-top:7px; font-family:돋움체,sans-serif; font-size:x-large;'>교육센터관리시스템</div>
+  </div>
+
+  <div style='height:30px; float:right; margin:5px;'>
+  
+<img src='../upload/1483080819062_0' height='30' style='vertical-align:middle;'>
+    <span>학생1</span>
+    <a href='../auth/logout.do'>로그아웃</a>
+</div>
+
+</div>
+
+
+<div id='sidemenu' style='background-color:Navy; width:180px; height:400px;'>
+<ul>
+  <li><a href="../student/list.do">학생관리</a></li>
+  <li><a href="../manager/list.do">운영자관리</a></li>
+  <li><a href="../teacher/list.do">강사관리</a></li>
+</ul>
+</div><div id="content">
+<h1>학생 정보</h1>
+<a href='form.do'>추가</a><br>
+<table border='1'>
+<tr>
+  <th>회원번호</th>
+  <th>이름</th>
+  <th>전화</th>
+  <th>재직</th>
+  <th>최종학력</th>
+  <th>학교명</th>
+</tr>
+
+<tr> 
+  <td>1</td>
+  <td><a href='detail.do?memberNo=1'>학생1</a></td>
+  <td>1111-1111</td>
+  <td>true</td>
+  <td>학사</td>
+  <td>비트대학교</td>
+</tr>
+<tr> 
+  <td>2</td>
+  <td><a href='detail.do?memberNo=2'>학생2</a></td>
+  <td>1111-1111</td>
+  <td>true</td>
+  <td>학사</td>
+  <td>한국대학교</td>
+</tr>
+<tr> 
+  <td>3</td>
+  <td><a href='detail.do?memberNo=3'>학생3</a></td>
+  <td>1111-1111</td>
+  <td>true</td>
+  <td>학사</td>
+  <td>하버드대학교</td>
+</tr>
+<tr> 
+  <td>4</td>
+  <td><a href='detail.do?memberNo=4'>학생4</a></td>
+  <td>1111-1111</td>
+  <td>false</td>
+  <td>고졸</td>
+  <td>비트고등학교</td>
+</tr>
+<tr> 
+  <td>5</td>
+  <td><a href='detail.do?memberNo=5'>학생5</a></td>
+  <td>1111-1111</td>
+  <td>false</td>
+  <td>고졸</td>
+  <td>성남고등학교</td>
+</tr>
+<tr> 
+  <td>6</td>
+  <td><a href='detail.do?memberNo=6'>학생6</a></td>
+  <td>1111-1111</td>
+  <td>true</td>
+  <td>고졸</td>
+  <td>부산고등학교</td>
+</tr>
+<tr> 
+  <td>7</td>
+  <td><a href='detail.do?memberNo=7'>학생7</a></td>
+  <td>1111-1111</td>
+  <td>true</td>
+  <td>학사</td>
+  <td></td>
+</tr>
+<tr> 
+  <td>8</td>
+  <td><a href='detail.do?memberNo=8'>학생8</a></td>
+  <td>1111-1111</td>
+  <td>false</td>
+  <td>학사</td>
+  <td></td>
+</tr>
+<tr> 
+  <td>9</td>
+  <td><a href='detail.do?memberNo=9'>학생9</a></td>
+  <td>1111-1111</td>
+  <td>true</td>
+  <td>석사</td>
+  <td>비트대학원</td>
+</tr>
+<tr> 
+  <td>10</td>
+  <td><a href='detail.do?memberNo=10'>학생10</a></td>
+  <td>1111-1111</td>
+  <td>false</td>
+  <td>박사</td>
+  <td>성남대학원</td>
+</tr>
+<tr> 
+  <td>36</td>
+  <td><a href='detail.do?memberNo=36'>학생51</a></td>
+  <td>1</td>
+  <td>true</td>
+  <td>고졸</td>
+  <td>비트고등학교</td>
+</tr>
+<tr> 
+  <td>44</td>
+  <td><a href='detail.do?memberNo=44'>사용자107ㅌ</a></td>
+  <td>ㄴㅇㄹㅌ</td>
+  <td>false</td>
+  <td>고졸</td>
+  <td>ㄴㅇ</td>
+</tr>
+<tr> 
+  <td>50</td>
+  <td><a href='detail.do?memberNo=50'>test15</a></td>
+  <td>1</td>
+  <td>false</td>
+  <td>고졸</td>
+  <td>1</td>
+</tr>
+<tr> 
+  <td>51</td>
+  <td><a href='detail.do?memberNo=51'>test16</a></td>
+  <td>1</td>
+  <td>true</td>
+  <td>석사</td>
+  <td>비트대학원</td>
+</tr>
+<tr> 
+  <td>52</td>
+  <td><a href='detail.do?memberNo=52'>test17x</a></td>
+  <td>111x</td>
+  <td>true</td>
+  <td>박사</td>
+  <td>비트대학원</td>
+</tr>
+<tr> 
+  <td>60</td>
+  <td><a href='detail.do?memberNo=60'>test200</a></td>
+  <td>1</td>
+  <td>true</td>
+  <td>전문학사</td>
+  <td>비트대학</td>
+</tr>
+<tr> 
+  <td>62</td>
+  <td><a href='detail.do?memberNo=62'>test202xxxx</a></td>
+  <td>1x</td>
+  <td>false</td>
+  <td>박사</td>
+  <td>122</td>
+</tr>
+</table></div>
+
+
+<div id='footer' style='background-color:gray; height:20px; margin-top:20px;'>
+<div style='color:white; padding-top:2px; font-family:돋움체,sans-serif; text-align:center; font-weight:lighter;'>
+@2016 비트캠프 자바89기
+</div>
+</div>
+
+
+<script>
+"use strict"
+
+// 사용자로부터 태그명을 입력 받자!
+var selector = window.prompt("태그명을 입력하세요.");
+
+// DOM Tree에서 테이블 안에 있는 a 태그를 찾기
+var el = document.querySelectorAll(selector)
+
+// 찾은 태그 목록을 출력
+console.log(el);
+
+// 찾은 태그의 테두리를 빨간색으로 표시한다.
+for (var i = 0; i < el.length; i++) {
+	el[i].style = 'background-color: red;';
+}
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
