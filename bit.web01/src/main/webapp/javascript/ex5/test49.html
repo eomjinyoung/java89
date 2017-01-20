@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>javascript</title>
+</head>
+<body>
+<h1>DOM API 사용 - ID로 태그 찾기</h1>
+<pre>
+- DOM(Document Object Model) API는 웹브라우저에서 생성한 태그를 다룰 때 사용한다.
+- 웹브라우저는 HTML을 읽을 때 다음의 절차에 따라 화면을 준비한다.
+  1) HTML을 해석한다.
+  2) 웹브라우저 메모리에 DOM Tree 구축
+     - 각 태그를 자바스크립트 객체로 만들어 트리 구조로 구성한 것. 
+  3) 렌더 트리 구축
+     - DOM Tree 중에서 당장 화면에 출력할 태그만 추려 놓은 트리.
+  4) 렌더 트리를 화면에 출력
+</pre>
+
+<h1 id="header01">제목1</h1>
+<h1 id="header02">제목2</h1>
+<h1 id="header03">제목3</h1>
+<h1 id="header04">제목4</h1>
+<h1 id="header05">제목5</h1>
+
+<script>
+"use strict"
+
+// id로 태그 찾기
+// => document 객체를 사용한다.
+// => document 객체? DOM 트리를 다룰 때 사용하는 객체이다.
+
+// 사용자로부터 id 값을 입력 받자!
+var tagId = window.prompt("아이디를 입력하세요.");
+
+// DOM Tree에서 사용자가 입력한 ID와 일치하는 태그를 찾는다.
+var e = document.getElementById(tagId);
+
+// 태그 출력
+console.log(e);
+
+// 찾아서 뭐하게? 해당 태그의 UI제어하려고. 또는 해당 태그의 값을 알아내려고.
+e.style = 'background-color: red';
+alert(e.innerHTML); 
+e.innerHTML = "메롱~~~~";
+alert('잠시만...');
+e.innerHTML = "<a href='http://www.daum.net'>오호라 다음</a>";
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
