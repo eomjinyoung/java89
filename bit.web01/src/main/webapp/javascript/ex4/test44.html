@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>javascript</title>
+</head>
+<body>
+<h1>자바스크립트 내장(built-in) 객체 - 배열 IV</h1>
+<pre>
+- 자바스크립트에서 배열을 다룰 때 Array 객체를 사용할 수 있다.
+</pre>
+<script>
+"use strict"
+
+// 배열 만들기
+var names = ["홍길동", "임꺽정", "유관순", "안중근", "윤봉길", "김구"];
+console.log(names.length);
+
+// 배열 값을 꺼내는 전통적인 방법 - 직접 반복문을 사용하여 값을 꺼낸다.
+for (var i in names) {
+	console.log(i, names[i]);
+}
+console.log("-------------------------");
+
+// 함수를 파라미터로 전달하는 방법
+function forEach(arr, callback) {
+	for (var i in arr) {
+		callback(arr[i], i);
+	}
+}
+
+// 콜백 함수(callback function)란?
+// => 특정 사건에 대해 개발자가 등록한 함수를 호출해주는 것.
+// => 다음 코드 의미
+//    "배열을 반복할 때 마다, 파라미터로 넘긴 함수를 호출하도록 설정!"
+forEach(names, function(value, index) {
+	console.log(index, value);
+});
+console.log("-------------------");
+
+
+// 다행히 자바스크립트 배열에 forEach() 함수가 이미 존재한다.
+// 그럼 위에서 왜 만들었는가? forEach()의 내부 구조를 설명하기 위해!
+names.forEach(function(value, index) {
+	console.log(index, value);
+});
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+

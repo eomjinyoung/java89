@@ -58,6 +58,11 @@ var str5 = new String("hello"); // typeof str5 ==> object
 if (str4 == str5) { // object 타입인 경우 ==은 인스턴스 비교한다.
 	console.log("str4 == str5");
 }
+// String 객체의 내용물을 비교할 때는 "string" 원시 타입으로 비교하라!
+// String 객체로부터 "string" 원시 타입 값을 뽑아내는 방법? valueOf()
+if (str4.valueOf() == str5.valueOf()) { 
+	console.log("str4.valueOf() == str5.valueOf()");
+}
 
 var str6 = "hello"; // typeof str6 ==> string
 var str7 = "hello"; // typeof str7 ==> string

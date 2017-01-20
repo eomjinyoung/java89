@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>javascript</title>
+</head>
+<body>
+<h1>자바스크립트 내장(built-in) 객체 - 배열 II</h1>
+<pre>
+- 자바스크립트에서 배열을 다룰 때 Array 객체를 사용할 수 있다.
+</pre>
+<script>
+"use strict"
+
+// 배열 만들기
+var names = [];
+console.log(names.length);
+
+// 배열에 값 넣기
+names.push("홍길동1");
+names.push("홍길동2");
+names.push("홍길동3");
+console.log(names.length);
+
+printArray(names);
+
+function printArray(arr) {
+	for (var i in arr) {
+		console.log(i, arr[i]);
+	}
+	console.log("-------------------");
+}
+</script>
+
+</body>
+</html>
+
+
+
+
+
+

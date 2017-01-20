@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>javascript</title>
+</head>
+<body>
+<h1>자바스크립트 내장(built-in) 객체 - 배열</h1>
+<pre>
+- 자바스크립트에서 배열을 다룰 때 Array 객체를 사용할 수 있다.
+</pre>
+<script>
+"use strict"
+
+// 배열 만들기
+var names = ["홍길동", "임꺽정", "유관순"];
+for (var i in names) {
+	console.log(i, names[i]);
+}
+console.log("-------------------");
+
+// 자바의 배열은 같은 타입만 가능하지만, 자바스크립트의 배열은 다른 타입 가능
+// 즉 자바의 ArrayList처럼 사용한다.
+var values = ["홍길동", 20, "임꺽정", 30, "유관순", 15];
+for (var v of values) {
+	console.log(v);
+}
+console.log("-------------------");
+
+// 빈 배열을 만든 후 값 저장
+var values2 = new Array();
+values2.push("홍길동");
+values2.push("임꺽정");
+values2.push("유관순");
+for (var v of values2) {
+	console.log(v);
+}
+console.log("-------------------");
+
+// Array() 함수를 사용하여 빈 배열 생성 후 바로 초기화시키기.
+var values3 = new Array("홍길동", "유관순", "임꺽정");
+for (var v of values3) {
+  console.log(v);
+}
+console.log("-------------------");
+
+	
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
