@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>javascript</title>
+</head>
+<body>
+<h1>DOM API 사용 - 태그 보이기</h1>
+<pre>
+- 처음 화면을 출력할 때 숨겨 두었다가 특정 조건에서 나타나게 한다.  
+</pre>
+
+<h1 id="header01">제목1<a data-no='1' href='http://www.daum.net'>다음...</a></h1>
+<h1 id="header02">제목2<a data-no='2' href='http://www.daum.net'>다음...</a></h1>
+<h1 id="header03">제목3<a data-no='3' href='http://www.daum.net'>다음...</a></h1>
+<h1 id="header04">제목4<a data-no='4' href='http://www.daum.net'>다음...</a></h1>
+<h1 id="header05">제목5<a data-no='5' href='http://www.daum.net'>다음...</a></h1>
+
+<button type="button" onclick="document.getElementById('header03').style.display=''">나와라~~~~~</button>
+
+<script>
+"use strict"
+
+document.getElementById("header03").style.display = "none";
+</script>
+
+</body>
+</html>
+
+
+
+
+
+

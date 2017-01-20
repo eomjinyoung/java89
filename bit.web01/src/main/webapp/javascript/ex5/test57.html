@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>javascript</title>
+</head>
+<body>
+<h1>DOM API 사용 - 태그 생성하기 II</h1>
+<pre>
+1) 생성할 태그를 문자열로 만들어 innerHTML에 저장하기
+2) document.createElement()와 element.appendChild(새태그)를 사용하여 태그 만들기  
+</pre>
+
+<h1 id="header01">제목1<a data-no='1' href='http://www.daum.net'>다음...</a></h1>
+<h1 id="header02">제목2<a data-no='2' href='http://www.daum.net'>다음...</a></h1>
+<h1 id="header03">제목3<a data-no='3' href='http://www.daum.net'>다음...</a></h1>
+<h1 id="header04">제목4<a data-no='4' href='http://www.daum.net'>다음...</a></h1>
+<h1 id="header05">제목5<a data-no='5' href='http://www.daum.net'>다음...</a></h1>
+
+<div id="div1"></div>
+
+<script>
+"use strict"
+
+var e = document.querySelector("#div1");
+alert('잠깐만....');
+// 새 태그 생성
+var table = document.createElement("table");
+table.border = 1;
+var tr = document.createElement("tr");
+var th = document.createElement("th");
+var text = document.createTextNode("컬럼제목");
+table.appendChild(tr);
+tr.appendChild(th);
+th.appendChild(text);
+
+tr = document.createElement("tr");
+var td = document.createElement("td");
+text = document.createTextNode("컬럼내용");
+table.appendChild(tr);
+tr.appendChild(td);
+td.appendChild(text);
+
+e.appendChild(table);
+</script>
+
+</body>
+</html>
+
+
+
+
+
+

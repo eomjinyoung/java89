@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>javascript</title>
+</head>
+<body>
+<h1>DOM API 사용 - 속성값 꺼내기</h1>
+<pre>
+- 해당 태그에 원래 있던 속성이라면 다음과 같이 속성을 지정할 수 있다.
+  => 태그객체.속성명 = 값;
+  => 태그객체["속성명"] = 값;
+- 그러나 해당 태그에 원래 있던 속성이 아니라면, 위의 방법으로 속성 값을 조회할 수 없다.
+  다음과 같이 함수를 호출해야 한다.
+  => 태그객체.getAttribute("속성명");
+</pre>
+
+<h1 id="header01">제목1<a data-no='1' href='http://www.daum.net'>다음...</a></h1>
+<h1 id="header02">제목2<a data-no='2' href='http://www.daum.net'>다음...</a></h1>
+<h1 id="header03">제목3<a data-no='3' href='http://www.daum.net'>다음...</a></h1>
+<h1 id="header04">제목4<a data-no='4' href='http://www.daum.net'>다음...</a></h1>
+<h1 id="header05">제목5<a data-no='5' href='http://www.daum.net'>다음...</a></h1>
+
+<script>
+"use strict"
+
+var selector = window.prompt("CSS 셀렉터를 입력하세요.");
+
+var e = document.querySelector(selector);
+
+// 찾은 엘리먼트 출력
+console.log(e);
+
+// 찾은 태그의 속성 값을 조회한다.
+console.log("href: ",  e.href ); // 조회 가능!
+//console.log( e.data-no ); // 오류! 프로퍼티 이름에 대시(-) 문자를 포함할 수 없다.
+console.log("data-no: ",  e["data-no"]); // 원래 있던 속성이 아니기 때문에 조회 불가능!
+
+console.log("href: ", e.getAttribute("href"));
+console.log("data-no: ", e.getAttribute("data-no"));
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
