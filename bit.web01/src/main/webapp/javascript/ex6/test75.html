@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>javascript</title>
+<style>
+div {
+  border: 1px solid red;
+  padding: 10px;
+  margin: 10px;
+}
+</style>
+</head>
+<body>
+<h1>주요 이벤트 - mouse 이벤트</h1>
+<pre>
+- 마우스 관련 이벤트
+- mouseenter
+  => 마우스 커서가 해당 태그의 영역에 들어올 때 발생한다.
+- mouseover
+  => 마우스 커서가 해당 태그 위에 놓일 때 발생한다.
+  => 자식 태그에 있다가 다시 부모 태그 위로 커서가 이동할 때도 발생한다.
+- mouseleave
+  => 마우스 커서가 해당 태그의 영역에서 벗어날 때 발생한다.
+- mouseout
+  => 마우스 커서가 해당 태그의 보이는 영역에서 벗어날 때 마다 발생한다.
+- mouseup
+  => 마우스 버튼을 뗄 때 발생한다.
+- mousedown
+  => 마우스 버튼을 누를 때 발생한다.
+- mousemove
+  => 마우스 커서를 움직일 때 마다 발생한다.
+</pre>
+
+<h2>mouse 이벤트</h2>
+<div id="d1">d1
+  <div id="d2">d2</div>
+</div>
+
+<script>
+"use strict"
+
+var e = document.getElementById('d1'); 
+
+e.onmouseenter = function(event) {
+	console.log("mouseenter");
+}
+
+e.onmouseover = function(event) {
+  console.log("mouseover");
+}
+
+e.onmouseleave = function(event) {
+  console.log("mouseleave");
+}
+
+e.onmouseout = function(event) {
+  console.log("mouseout");
+}
+
+e.onmousedown = function(event) {
+  console.log("mousedown");
+  console.log(event);
+}
+	
+e.onmouseup = function(event) {
+  console.log("mouseup");
+}
+
+e.onmousemove = function(event) {
+  console.log("mousemove", event.offsetX, event.offsetY, event.clientX, event.clientY);
+}
+
+document.getElementById('d2').onmouseover = function(event) {
+	event.stopPropagation();
+}
+document.getElementById('d2').onmouseleave = function(event) {
+  event.stopPropagation();
+}
+document.getElementById('d2').onmouseout = function(event) {
+  event.stopPropagation();
+}
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+

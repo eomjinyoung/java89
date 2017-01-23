@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>javascript</title>
+<style>
+div {
+  border: 1px solid red;
+  padding: 10px;
+  margin: 10px;
+}
+</style>
+</head>
+<body>
+<h1>주요 이벤트 - key 이벤트</h1>
+<pre>
+- 키보드의 키를 누르거나 뗐을 때 발생하는 이벤트
+- input 이벤트
+  => 키보드로 값을 바꿀 때 마다 호출되는 이벤트
+- keydown 이벤트
+  => 키보드에서 키를 누르면 발생한다. 
+  => 계속 누르고 있으면 연속해서 발생한다.
+  => 입력 상자의 값이 변경되기 전에 발생한다. 
+     따라서 입력 상자의 값을 꺼내면 현재 키 값이 적용되지 않은 상태의 값이다.
+- keyup 이벤트
+  => 눌린 키를 놓을 때 발생한다.
+- keypress 이벤트
+  => 키를 누르면 한 번 발생한다.
+  => 계속 키를 누르고 있어도 한 번만 발생한다.
+</pre>
+
+<h2>key 이벤트</h2>
+<form id="f1" action="http://www.daum.net" method="get">
+이메일*: <input id="email" type="text"><br>
+암호*: <input id="password" type="password"><br>
+tel: <input id="tel" type="text"><br>
+<button id="addBtn">등록</button>
+</form>
+
+<button id='btn1' type='button'>이메일 변경하기</button>
+
+<script>
+"use strict"
+
+var e = document.getElementById('email'); 
+
+e.oninput = function(event) {
+	console.log("input: ", e.value);
+}
+
+e.onkeydown = function(event) {
+  console.log("keydown: ", e.value);
+}
+
+e.onkeyup = function(event) {
+  console.log("keyup: ", e.value);
+}
+
+e.onkeypress = function(event) {
+  console.log("keypress: ", e.value);
+}
+
+document.getElementById('btn1').onclick = function(event) {
+	e.value = "오호라... 값 변경";
+}
+
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
