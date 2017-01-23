@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>javascript</title>
+<style>
+div {
+  border: 1px solid red;
+  padding: 10px;
+  margin: 10px;
+}
+</style>
+</head>
+<body>
+<h1>이벤트 처리 - 버블링 취소하기 II</h1>
+<pre>
+- stopPropagation()은 타겟 단계 이후에 수행하는 버블 단계를 취소한다.
+- stopImmediatePropatation()은 같은 타겟 단계에 등록된 함수의 호출도 취소한다.
+</pre>
+
+<div id="d1">d1
+  <div id="d2">d2
+    <div id="d3">d3</div>
+    <button id="btn1" type="button">버튼1</button>
+  </div>
+  <div id="d4">d4
+    <div id="d5">d5</div>
+    <button id="btn2" type="button">버튼2</button>
+  </div>
+</div>
+
+<script>
+"use strict"
+
+document.getElementById('btn1').addEventListener("click", function(event) {
+	console.log('btn1-->1111');
+	event.stopPropagation();
+});
+
+document.getElementById('btn1').addEventListener("click", function(event) {
+  console.log('btn1-->2222');
+});
+	
+document.getElementById('btn1').addEventListener("click", function(event) {
+  console.log('btn1-->3333');
+});
+
+document.getElementById('btn2').addEventListener("click", function(event) {
+  console.log('btn2-->1111');
+  // 현재 메서드 호출 완료 후 즉시 전파를 멈춘다.
+  event.stopImmediatePropagation();
+});
+
+document.getElementById('btn2').addEventListener("click", function(event) {
+  console.log('btn2-->2222');
+});
+  
+document.getElementById('btn2').addEventListener("click", function(event) {
+  console.log('btn2-->3333');
+});
+
+document.getElementById('d1').onclick = function(event) {
+  console.log('d1');
+};
+	
+document.getElementById('d2').onclick = function(event) {
+  console.log('d2');
+};
+
+document.getElementById('d3').onclick = function(event) {
+  console.log('d3');
+};
+
+document.getElementById('d4').onclick = function(event) {
+	console.log('d4');
+};
+
+document.getElementById('d5').onclick = function(event) {
+  console.log('d5');
+};
+
+document.body.onclick = function(event) {
+  console.log('body');
+};
+
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+

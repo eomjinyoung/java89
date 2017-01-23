@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>javascript</title>
+<style>
+div {
+  border: 1px solid red;
+  padding: 10px;
+  margin: 10px;
+}
+</style>
+</head>
+<body>
+<h1>이벤트 처리 - 기본 행동 취소하기</h1>
+<pre>
+- a 태그나 form의 submit 버튼에 대해 click 이벤트를 처리할 때,
+  이 태그들의 기본 행동을 취소하고 싶다면
+  event.preventDefault()를 호출하라.
+</pre>
+
+<h2>a 태그의 기본 행동 취소하기</h2>
+
+<h3>event.preventDefault() 사용</h3>
+<p><a id='a1' href='http://www.daum.net'>다음으로 가기</a></p>
+
+<h3>onclick="return false;" 속성 사용</h3>
+<p><a id='a2' href='http://www.daum.net' onclick="return a2_click(event);">다음으로 가기</a></p>
+
+<script>
+"use strict"
+
+document.getElementById('a1').addEventListener("click", function(event) {
+	console.log('a 태그 클릭했음.');
+	
+	//a 태그의 기본 행동은 다른 사이트를 요청하는 것이다.
+	//=> 이것을 취소하기 위해 다음 함수를 호출하라.
+	event.preventDefault();
+});
+
+function a2_click(event) {
+	console.log('a2 태그 클릭했음.');
+	return false;
+}
+
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+

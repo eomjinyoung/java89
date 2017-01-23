@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>javascript</title>
+<style>
+div {
+  border: 1px solid red;
+  padding: 10px;
+  margin: 10px;
+}
+</style>
+</head>
+<body>
+<h1>이벤트 처리 - 폼 submit 이벤트 II</h1>
+<pre>
+- submit 이벤트는 서브밋 타입의 버튼을 클릭했을 때 발생한다.
+<!--  
+  <input type='submit' value='서브밋 버튼'>
+  <button type='submit'>서브밋 버튼</button>
+  <button>서브밋 버튼</button>
+-->
+</pre>
+
+<h2>form의 submit 이벤트 처리하기</h2>
+<form id="f1" action="http://www.daum.net" method="get" onsubmit="return form_submit()">
+이메일*: <input id="email" type="text"><br>
+암호*: <input id="password" type="password"><br>
+tel: <input id="tel" type="text"><br>
+<button id="addBtn">등록</button>
+</form>
+
+<script>
+"use strict"
+
+function form_submit() { 
+  var email = document.getElementById('email').value;
+  var password = document.getElementById('password').value;
+  
+  if (email == "" || password == "") {
+	  alert("이메일과 암호는 필수 입력 항목입니다.");
+	  return false;
+  }
+}
+
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+

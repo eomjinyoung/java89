@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>javascript</title>
+<style>
+div {
+  border: 1px solid red;
+  padding: 10px;
+  margin: 10px;
+}
+</style>
+</head>
+<body>
+<h1>이벤트 처리 - 기본 행동 취소하기 II</h1>
+<pre>
+- a 태그나 form의 submit 버튼에 대해 click 이벤트를 처리할 때,
+  이 태그들의 기본 행동을 취소하고 싶다면
+  event.preventDefault()를 호출하라.
+</pre>
+
+<h2>form의 submit 버튼의 기본 행동 취소하기</h2>
+<form action="http://www.daum.net" method="get">
+이메일*: <input id="email" type="text"><br>
+암호*: <input id="password" type="password"><br>
+tel: <input id="tel" type="text"><br>
+<button id="addBtn">등록</button>
+<button id="addBtn2" onclick="return form_submit(event)">등록2</button>
+</form>
+
+<script>
+"use strict"
+
+document.getElementById('addBtn').addEventListener("click", function(event) { 
+  var email = document.getElementById('email').value;
+  var password = document.getElementById('password').value;
+  
+  if (email == "" || password == "") {
+	  alert("이메일과 암호는 필수 입력 항목입니다.");
+	  event.preventDefault();
+  }
+});
+
+function form_submit(event) { 
+  var email = document.getElementById('email').value;
+  var password = document.getElementById('password').value;
+  
+  if (email == "" || password == "") {
+    alert("이메일과 암호는 필수 입력 항목입니다.");
+    return false;
+  }
+}
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>javascript</title>
+<style>
+div {
+  border: 1px solid red;
+  padding: 10px;
+  margin: 10px;
+}
+</style>
+</head>
+<body>
+<h1>이벤트 처리 - 이벤트 처리 과정: 캡쳐하기</h1>
+<pre>
+- 이벤트가 발생하면 이벤트 정보를 담은 객체를 가장 상위 태그에서 
+  하위 목적지 태그로 보낸다.
+- 이때, 그 경로에 그 이벤트를 처리하는 함수가 있다면 호출된다.
+ 
+1) capture 단계
+   - 이벤트가 목적지 전까지 도착하는 단계 
+2) target 단계
+   - 이벤트가 목적지에 도착한 단계
+3) bubble 단계
+   - 이벤트가 꺼꾸로 상위 객체로 전달되는 단계
+
+- onclick 또는 addEventListener()로 함수를 등록하면,
+  target단계 및 bubble 단계에 존재하는 함수들이 순서대로 호출된다.
+- capture 단계에 호출되는 함수를 등록하고 싶다면,
+  addEventListener()의 세 번째 파라미터의 값을 true로 설정해야 한다.
+</pre>
+
+<div id="d1">d1
+  <div id="d2">d2
+    <div id="d3">d3</div>
+    <button id="btn1" type="button">버튼1</button>
+  </div>
+  <div id="d4">d4
+    <div id="d5">d5</div>
+    <button id="btn2" type="button">버튼2</button>
+  </div>
+</div>
+
+<script>
+"use strict"
+
+document.getElementById('btn1').onclick = function(event) {
+	console.log('btn1');
+};
+
+document.getElementById('btn2').onclick = function(event) {
+  console.log('btn2');
+};
+
+document.getElementById('d1').onclick = function(event) {
+  console.log('d1');
+};
+	
+document.getElementById('d2').onclick = function(event) {
+  console.log('d2');
+};
+
+document.getElementById('d3').onclick = function(event) {
+  console.log('d3');
+};
+
+// 세 번째 파라미터 값을 주지 않으면 기본이 false이다.
+document.getElementById('d4').addEventListener("click", function(event) {
+	console.log('d4');
+}, true);
+
+document.getElementById('d5').addEventListener("click", function(event) {
+  console.log('d5');
+}, true);
+
+document.body.onclick = function(event) {
+  console.log('body');
+};
+
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
