@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>javascript</title>
+<style>
+div {
+  border: 1px solid red;
+  padding: 10px;
+  margin: 10px;
+}
+
+#loading-img {
+  border: 1px solid red;
+  width: 200px;
+  position: absolute;
+  left: -210px;
+  top: 0px;
+}
+</style>
+
+</head>
+<body>
+<h1>AJAX(Asynchronous JavaScript and XML) - 화면을 동적으로 바꾸기 II</h1>
+<pre>
+1) 서버로부터 화면의 일부를 받아서 출력하기
+   => 클라이언트 코드가 간결해진다.
+   => 서버에 의존적이다. 
+   => 서버 플랫폼을 바꾸면 HTML 생성하는 그 기술에 맞추어 중복 코딩해야 한다.
+   => 플랫폼을 바꾼다? 자바 대신 ASP, PHP, Python 등으로 
+      서버 애플리케이션 구동 기술을 변경하는 것을 말한다.
+      
+2) 서버로부터 데이터를 받아서 클라이언트에서 만들기
+   => 클라이언트 코드가 복잡해진다.
+   => 서버 기술에 영향을 받지 않는다.
+   => 클라이언트 쪽 파일을 재사용하기 쉽다.
+   => 하이브리드 앱은 이 방식으로 동작해야 한다. 그래도 검수에 통과한다.
+    
+</pre>
+
+<button id="btn1" type="button">데이터 가져오기</button>
+
+<div id="d1">
+<table border="1">
+<thead>
+	<tr>
+	  <th>이름</th>
+	  <th>이메일</th>
+	  <th>전화</th>
+	  <th>재직여부</th>
+	</tr>
+</thead>
+<tbody></tbody>
+</table>
+</div>
+
+
+<script>
+"use strict"
+
+document.querySelector('#btn1').onclick = function() {
+  var xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function() {
+	  if (xhr.readyState == 4) {
+		  // JSON 문자열을 해석하여 자바스크립트 객체로 만들 수 있다.
+      var arr = JSON.parse(xhr.responseText);
+		  
+		  // tr 태그를 삽입할 테이블 태그를 찾는다.
+		  var tbody = document.querySelector('#d1 tbody');
+      for (var i = 0; i < arr.length - 1; i++) {
+    	  var tr = document.createElement("tr");
+    	  tr.innerHTML = "<td>" + arr[i].name + 
+    	     "</td><td>" + arr[i].email + 
+    	     "</td><td>" + arr[i].tel +  
+    	     "</td><td>" + arr[i].working + "</td>";
+    	  tbody.appendChild(tr);
+      }
+	  }
+  }  
+  xhr.open("get", "test82_table.jsp", true);
+  xhr.send(); 
+}
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+

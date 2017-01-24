@@ -9,6 +9,14 @@ div {
   padding: 10px;
   margin: 10px;
 }
+
+#loading-img {
+  border: 1px solid red;
+  width: 200px;
+  position: absolute;
+  left: -210px;
+  top: 0px;
+}
 </style>
 
 </head>
@@ -27,6 +35,7 @@ div {
 
 <div id="d1"></div>
 
+<img id='loading-img' src='loading.gif'>
 <script>
 "use strict"
 
@@ -44,12 +53,19 @@ document.querySelector('#btn1').onclick = function() {
 	  //   4: 서버로부터 응답 결과를 모두 받았음을 알린다.
 	  if (xhr.readyState == 4) {
       document.querySelector('#d1').innerHTML = xhr.responseText;
+      document.querySelector('#loading-img').style.display = 'none';
 	  }
   }
   
   xhr.open("get", "test78_header.jsp", true);
   xhr.send(); // 웹서버에서 응답에 상관없이 즉시 리턴한다.
   
+  // 서버에 요청하는 즉시 로딩 이미지를 띄운다.
+  var img = document.querySelector('#loading-img');
+  var x = (window.innerWidth - img.width) / 2;
+  var y = (window.innerHeight - img.height) / 2;
+  img.style.left = x + 'px';
+  img.style.top = y + 'px';
 }
 
 </script>
