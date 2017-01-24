@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>javascript</title>
+<style>
+div {
+  border: 1px solid red;
+  padding: 10px;
+  margin: 10px;
+}
+</style>
+
+</head>
+<body>
+<h1>AJAX(Asynchronous JavaScript and XML) - AJAX 소개</h1>
+<pre>
+- 현재 페이지를 바꾸지 않은 상태에서 웹서버에 자원을 요청하는 기술.
+- 용도
+  1) 페이지 안에 일부분을 변경하는데 사용
+     => 예전에는 전체 페이지를 변경해야 했다.
+  2) 시간이 오래 걸리는 작업을 별도의 스레드로 분리하여 비동기로 진행시킬 때 사용
+     => 시간이 오래 걸리는 경우 웹서버에서 응답이 늦어지기 때문에
+        빈 화면이 오랫동안 출력되는 문제가 있었다. 
+</pre>
+
+<button id="btn1" type="button">헤더 가져오기</button>
+
+<div id="d1"></div>
+
+<script>
+"use strict"
+
+document.querySelector('#btn1').onclick = function() {
+  //1) 웹서버에 비동기 요청을 수행하는데 필요한 함수를 갖고 있는 객체를 얻는다.
+  var xhr = new XMLHttpRequest();
+  
+  //2) 웹서버에 연결한다.
+  //  => 첫 번째 파라미터: GET, POST 등 요청 방식
+  //  => 두 번째 파라미터: URL
+  //  => 세 번째 파라미터: 비동기 요청 여부. 비동기(true), 동기(false)
+  //     비동기? 별도의 스레드에게 작업 실행을 맡긴 후에 바로 리턴한다.
+	//     동기? 현재 스레드가 작업을 수행한 후 리턴한다.
+  xhr.open("get", "test77_header.html", false);
+  
+  //3) 웹서버에 요청한다.
+  //  => 동기 상태로 연결했기 때문에 서버에서 응답이 올 때까지 리턴하지 않는다.
+  xhr.send();
+  
+  //4) 응답 결과를 사용한다.
+  //  => 서버의 응답 결과는 xhr의 responseText라는 이름으로 저장되어 있다.
+  document.querySelector('#d1').innerHTML = xhr.responseText;
+  
+}
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+

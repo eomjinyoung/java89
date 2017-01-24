@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>javascript</title>
+<style>
+div {
+  border: 1px solid red;
+  padding: 10px;
+  margin: 10px;
+}
+</style>
+
+</head>
+<body>
+<h1>AJAX(Asynchronous JavaScript and XML) - 동기 방식의 문제점</h1>
+<pre>
+- 서버에서 응답이 올 때까지 리턴하지 않기 때문에 다음 작업을 실행할 수 없다. 
+</pre>
+
+<button id="btn1" type="button">헤더 가져오기</button>
+
+<div id="d1"></div>
+
+<script>
+"use strict"
+
+document.querySelector('#btn1').onclick = function() {
+  var xhr = new XMLHttpRequest();
+  xhr.open("get", "test78_header.jsp", false);
+  xhr.send(); // 웹서버에서 응답이 올 때까지 리턴하지 않는다.
+  document.querySelector('#d1').innerHTML = xhr.responseText;
+}
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+

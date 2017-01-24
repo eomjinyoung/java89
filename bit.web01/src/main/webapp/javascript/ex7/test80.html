@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>javascript</title>
+<style>
+div {
+  border: 1px solid red;
+  padding: 10px;
+  margin: 10px;
+}
+</style>
+
+</head>
+<body>
+<h1>AJAX(Asynchronous JavaScript and XML) - 비동기 방식</h1>
+<pre>
+- 그러면 웹서버가 응답했는지 어떻게 아는가?
+  => 웹서버와의 통신 상태가 변경될 때 마다 이벤트가 발생한다.
+  => 따라서 그 이벤트를 조사하여 웹 서버가 완전히 응답했을 때 
+     responseText를 처리하면 된다.
+- 어떤 이벤트인가? 즉 이벤트 리스너를 등록하는 방법은?
+  XMLHttpRequest 객체에 onreadystatechange 라는 이름으로 함수를 등록하라!
+</pre>
+
+<button id="btn1" type="button">헤더 가져오기</button>
+
+<div id="d1"></div>
+
+<script>
+"use strict"
+
+document.querySelector('#btn1').onclick = function() {
+  var xhr = new XMLHttpRequest();
+  
+  // 이벤트 리스너 등록
+  xhr.onreadystatechange = function() {
+	  //이 함수가 호출될 때 마다 현재의 통신 상태를 readyState 변수를 통해 알려준다.
+	  //=> 개발자는 이 상태 값을 가지고 웹서버로부터 응답 결과를 받았는지 검사해야 한다.
+	  //=> readyState 상태값
+	  //   1: open() 호출 후. 서버에 연결되었음을 알린다.
+	  //   2: send() 호출 후. 서버로부터 응답헤더와 상태 값을 받았음을 알린다.
+	  //   3: 서버로부터 데이터를 받고 있음을 알린다.
+	  //   4: 서버로부터 응답 결과를 모두 받았음을 알린다.
+	  if (xhr.readyState == 4) {
+      document.querySelector('#d1').innerHTML = xhr.responseText;
+	  }
+  }
+  
+  xhr.open("get", "test78_header.jsp", true);
+  xhr.send(); // 웹서버에서 응답에 상관없이 즉시 리턴한다.
+  
+}
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
