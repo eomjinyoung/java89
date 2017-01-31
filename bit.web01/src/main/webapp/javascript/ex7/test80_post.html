@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>javascript</title>
+<style>
+div {
+  border: 1px solid red;
+  padding: 10px;
+  margin: 10px;
+}
+
+#loading-img {
+  border: 1px solid red;
+  width: 200px;
+  position: absolute;
+  left: -210px;
+  top: 0px;
+}
+</style>
+
+</head>
+<body>
+<h1>AJAX(Asynchronous JavaScript and XML) - 비동기 방식 POST 요청</h1>
+<pre>
+- POST 요청은 GET 요청과 달리, 요청 헤더에 Content-Type을 추가해야 한다.
+- 서버에 전달하는 값을 "쿼리스트링(Query String)" 형태로 만들어야 한다.
+  쿼리스트링? "name=홍길동&age=20&tel=111-111" 이런 형식으로 된 파라미터 문자열
+- send()의 파라미터 값으로 전달한다. 
+</pre>
+
+<button id="btn1" type="button">POST 요청하기</button>
+
+<div id="d1"></div>
+
+<img id='loading-img' src='loading.gif'>
+
+<script>
+"use strict"
+
+document.querySelector('#btn1').onclick = function() {
+  var xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function() {
+	  if (xhr.readyState == 4) {
+      document.querySelector('#d1').innerHTML = xhr.responseText;
+      document.querySelector('#loading-img').style.display = 'none';
+	  }
+  }
+  
+  xhr.open("post", "test80_post.jsp", true);
+  xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded;charset=UTF-8");
+  xhr.send(toQueryString({email:"hong@test.com",name:"홍길동",age:20})); 
+  //console.log(toQueryString({email:"hong@test.com",name:"홍길동",age:20}));
+  
+  // 서버에 요청하는 즉시 로딩 이미지를 띄운다.
+  var img = document.querySelector('#loading-img');
+  var x = (window.innerWidth - img.width) / 2;
+  var y = (window.innerHeight - img.height) / 2;
+  img.style.left = x + 'px';
+  img.style.top = y + 'px';
+}
+
+function toQueryString(obj) {
+	var qs = "";
+	for (var propName in obj) {
+		if (qs.length > 0) {
+			qs += "&";
+		}
+		qs += propName + "=" + obj[propName];
+	}
+	return qs;
+}
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
