@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test01</title> 
+<style>
+/* 클래스 셀렉터 
+=> 임의의 태그를 특정 그룹으로 묶어서 관리하고 싶다면, 
+   태그에 
+     class="그룹명" 
+   속성을 추가하라.
+   
+=> 한 태그는 여러 개의 그룹에 동시에 소속될 수 있다.
+     class="그룹1 그룹2 그룹3"  
+   공백(space)을 사용하여 그룹을 나열하라!
+   
+=> 스타일에서 다음과 같이 제어한다.
+   .그룹명 {}
+*/
+
+.g1 { /* g1이라는 그룹에 소속되어 있는 모든 태그에 대해 다음 스타일을 적용한다.*/
+  background-color: red;
+}
+
+.g2 { 
+  border-style: dotted;
+  border-color: black;
+  border-width: 5px;
+}
+
+.g3:hover { /* g3 그룹에 소속된 태그들 중에서 마우스 커서가 올라간 상태의 태그에 대해 */
+  background-color: black;
+  color: white;
+}
+</style>
+</head>
+<body>
+<h1>CSS 주요 문법</h1>
+<ul>
+  <li class="g1">셀렉터: 스타일 적용 대상을 지정하는 문법</li>
+  <li>상자와 테두리</li>
+  <li class="g2">폰트</li>
+  <li>색상</li>
+  <li class="g1 g2">위치제어</li>
+</ul>
+
+<h2 class="g2">CSS 주요 문법2</h2>
+
+<h2 class="g3 g1">CSS 주요 문법3</h2>
+</body>
+</html>
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 

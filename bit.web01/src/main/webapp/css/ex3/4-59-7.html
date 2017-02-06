@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>CSS3 Property Basic</title>
+<style>
+div {
+  border: 1px solid black;
+  margin: 0;
+  padding: 10px;
+}
+
+#header {
+  background-color: blue;
+  color: white;
+  font-weight: bold;
+  padding: 0;
+  height: 49px;
+}
+
+#aside {
+  background-color: yellow;
+  width: 150px;
+  height: 600px;
+  margin: 0;
+}
+
+#content {
+  position: absolute; /* 조상 중에 absolute, relative 기준으로 한다. 없으면 body를 기준으로 한다.*/
+  top: 59px;
+  left: 179px;
+  background-color: gray;
+  width: 900px;
+}
+
+#footer {
+  background-color: black;
+  color: white;
+  text-align: center;
+}
+
+#logo {
+  position: relative; 
+  left: 10px;
+  top: 20px;
+  z-index: 100;
+}
+
+#hot {
+  position: fixed; /* 기준은 웹 브라우저 창 */
+  right: 0;
+  top: 100px;
+}
+</style>
+</head>
+<body>
+<div id="header"><img id="logo" src="bit.jpeg"></div>
+<div id="aside">
+<ul>
+  <li>학생관리</li>
+  <li>강사관리</li>
+  <li>과정관리</li>
+  <li>강의실관리</li>
+  <li>자재관리</li>
+  <li>과제관리</li>
+  <li>게시판</li>
+  <li>공지사항</li>
+  <li>자료실</li>
+  <li>QnA</li>
+  <li>교육센터소개</li>
+</ul>
+</div>
+<div id="content">
+<p>
+본 과정은 WEB과 APP을 융합하는 과정으로서 JAVA기반의 WEB과 ANDROID기반의 APP기술을 익히고, WEB & APP 융합 프로젝트에 시간을 할당하여, 취업의 근간이 되는 프로젝트 산출에 가장 많은 노력을 기울입니다.
+</p>
+
+<h1>01. 과정목표</h1>
+<p>
+- 자바 기반 웹 프로그래밍과 모바일프로그래밍에 대한 융합개발
+</p>
+
+<h1>02. 교육대상</h1>
+<p>
+- 프로그래밍에 대한 기초과정을 습득한자
+- 프로그래밍 진입을 희망하는 교육의지가 있는 입문자
+- SW 프로그래밍 기술을 개발 업무에 이용하려고 하는 프로그래머
+- 향후 프로그래머로써 SW 프로그래밍 및 모바일 프로그램을 개발하려고 하는 자
+</p>
+
+<h1>03. 교육안내</h1>
+
+<p>
+- 교육기간
+   88기: 2016.08.29 ~ 2017.02.20.
+   89기: 2016.09.26 ~ 2017.03.15.
+- 교육시간 : (이론,실습) 09:00 ~ 18:00 / (그룹스터디) 19:00 ~ 21:00
+- 교육장소 : 비트캠프 강남
+- 모집정원 : 기수별 30명 모집
+</p>
+
+<h1>04. 교육비용</h1>
+<p>
+- 전액 국비지원(무료)
+- 훈련수당 매월 최대 416,000원 6개월간 지급
+- 지원대상에 따라 훈련수당은 변동가능합니다.
+</p>
+
+</div>
+<div id="footer">자바 85기</div>
+
+<img id="hot" src="photo01.jpeg">
+</body>
+</html>
+
+
+
+
+
+

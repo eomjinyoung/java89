@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>CSS3 Property Basic</title>
+<style>
+#imgbox {
+  /* border: 1px solid red; */
+  width: 16px;
+  height: 16px;
+  display: inline-block; /* block이어야 너비와 높이를 지정할 수 있다.*/
+}
+
+.success {
+  background-image: url('img03.png');
+  background-repeat: no-repeat;
+  background-position: -112px -27px;
+}
+
+.fail {
+  background-image: url('img03.png');
+  background-repeat: no-repeat;
+  background-position: -262px -27px;
+}
+</style>
+</head>
+<body>
+<h1>회원가입</h1>
+이메일: <input id="email" type="text"><div id="imgbox"></div><br>
+이름: <input type="text"><br>    
+암호: <input type="password"><br>
+<button id="btn1" type="button">가입</button>
+<script>
+var email = document.getElementById("email");
+var imgbox = document.getElementById("imgbox");
+
+email.onkeyup = function() {
+	if (email.value == "hong@test.com") {
+		imgbox.className = "fail";		
+	}	else {
+		imgbox.className = "success";
+	}
+}
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test01</title> 
+<style>
+/* 조건으로 대상 선택하기
+태그명[조건] {}
+태그명[속성명] {}
+태그명[속성명=값] {}  
+*/
+
+input[type=text] {
+  background-color: red;
+}
+
+input[name^=pass] {
+  border-color: red;
+}
+
+
+</style>
+</head>
+<body>
+<h1>입력폼: form</h1>
+<form action="Test09.jsp" method="post">
+<input type="text" name="text1" placeholder="텍스트를 입력하세요"><br>
+<input type="password" name="password1"><br>
+<input type="hidden" value="aaa" name="hidden1"><br>
+
+<input type="checkbox" name="hobby1">음악감상
+<input type="checkbox" name="hobby2">영화
+<input type="checkbox" name="hobby3">독서
+<input type="checkbox" name="hobby4">술마시기
+<input type="checkbox" name="hobby5">요리<br> 
+
+<input type="checkbox" name="cook" value="c1">짜장면
+<input type="checkbox" name="cook" value="c2">짬뽕
+<input type="checkbox" name="cook" value="c3">볶음밥
+<input type="checkbox" name="cook" value="c4">탕수육
+<input type="checkbox" name="cook" value="c5">가지튀김<br> 
+
+
+서버에 보낼 값을 지정하지 않으면 무조건 "on"을 보낸다.<br>
+<input type="radio" name="gen" value="10">10대 
+<input type="radio" name="gen" value="20">20대 
+<input type="radio" name="gen" value="30">30대 
+<input type="radio" name="gen" value="40">40대<br>
+
+<input type="radio" name="maj" value="m1">인문학 
+<input type="radio" name="maj" value="m2">이학 
+<input type="radio" name="maj" value="m3">공학 
+<input type="radio" name="maj" value="m4">예술<br>
+
+option 태그에 value 속성이 없으면, option의 내용을 서버에 보낸다.
+<select name="prog">
+  <option value="">언어를 선택하세요</option>
+  <option>java</option>
+  <option>c</option>
+  <option>c++</option>
+  <option>c#</option>
+  <option>objective-c</option>
+  <option>swift</option>
+  <option>phthon</option>
+  <option>php</option>
+  <option>groovy</option>
+  <option>scala</option>
+  <option>html</option>
+  <option selected>javascript</option>
+  <option>css</option>
+  <option>sql</option>
+</select><br>
+
+<input type="date" name="date1"><br>
+
+<input type="color" name="color1"><br>
+
+<input type="email" name="email1"><br>
+
+<input type="file" name="file1">
+<input type="file" name="file2"><br>
+
+<input type="submit" value="보내기1">
+<button type="submit">보내기2</button>
+</form>
+</body>
+</html>
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 

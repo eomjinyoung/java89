@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>CSS3 Property Basic</title>
+<style>
+@font-face{
+  font-family:'rosettaicons';
+  src:url('https://abs.twimg.com/a/1464058313/font/rosetta-icons-Regular.eot');
+  src:url('https://abs.twimg.com/a/1464058313/font/rosetta-icons-Regular.eot?#iefix') format('embedded-opentype'), 
+      url('https://abs.twimg.com/a/1464058313/font/rosetta-icons-Regular.woff') format('woff'),
+      url('https://abs.twimg.com/a/1464058313/font/rosetta-icons-Regular.ttf') format('truetype');
+  font-style:normal;
+  font-weight:normal
+}
+
+.success:before {
+  content: "\f179";
+  color: blue;
+}
+
+.fail:before {
+  content: "\f178";
+  color: red;
+}
+
+#imgbox:before {
+  display: inline-block;
+  font-family: "rosettaicons";
+  font-weight: normal;
+  font-style: normal;
+  text-align: center;
+}
+
+</style>
+</head>
+<body>
+<h1>회원가입</h1>
+이메일: <input id="email" type="text"><span id="imgbox"></span><br>
+이름: <input type="text"><br>    
+암호: <input type="password"><br>
+<button id="btn1" type="button">가입</button>
+<script>
+var email = document.getElementById("email");
+var imgbox = document.getElementById("imgbox");
+
+email.onkeyup = function() {
+	if (email.value == "hong@test.com") {
+		imgbox.className = "fail";		
+	}	else {
+		imgbox.className = "success";
+	}
+}
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+

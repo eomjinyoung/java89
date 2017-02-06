@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test01</title> 
+<style>
+/* 아이디 셀렉터와 상태 셀렉터
+=> 각 태그는 해당 페이지에서 유일한 식별자를 가질 수 있다.
+     <태그명 id="아디디">
+   반드시 유일해야 한다.
+=> 태그 이름에 상관없이 아이디는 중복될 수 없다.
+=> 모든 태그가 아이디를 가질 필요는 없다.
+=> CSS나 자바스크립트에서 제어할 태그에 대해서만 아이디를 부여하면 된다.
+=> 특정 아이디를 갖는 태그에 스타일을 적용하려면 
+     #아이디 {}
+   위와 같이 지정하면 된다.
+*/
+
+#test1 { /* test1이라는 아이디를 갖는 태그에 대해 다음 스타일을 적용한다.*/
+  background-color: yellow;
+}
+
+#test2 { 
+  border-style: dotted;
+  border-color: black;
+  border-width: 5px;
+}
+
+#test3 { 
+  display: none;
+}
+
+li:hover {
+  color: red;
+  border-left-style: solid;
+  border-left-width: 20px;
+  border-left-color: blue;
+}
+</style>
+</head>
+<body>
+<h1 >CSS 주요 문법</h1>
+<ul>
+  <li class="g1">셀렉터: 스타일 적용 대상을 지정하는 문법</li>
+  <li id="test1">상자와 테두리</li>
+  <li class="g2">폰트</li>
+  <li>색상</li>
+  <li class="g1 g2">위치제어</li>
+</ul>
+
+<h2 id="test3" class="g2">CSS 주요 문법2</h2>
+
+<h2 id="test2" class="g3 g1">CSS 주요 문법3</h2>
+</body>
+</html>
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
