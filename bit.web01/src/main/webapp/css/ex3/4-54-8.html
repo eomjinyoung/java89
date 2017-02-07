@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS3 Property Basic</title>
+    <style>
+        h1 {border: 5px solid red;}
+        .box { 
+            width: 200px; height: 100px; 
+            /* position : absolute
+             * => 부모가 absolute나 relative가 아니면 
+             *    기준으로 사용하지 않는다.
+             * 
+             */
+            position: absolute;
+            
+        }
+        .red { background-color: red; left: 0px; top: 0px; z-index: 3}
+        .green { background-color: green; left: 20px; top: 20px; z-index: 2}
+        .blue { background-color: blue; left: 40px; top: 40px; z-index: 1}
+    </style>
+</head>
+<body>
+    <h1>하하하</h1>
+    <div style='position: absolute; left: 100px; top: 200px; width: 400px; height: 400px; background-color:gray;'>
+	    <div class="box red">a</div>
+	    <div class="box green">b</div>
+	    <div class="box blue">c</div>
+    </div>
+</body>
+</html>

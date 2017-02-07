@@ -4,15 +4,31 @@
     <title>CSS3 Selector Basic Page</title>
     <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
     <script>
-        /* 웹 페이지가 모두 준비되면 */
+    /*
         $(document).ready(function () {
-            /* 모든 태그의 border 속성에 5px solid black을 적용합니다. */
             $('*').css('border', '5px solid black');
         });
+    */
+    // load 이벤트
+    // - 현재 HTML 태그를 모두 파싱한다.
+    // - 그리고 HTML에 연결된 파일을 모두 서버에서 다운로드 받은 다음에 발생한다.
+    window.onload = function() {alert('cccc')};
+    
+    // ready 이벤트 
+    // - 현재 HTML 태그를 모두 파싱한다. 
+    // - 즉 DOM 트리 구축을 완료한 후 발생한다.
+    $(document).ready(function() {alert('bbbb')});
+    $(function() {alert('aaaa')}); // 위외 같다. 
     </script>
 </head>
 <body>
     <h1>Lorem ipsum</h1>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    <script>
+    (function(msg) {
+    	alert(msg)
+    	//
+    })('오호라~');
+    </script>
 </body>
 </html>

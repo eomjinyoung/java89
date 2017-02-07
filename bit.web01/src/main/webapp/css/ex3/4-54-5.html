@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS3 Property Basic</title>
+    <style>
+        h1 {border: 5px solid red;}
+        .box { 
+            width: 200px; height: 100px; 
+            /* position : absolute
+             * - 가장 가까운 조상 중에 absolute나 relative를 기준으로 자신의 위치를 조정한다.
+             * - 만약, 가까운 조상 중에 absolute나 relative가 없다면 body를 기준으로 한다.
+             * - 다음 태그는 자동으로 올라온다.
+             * 
+             */
+            position: absolute;
+            
+        }
+        .red { background-color: red; left: 0px; top: 0px;}
+        .green { background-color: green; left: 20px; top: 20px;}
+        .blue { background-color: blue; left: 40px; top: 40px;}
+    </style>
+</head>
+<body>
+    <h1>하하하</h1>
+    <div class="box red">a</div>
+    <div class="box green">b</div>
+    <div class="box blue">c</div>
+    <h1>호호호....</h1>
+</body>
+</html>
