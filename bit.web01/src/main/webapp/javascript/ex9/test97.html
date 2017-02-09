@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ajax 파일 업로드</title>
+</head>
+<body>
+<h1>fileupload() 사용법 - 업로드 사진 미리보기</h1>
+<pre>
+1) jquery.fileupload() 함수를 이용하여 서버에 비동기 요청하기
+   - processalways 이벤트에서 미리보기 이미지 태그를 출력하고 버튼의 이벤트 핸들러를 등록한다.
+</pre>
+
+이름: <input id='name' type='text'><br>
+나이: <input id='age' type='text'><br>
+사진: <input id="fileupload" type="file" name="photo"><br>
+<button id='upload-btn' type='button'>등록</button>
+<div id='images-div'></div>
+ 
+<script src='node_modules/jquery/dist/jquery.js'></script>
+<script src="node_modules/blueimp-file-upload/js/vendor/jquery.ui.widget.js"></script>
+<script src="node_modules/blueimp-load-image/js/load-image.js"></script>
+<script src="node_modules/blueimp-load-image/js/load-image-meta.js"></script>
+<script src="node_modules/blueimp-load-image/js/load-image-exif.js"></script>
+<script src="node_modules/blueimp-load-image/js/load-image-exif-map.js"></script>
+<script src="node_modules/blueimp-load-image/js/load-image-orientation.js"></script>
+<script src="node_modules/blueimp-canvas-to-blob/js/canvas-to-blob.js"></script>
+<script src="node_modules/blueimp-file-upload/js/jquery.iframe-transport.js"></script>
+<script src="node_modules/blueimp-file-upload/js/jquery.fileupload.js"></script>
+<script src="node_modules/blueimp-file-upload/js/jquery.fileupload-process.js"></script> 
+<script src="node_modules/blueimp-file-upload/js/jquery.fileupload-image.js"></script>  
+<script>
+"use strict"
+
+$('#fileupload').fileupload({
+	url: 'test85.jsp',        // 서버에 요청할 URL
+	dataType: 'json',         // 서버가 보낸 응답이 JSON임을 지정하기
+	sequentialUploads: true,  // 여러 개의 파일을 업로드 할 때 순서대로 요청하기.
+	singleFileUploads: false, // 한 요청에 여러 개의 파일을 전송시키기.
+  autoUpload: false,        // 파일을 추가할 때 자동 업로딩 하지 않도록 설정.
+	disableImageResize: /Android(?!.*Chrome)|Opera/
+        .test(window.navigator && navigator.userAgent), // 안드로이드와 오페라 브라우저는 크기 조정 비활성 시키기
+  previewMaxWidth: 800,   // 미리보기 이미지 너비
+  previewMaxHeight: 800,  // 미리보기 이미지 높이 
+  previewCrop: true,      // 미리보기 이미지를 출력할 때 원본에서 지정된 크기로 자르기
+  processalways: function(e, data) {
+	    console.log('fileuploadprocessalways()...');
+	    var imagesDiv = $('#images-div');
+	    var canvas = data.files[0].preview;
+	    var dataURL = canvas.toDataURL();
+	    $("<img>").attr('src', dataURL).css('width', '100px').appendTo(imagesDiv);
+	    $('#upload-btn').click(function() {
+	        data.submit();
+	    });
+	}, 
+	submit: function (e, data) { // 서버에 전송하기 직전에 호출된다.
+    console.log('submit()...');
+    data.formData = {
+        name: $('#name').val(),
+        age: $('#age').val()
+    };
+  }, 
+	done: function (e, data) { // 서버에서 응답이 오면 호출된다. 각 파일 별로 호출된다.
+		console.log('done()...');
+    console.log(data.result);
+    var param = data.result.params[0];
+    $.each(data.result.params, function(index, param) {
+      if (param.filename) {
+          $('<p/>').text(param.name + " : " + param.filename + ", " + param.size).appendTo(document.body);
+      } else {
+          $('<p/>').text(param.name + " : " + param.value).appendTo(document.body);
+      }
+    });
+  }
+});
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+

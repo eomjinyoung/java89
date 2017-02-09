@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ajax 파일 업로드</title>
+<style>
+div {
+  border: 1px solid red;
+  padding: 10px;
+  margin: 10px;
+}
+
+#loading-img {
+  border: 1px solid red;
+  width: 200px;
+  position: absolute;
+  left: -210px;
+  top: 0px;
+}
+</style>
+
+</head>
+<body>
+<h1>form 태그를 이용한 파일 업로드</h1>
+
+<form action='test85.jsp' method='post' enctype="multipart/form-data">
+이름: <input name='name' type='text'><br>
+나이: <input name='age' type='text'><br>
+사진1: <input name='photo1' type='file'><br>
+사진2: <input name='photo2' type='file'><br>
+<button id='btn1' type='submit'>등록</button>
+</form>
+
+</body>
+</html>
+
+
+
+
+
+
