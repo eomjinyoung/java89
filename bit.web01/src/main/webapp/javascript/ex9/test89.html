@@ -27,6 +27,7 @@
 $('#fileupload').fileupload({
     dataType: 'json',
     add: function (e, data) {
+        console.log('add()...');
         data.context = $('<button/>').text('Upload')
 	        .appendTo(document.body)
 	        .click(function () {
@@ -35,6 +36,7 @@ $('#fileupload').fileupload({
 	        });
     },
     done: function (e, data) {
+    	console.log('done()...');
     	console.log(data.result);
     	var param = data.result.params[0];
       data.context.html(param.name + " : " + param.filename + ", " + param.size);

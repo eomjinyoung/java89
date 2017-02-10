@@ -27,6 +27,7 @@ $('#fileupload').fileupload({
 	sequentialUploads: true,  // 여러 개의 파일을 업로드 할 때 순서대로 요청하기.
 	singleFileUploads: false, // 한 요청에 여러 개의 파일을 전송시키기.   
 	add: function (e, data) {
+		console.log('add()...');
 		$.each(data.files, function (index, file) {
         console.log('Added file: ' + file.name);
     });
@@ -35,7 +36,8 @@ $('#fileupload').fileupload({
 		});
 	}, 
 	done: function (e, data) { // 서버에서 응답이 오면 호출된다. 각 파일 별로 호출된다.
-    console.log(data.result);
+		console.log('done()...');
+		console.log(data.result);
     var param = data.result.params[0];
     $.each(data.result.params, function(index, param) {
       $('<p/>').text(param.name + " : " + param.filename + ", " + param.size).appendTo(document.body);

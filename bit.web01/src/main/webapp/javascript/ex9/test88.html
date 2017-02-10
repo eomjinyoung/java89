@@ -26,10 +26,12 @@
 $('#fileupload').fileupload({
     dataType: 'json',
     add: function (e, data) { // 각 파일에 대해 호출된다.
+    	  console.log('add()...');
         data.context = $('<p/>').text('Uploading...').appendTo(document.body);
         data.submit(); // 해당 파일의 서버 전송을 시작한다.
     },
     done: function (e, data) {
+    	console.log('done()...');
     	console.log(data.result);
     	var param = data.result.params[0];
       data.context.html(param.name + " : " + param.filename + ", " + param.size);

@@ -38,12 +38,13 @@
 $('#fileupload').fileupload({
     dataType: 'json',
     done: function (e, data) {
+    	console.log('done()...');
     	console.log(data.result);
     	var param = data.result.params[0];
       $('<p/>').text(param.name + " : " + param.filename + ", " + param.size).appendTo(document.body);
     },
     progressall: function (e, data) { // 업로드 중간마다 상태를 보고하기 위해 호출된다.
-    	  console.log(data.loaded, data.total);
+    	console.log('progressall()...', data.loaded, data.total);
         var progress = parseInt(data.loaded / data.total * 100, 10);
         $('#progress .bar').css(
             'width',
