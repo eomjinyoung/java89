@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jQuery</title>
+</head>
+<body>
+<h1>jQuery 이벤트 리스너(핸들러) 등록 - on(), click()의 한계</h1>
+<pre>
+이벤트 핸들러를 등록하려는 그 순간에 존재하는 태그에 대해서만 가능하다.
+</pre>
+
+<button id='btn1' type='button'>버튼 만들기</button><br>
+<button class='mybutton' type='button'>버튼</button>
+ 
+<script src='node_modules/jquery/dist/jquery.js'></script>
+<script>
+"use strict"
+
+$('#btn1').click(function(event) {
+  $('<button>')
+    .addClass('mybutton')
+    .html('새로만든 버튼')
+    .appendTo(document.body);
+});
+
+$('.mybutton').click(function(event) {
+  alert('눌렀음...');
+});
+
+$('.mybutton').on('click', function(event) {
+  alert('눌렀음...2');
+});
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+

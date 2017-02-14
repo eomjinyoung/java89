@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jQuery</title>
+</head>
+<body>
+<h1>jQuery 이벤트 리스너(핸들러) 등록 - on(), click()의 한계 극복</h1>
+<pre>
+현재 존재하는 태그 뿐 만 아니라 앞으로 존재할 태그에 대해서도 
+이벤트 핸들러를 등록하는 방법!
+
+$(조상태그).on(이벤트명, 자식태그 찾는 셀렉터, 함수);
+</pre>
+
+<button id='btn1' type='button'>버튼 만들기</button><br>
+<button class='mybutton' type='button'>버튼</button>
+ 
+<script src='node_modules/jquery/dist/jquery.js'></script>
+<script>
+"use strict"
+
+$('#btn1').click(function(event) {
+  $('<button>')
+    .addClass('mybutton')
+    .html('새로만든 버튼')
+    .appendTo(document.body);
+});
+
+// 현재 존재하는 태그에 대해서만 이벤트 핸들러 등록
+$('.mybutton').click(function(event) {
+  alert('눌렀음...');
+});
+
+//현재 존재하는 태그에 대해서만 이벤트 핸들러 등록
+$('.mybutton').on('click', function(event) {
+  alert('눌렀음...2');
+});
+
+//현재 뿐 만 아니라 앞으로 존재할 태그에 대해서도 핸들로 등록
+$(document.body).on('click', '.mybutton', function(event) {
+  alert('눌렀음...3');
+});
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+

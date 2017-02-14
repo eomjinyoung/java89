@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jQuery</title>
+<style>
+div {
+  border: 1px solid red;
+}
+</style>
+</head>
+<body>
+<h1>jQuery load() 함수</h1>
+<pre>
+서버 URL로 비동기 요청하여 그 결과를 지정된 태그의 콘텐츠로 설정한다.
+load() = aja() + html() 
+</pre>
+
+<div id='d1'>d1</div>
+<button id='btn1' type='button'>서버에 요청</button><br>
+
+<div id='d2'>d2</div>
+<button id='btn2' type='button'>서버에 요청</button><br>
+ 
+<script src='node_modules/jquery/dist/jquery.js'></script>
+<script>
+"use strict"
+
+$('#btn1').click(function(event) {
+  $.get('test102_part.html', function(result) {
+	  $('#d1').html(result);
+  });
+});
+
+$('#btn2').click(function(event) {
+  $('#d2').load('test102_part.html');
+});
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
