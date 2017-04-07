@@ -42,7 +42,7 @@ password: 암호입력
 
 [예제 테이블 생성]
 > create table 테이블명
-  컬럼명 타입 NULL여부, 
+  컬럼명 타입 NULL여부,
   컬럼명 타입 NULL여부,
   ...
   컬럼명 타입 NULL여부;
@@ -53,7 +53,7 @@ password: 암호입력
     tel varchar(20),
     email varchar(50) not null
   );
-  
+
   create table ex_students (
     uid varchar(20) not null,
     pwd varchar(20) not null,
@@ -62,11 +62,11 @@ password: 암호입력
     email varchar(50) not null,
     work char(1) not null,
     byear int,
-    schl varchar(30)    
+    schl varchar(30)
   );
-  
+
 [테이블의 데이터를 구분하는 식별자(Primary Key; PK)로 사용할 컬럼 지정]
-> alter table 테이블명 
+> alter table 테이블명
   add primary key (컬럼명, 컬럼명, ...);
 > alter table ex_contacts
   add primary key (email);
@@ -75,8 +75,8 @@ password: 암호입력
 
 => PK는 아니지만 중복되어서는 안되는 컬럼인 경우 다음과 같이 유니크 컬럼으로 지정한다.
   alter table ex_students
-  add unique index (email);  
-  
+  add unique index (email);
+
 [테이블 삭제]
 > drop table 테이블명;
 > drop table ex_contacts;
@@ -87,15 +87,15 @@ password: 암호입력
 > desc ex_contacts;
 
 [테이블에 데이터 입력]
-> insert into 테이블명(컬럼명, 컬럼명, ...) 
+> insert into 테이블명(컬럼명, 컬럼명, ...)
   values(값, 값, ...);
-> 
+>
  insert into ex_contacts(email, name, tel, posi)
   values('aaa@test.com', 'aaa', '111-1111', '대리');
  insert into ex_contacts(email, name, tel, posi)
   values('bbb@test.com', 'bbb', '111-1112', '대리');
  insert into ex_contacts(email, name, tel, posi)
-  values('ccc@test.com', 'ccc', '111-1113', '과장');    
+  values('ccc@test.com', 'ccc', '111-1113', '과장');
  insert into ex_contacts(email, name, tel, posi)
   values('ddd@test.com', 'ddd', '111-1114', '부장');
  insert into ex_contacts(email, name, tel, posi)
@@ -120,7 +120,7 @@ password: 암호입력
 > select 컬럼명, 컬러명, ...
   from 테이블명
   where 조건...;
-> select * 
+> select *
   from ex_contacts;
 > select *
   from ex_contacts
@@ -129,12 +129,12 @@ password: 암호입력
   from ex_contacts;
 
 [테이블의 데이터 변경]
-> update 테이블명 set 
+> update 테이블명 set
   컬럼명=값,
   컬럼명=값,
   ...
   where 조건...;
-  
+
 > update ex_contacts set
   name='홍길동',
   tel='111-2222'
@@ -145,17 +145,3 @@ password: 암호입력
   where 조건...;
 > delete from ex_contacts
   where email='ccc@test.com';
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-
-
-
-
