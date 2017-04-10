@@ -89,7 +89,7 @@ password: 암호입력
 [테이블에 데이터 입력]
 > insert into 테이블명(컬럼명, 컬럼명, ...)
   values(값, 값, ...);
->
+> 
  insert into ex_contacts(email, name, tel, posi)
   values('aaa@test.com', 'aaa', '111-1111', '대리');
  insert into ex_contacts(email, name, tel, posi)
